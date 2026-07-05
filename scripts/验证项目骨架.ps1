@@ -18,7 +18,13 @@ $required = @(
   "src-tauri\src\main.rs",
   "src-tauri\src\lib.rs",
   "src-tauri\src\commands\mod.rs",
+  "src-tauri\icons\icon.ico",
+  "playwright.config.ts",
   "scripts\设置开发环境.ps1",
+  "scripts\smoke-scan.ps1",
+  "scripts\smoke-gui.ps1",
+  "scripts\smoke-skill-detail.ps1",
+  "scripts\smoke-translation-cache.ps1",
   ".cache",
   ".cache\.gitkeep",
   ".tmp",
@@ -26,12 +32,19 @@ $required = @(
   "data",
   "data\.gitkeep",
   "dist",
-  "dist\.gitkeep"
+  "dist\.gitkeep",
+  "dist\说明.md"
 )
 foreach ($path in $required) {
   if (-not (Test-Path $path)) {
     throw "缺少项目骨架文件或目录: $path"
   }
+}
+$docFiles = @("README.md", "docs\使用说明.md", "docs\方案设计.md", "docs\开发记录.md")
+foreach ($doc in $docFiles) {
+  if (-not (Test-Path $doc)) { throw "缺少中文文档: $doc" }
+  $content = Get-Content $doc -Raw
+  if ($content.Length -lt 500) { throw "中文文档内容过少: $doc" }
 }
 $pkg = Get-Content "package.json" -Raw | ConvertFrom-Json
 $expectedTauriDev = "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri dev"
@@ -42,10 +55,15 @@ if ($pkg.scripts."tauri:dev" -ne $expectedTauriDev) {
 if ($pkg.scripts."tauri:build" -ne $expectedTauriBuild) {
   throw "package.json tauri:build 必须通过设置开发环境脚本调用"
 }
-$forbiddenSmokeScripts = @("smoke:scan", "smoke:skill-detail", "smoke:translation-cache", "smoke:gui")
-foreach ($scriptName in $forbiddenSmokeScripts) {
-  if ($pkg.scripts.PSObject.Properties.Name -contains $scriptName) {
-    throw "任务 1 package.json 不应引用尚未创建的 smoke 脚本: $scriptName"
+$expectedSmokeScripts = @{
+  "smoke:scan" = "powershell -ExecutionPolicy Bypass -File scripts/smoke-scan.ps1"
+  "smoke:gui" = "powershell -ExecutionPolicy Bypass -File scripts/smoke-gui.ps1"
+  "smoke:skill-detail" = "powershell -ExecutionPolicy Bypass -File scripts/smoke-skill-detail.ps1"
+  "smoke:translation-cache" = "powershell -ExecutionPolicy Bypass -File scripts/smoke-translation-cache.ps1"
+}
+foreach ($scriptName in $expectedSmokeScripts.Keys) {
+  if ($pkg.scripts.$scriptName -ne $expectedSmokeScripts[$scriptName]) {
+    throw "package.json 缺少或错误配置 smoke 脚本: $scriptName"
   }
 }
 if ($pkg.scripts."test:frontend" -ne "vitest run") {
@@ -63,15 +81,12 @@ $envScript = Get-Content "scripts\设置开发环境.ps1" -Raw
 if ($envScript -notmatch "\.cache\\cargo-home") {
   throw "设置开发环境脚本必须把 CARGO_HOME 放在项目 .cache\cargo-home"
 }
-if (Test-Path "src-tauri\icons\icon.ico") {
-  throw "任务 1 不应包含额外 Tauri 图标产物"
-}
 $schemaFiles = Get-ChildItem "src-tauri\gen\schemas" -Filter "*.json" -File -ErrorAction SilentlyContinue
 foreach ($schemaFile in $schemaFiles) {
   $schemaPath = "src-tauri/gen/schemas/$($schemaFile.Name)"
   git check-ignore -q -- $schemaPath
   if ($LASTEXITCODE -ne 0) {
-    throw "任务 1 不应包含未忽略的 Tauri 生成 schema 产物: $schemaPath"
+    throw "Tauri 生成 schema 产物必须被 .gitignore 忽略: $schemaPath"
   }
 }
 $gitignore = Get-Content ".gitignore" -Raw
