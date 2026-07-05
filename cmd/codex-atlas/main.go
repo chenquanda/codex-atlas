@@ -16,7 +16,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	manager := app.NewManager(paths.StorePath, paths.CachePath, paths.CodexHome)
+	manager := app.NewManager(paths.StorePath, paths.CachePath, paths.TranslationPath, paths.CodexHome)
 	if len(os.Args) > 1 && os.Args[1] == "--smoke-scan" {
 		if err := manager.Load(); err != nil {
 			log.Fatal(err)

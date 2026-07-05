@@ -22,7 +22,7 @@ go test ./...
 go build -ldflags="-H=windowsgui" -o (Join-Path $root "dist\codex-atlas.exe") .\cmd\codex-atlas
 
 Copy-Item -Force (Join-Path $root "docs\使用说明.md") (Join-Path $root "dist\使用说明.md")
-foreach ($name in @("last-scan.json", "stats-cache.json")) {
+foreach ($name in @("last-scan.json", "stats-cache.json", "translation-cache.json")) {
   $sourceData = Join-Path $root "data\$name"
   if (Test-Path $sourceData) {
     Copy-Item -Force $sourceData (Join-Path $distData $name)

@@ -7,11 +7,11 @@ import (
 )
 
 var (
-	atlasPaper  = walk.RGB(246, 240, 230)
-	atlasPaper2 = walk.RGB(255, 250, 241)
-	atlasWhite  = walk.RGB(255, 253, 248)
-	atlasInk    = walk.RGB(29, 25, 21)
-	atlasMuted  = walk.RGB(117, 107, 95)
-	atlasLine   = walk.RGB(216, 207, 192)
-	atlasClay   = walk.RGB(201, 100, 66)
+	atlasPaper  = walk.RGB(247, 249, 248)
+	atlasPaper2 = walk.RGB(241, 246, 244)
+	atlasWhite  = walk.RGB(255, 255, 255)
+	atlasInk    = walk.RGB(31, 36, 38)
+	atlasMuted  = walk.RGB(99, 109, 112)
+	atlasLine   = walk.RGB(210, 221, 218)
+	atlasClay   = walk.RGB(74, 122, 139)
 )

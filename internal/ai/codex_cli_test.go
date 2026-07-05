@@ -52,6 +52,40 @@ func TestOrganizerReturnsClearErrorWhenCommandFails(t *testing.T) {
 	}
 }
 
+func TestOrganizerRejectsOutputPathOutsideWorkTmp(t *testing.T) {
+	dir := t.TempDir()
+	organizer := Organizer{
+		Command:    fakeCommand(t, dir, `{"items":[]}`, 0),
+		WorkDir:    dir,
+		OutputPath: filepath.Join(dir, "ai-output.json"),
+		Timeout:    2 * time.Second,
+	}
+
+	if _, err := organizer.Organize(context.Background(), nil); err == nil {
+		t.Fatalf("Organize should reject OutputPath outside WorkDir .tmp")
+	}
+}
+
+func TestOrganizerRejectsTmpLinkOutsideWorkDir(t *testing.T) {
+	dir := t.TempDir()
+	outside := t.TempDir()
+	tmpPath := filepath.Join(dir, ".tmp")
+	createDirectoryLinkForTest(t, outside, tmpPath)
+
+	organizer := Organizer{
+		Command: fakeCommand(t, dir, `{"items":[]}`, 0),
+		WorkDir: dir,
+		Timeout: 2 * time.Second,
+	}
+
+	if _, err := organizer.Organize(context.Background(), nil); err == nil {
+		t.Fatalf("Organize should reject WorkDir .tmp when it resolves outside the project")
+	}
+	if _, err := os.Stat(filepath.Join(outside, "ai-input.json")); err == nil {
+		t.Fatalf("Organize wrote input through a linked .tmp directory outside WorkDir")
+	}
+}
+
 func TestOrganizerRejectsUnknownIDsAndBadSchema(t *testing.T) {
 	dir := t.TempDir()
 	command := fakeCommand(t, dir, `{"items":[{"id":"skill:other","summary":"越界"}]}`, 0)

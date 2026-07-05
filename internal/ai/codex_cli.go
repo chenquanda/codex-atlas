@@ -50,17 +50,34 @@ func (o Organizer) Organize(ctx context.Context, abilities []domain.Ability) (ma
 	if workDir == "" {
 		workDir = "."
 	}
+	workAbs, err := filepath.Abs(workDir)
+	if err != nil {
+		return nil, err
+	}
 	timeout := o.Timeout
 	if timeout == 0 {
 		timeout = 90 * time.Second
 	}
-	tmpDir := filepath.Join(workDir, ".tmp")
+	tmpDir := filepath.Join(workAbs, ".tmp")
 	if err := os.MkdirAll(tmpDir, 0o755); err != nil {
 		return nil, err
 	}
-	outputPath := strings.TrimSpace(o.OutputPath)
-	if outputPath == "" {
-		outputPath = filepath.Join(tmpDir, "ai-output.json")
+	if err := ensureRealPathInside(workAbs, tmpDir, "AI 整理临时目录"); err != nil {
+		return nil, err
+	}
+	outputPath, _, err := resolveTmpOutputPath(workAbs, tmpDir, o.OutputPath, "ai-output.json", "AI 整理输出路径")
+	if err != nil {
+		return nil, err
+	}
+	outputDir := filepath.Dir(outputPath)
+	if err := ensureRealPathInside(tmpDir, outputDir, "AI 整理输出目录"); err != nil {
+		return nil, err
+	}
+	if err := os.MkdirAll(outputDir, 0o755); err != nil {
+		return nil, err
+	}
+	if err := ensureRealPathInside(tmpDir, outputDir, "AI 整理输出目录"); err != nil {
+		return nil, err
 	}
 	inputPath := filepath.Join(tmpDir, "ai-input.json")
 	input, err := json.MarshalIndent(organizeRequest{Abilities: abilities}, "", "  ")
@@ -78,7 +95,7 @@ func (o Organizer) Organize(ctx context.Context, abilities []domain.Ability) (ma
 		args = []string{"exec", "--skip-git-repo-check", "--ephemeral", "-o", outputPath, "-"}
 	}
 	cmd := exec.CommandContext(runCtx, command, args...)
-	cmd.Dir = workDir
+	cmd.Dir = workAbs
 	cmd.Stdin = bytes.NewReader(buildPrompt(o.PromptPrefix, input))
 	cmd.Env = boundedEnv(os.Environ(), tmpDir)
 	var stdout bytes.Buffer

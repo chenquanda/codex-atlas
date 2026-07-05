@@ -22,6 +22,18 @@ func TestResolveWorkDirUsesProjectRootForProjectDistExe(t *testing.T) {
 	}
 }
 
+func TestDefaultPathsSetsTranslationPathUnderWorkDirData(t *testing.T) {
+	paths, err := DefaultPaths()
+	if err != nil {
+		t.Fatalf("DefaultPaths() error = %v", err)
+	}
+
+	want := filepath.Join(paths.WorkDir, "data", "translation-cache.json")
+	if paths.TranslationPath != want {
+		t.Fatalf("TranslationPath = %q, want %q", paths.TranslationPath, want)
+	}
+}
+
 func TestResolveWorkDirUsesExeDirForPortableBundle(t *testing.T) {
 	portable := t.TempDir()
 	exePath := filepath.Join(portable, "codex-atlas.exe")

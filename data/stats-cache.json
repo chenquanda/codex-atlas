@@ -6,10 +6,10 @@
     "lastUsedAt": "0001-01-01T00:00:00Z"
   },
   "skill:auto-git-sync": {
-    "usageCount": 48,
-    "sessionsUsed": 14,
-    "mentions": 48,
-    "lastUsedAt": "2026-07-02T13:52:36.707Z"
+    "usageCount": 51,
+    "sessionsUsed": 15,
+    "mentions": 51,
+    "lastUsedAt": "2026-07-05T11:16:52.805Z"
   },
   "skill:codebase-design": {
     "usageCount": 5,
@@ -252,10 +252,10 @@
     "lastUsedAt": "0001-01-01T00:00:00Z"
   },
   "skill:huashu-design": {
-    "usageCount": 10,
+    "usageCount": 14,
     "sessionsUsed": 3,
-    "mentions": 10,
-    "lastUsedAt": "2026-07-02T15:24:49.011Z"
+    "mentions": 14,
+    "lastUsedAt": "2026-07-05T11:09:20.015Z"
   },
   "skill:imagegen": {
     "usageCount": 6,
@@ -396,10 +396,10 @@
     "lastUsedAt": "0001-01-01T00:00:00Z"
   },
   "skill:superpowers:brainstorming": {
-    "usageCount": 55,
-    "sessionsUsed": 23,
-    "mentions": 55,
-    "lastUsedAt": "2026-07-02T14:13:38.429Z"
+    "usageCount": 59,
+    "sessionsUsed": 24,
+    "mentions": 59,
+    "lastUsedAt": "2026-07-05T12:06:49.17Z"
   },
   "skill:superpowers:dispatching-parallel-agents": {
     "usageCount": 1,
@@ -420,22 +420,22 @@
     "lastUsedAt": "2026-07-01T15:12:31.099Z"
   },
   "skill:superpowers:receiving-code-review": {
-    "usageCount": 5,
-    "sessionsUsed": 2,
-    "mentions": 5,
-    "lastUsedAt": "2026-07-02T14:24:17.249Z"
-  },
-  "skill:superpowers:requesting-code-review": {
-    "usageCount": 13,
-    "sessionsUsed": 4,
-    "mentions": 13,
-    "lastUsedAt": "2026-07-05T10:44:45.888Z"
-  },
-  "skill:superpowers:subagent-driven-development": {
     "usageCount": 6,
     "sessionsUsed": 3,
     "mentions": 6,
-    "lastUsedAt": "2026-07-02T14:16:19.888Z"
+    "lastUsedAt": "2026-07-05T12:11:19.085Z"
+  },
+  "skill:superpowers:requesting-code-review": {
+    "usageCount": 21,
+    "sessionsUsed": 6,
+    "mentions": 21,
+    "lastUsedAt": "2026-07-05T12:44:57.511Z"
+  },
+  "skill:superpowers:subagent-driven-development": {
+    "usageCount": 8,
+    "sessionsUsed": 3,
+    "mentions": 8,
+    "lastUsedAt": "2026-07-05T12:32:13.115Z"
   },
   "skill:superpowers:systematic-debugging": {
     "usageCount": 15,
@@ -444,34 +444,34 @@
     "lastUsedAt": "2026-07-02T15:39:55.711Z"
   },
   "skill:superpowers:test-driven-development": {
-    "usageCount": 25,
-    "sessionsUsed": 9,
-    "mentions": 25,
-    "lastUsedAt": "2026-07-05T10:38:09.843Z"
+    "usageCount": 38,
+    "sessionsUsed": 14,
+    "mentions": 38,
+    "lastUsedAt": "2026-07-05T12:32:13.161Z"
   },
   "skill:superpowers:using-git-worktrees": {
-    "usageCount": 7,
-    "sessionsUsed": 1,
-    "mentions": 7,
-    "lastUsedAt": "2026-06-27T09:13:38.141Z"
+    "usageCount": 8,
+    "sessionsUsed": 2,
+    "mentions": 8,
+    "lastUsedAt": "2026-07-05T11:19:49.951Z"
   },
   "skill:superpowers:using-superpowers": {
-    "usageCount": 72,
-    "sessionsUsed": 55,
-    "mentions": 72,
-    "lastUsedAt": "2026-07-02T14:55:21.251Z"
+    "usageCount": 88,
+    "sessionsUsed": 66,
+    "mentions": 88,
+    "lastUsedAt": "2026-07-05T12:26:26.165Z"
   },
   "skill:superpowers:verification-before-completion": {
-    "usageCount": 52,
-    "sessionsUsed": 19,
-    "mentions": 52,
-    "lastUsedAt": "2026-07-05T10:38:09.881Z"
+    "usageCount": 70,
+    "sessionsUsed": 28,
+    "mentions": 70,
+    "lastUsedAt": "2026-07-05T12:32:13.162Z"
   },
   "skill:superpowers:writing-plans": {
-    "usageCount": 17,
+    "usageCount": 18,
     "sessionsUsed": 10,
-    "mentions": 17,
-    "lastUsedAt": "2026-07-02T14:13:38.469Z"
+    "mentions": 18,
+    "lastUsedAt": "2026-07-05T11:13:25.638Z"
   },
   "skill:superpowers:writing-skills": {
     "usageCount": 2,
@@ -480,16 +480,16 @@
     "lastUsedAt": "2026-06-27T14:50:25.929Z"
   },
   "skill:tdd": {
-    "usageCount": 0,
-    "sessionsUsed": 0,
-    "mentions": 0,
-    "lastUsedAt": "0001-01-01T00:00:00Z"
+    "usageCount": 4,
+    "sessionsUsed": 1,
+    "mentions": 4,
+    "lastUsedAt": "2026-07-05T11:31:44.92Z"
   },
   "skill:teach": {
-    "usageCount": 4,
-    "sessionsUsed": 4,
-    "mentions": 4,
-    "lastUsedAt": "2026-07-05T10:44:28.462Z"
+    "usageCount": 7,
+    "sessionsUsed": 6,
+    "mentions": 7,
+    "lastUsedAt": "2026-07-05T11:43:50.952Z"
   },
   "skill:template-creator:template-creator": {
     "usageCount": 0,

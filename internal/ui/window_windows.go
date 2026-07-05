@@ -41,11 +41,12 @@ type atlasWindow struct {
 	designButton *walk.PushButton
 	hiddenButton *walk.PushButton
 
-	moreButton *walk.PushButton
-	editButton *walk.PushButton
-	copyButton *walk.PushButton
-	morePanel  *walk.Composite
-	editPanel  *walk.Composite
+	moreButton   *walk.PushButton
+	editButton   *walk.PushButton
+	copyButton   *walk.PushButton
+	detailButton *walk.PushButton
+	morePanel    *walk.Composite
+	editPanel    *walk.Composite
 
 	refreshScanButton  *walk.PushButton
 	refreshStatsButton *walk.PushButton
@@ -125,9 +126,9 @@ func (w *atlasWindow) create() error {
 	return (MainWindow{
 		AssignTo: &w.MainWindow,
 		Title:    "Codex Atlas",
-		Bounds:   Rectangle{X: 80, Y: 40, Width: 460, Height: 640},
-		MinSize:  Size{420, 560},
-		Layout:   VBox{Margins: Margins{Left: 12, Top: 12, Right: 12, Bottom: 8}, Spacing: 8},
+		Bounds:   Rectangle{X: 80, Y: 40, Width: 680, Height: 780},
+		MinSize:  Size{Width: 560, Height: 680},
+		Layout:   VBox{Margins: Margins{Left: 14, Top: 10, Right: 14, Bottom: 8}, Spacing: 7},
 		Font:     Font{Family: "Microsoft YaHei UI", PointSize: 9},
 		Background: SolidColorBrush{
 			Color: atlasPaper,
@@ -135,7 +136,8 @@ func (w *atlasWindow) create() error {
 		Children: []Widget{
 			Composite{
 				Background: SolidColorBrush{Color: atlasPaper2},
-				Layout:     VBox{Margins: Margins{Left: 0, Top: 0, Right: 0, Bottom: 0}, Spacing: 5},
+				// 顶部只保留身份和入口提示，把垂直空间让给列表；搜索和筛选在下方持续可见。
+				Layout: VBox{Margins: Margins{Left: 0, Top: 0, Right: 0, Bottom: 0}, Spacing: 3},
 				Children: []Widget{
 					Composite{
 						Background: SolidColorBrush{Color: atlasPaper2},
@@ -143,7 +145,7 @@ func (w *atlasWindow) create() error {
 						Children: []Widget{
 							Label{
 								Text:          "CA",
-								MinSize:       Size{Width: 28, Height: 24},
+								MinSize:       Size{Width: 28, Height: 22},
 								TextAlignment: AlignCenter,
 								Font:          Font{Family: "Microsoft YaHei UI", PointSize: 8, Bold: true},
 								TextColor:     atlasPaper2,
@@ -167,13 +169,8 @@ func (w *atlasWindow) create() error {
 					},
 					Label{
 						Text:      "Codex 能力索引",
-						Font:      Font{Family: "Microsoft YaHei UI", PointSize: 14, Bold: true},
+						Font:      Font{Family: "Microsoft YaHei UI", PointSize: 12, Bold: true},
 						TextColor: atlasInk,
-					},
-					Label{
-						Text:      "描述你要做什么，然后把合适的 Codex 能力带回对话里。",
-						Font:      Font{Family: "Microsoft YaHei UI", PointSize: 8},
-						TextColor: atlasMuted,
 					},
 				},
 			},
@@ -224,9 +221,9 @@ func (w *atlasWindow) create() error {
 				Model:                 w.listModel,
 				StretchFactor:         1,
 				OnCurrentIndexChanged: w.updateDetail,
-				OnItemActivated:       w.copyTemplate,
+				OnItemActivated:       w.openSkillDetail,
 				OnMouseMove:           w.showHoverSummary,
-				ToolTipText:           "双击复制第一个调用模板",
+				ToolTipText:           "双击打开 Skill 详情",
 			},
 			Composite{
 				Background: SolidColorBrush{Color: atlasPaper2},
@@ -261,8 +258,8 @@ func (w *atlasWindow) create() error {
 					TextEdit{
 						AssignTo:  &w.templatePreview,
 						ReadOnly:  true,
-						MinSize:   Size{Height: 46},
-						MaxSize:   Size{Height: 58},
+						MinSize:   Size{Height: 54},
+						MaxSize:   Size{Height: 66},
 						Font:      Font{Family: "Cascadia Mono", PointSize: 8},
 						TextColor: atlasPaper2,
 						Background: SolidColorBrush{
@@ -274,6 +271,7 @@ func (w *atlasWindow) create() error {
 						Layout:     HBox{MarginsZero: true, Spacing: 6},
 						Children: []Widget{
 							PushButton{AssignTo: &w.copyButton, Text: "复制模板", StretchFactor: 1, OnClicked: w.copyTemplate},
+							PushButton{AssignTo: &w.detailButton, Text: "打开详情", StretchFactor: 1, OnClicked: w.openSkillDetail},
 							PushButton{AssignTo: &w.moreButton, Text: "更多", StretchFactor: 1, OnClicked: func() { w.togglePanel(panelMore) }},
 							PushButton{AssignTo: &w.editButton, Text: "编辑", StretchFactor: 1, OnClicked: func() { w.togglePanel(panelEdit) }},
 						},
@@ -361,7 +359,7 @@ func (w *atlasWindow) create() error {
 				},
 			},
 		},
-		StatusBarItems: []StatusBarItem{{AssignTo: &w.statusItem, Text: "就绪", Width: 420}},
+		StatusBarItems: []StatusBarItem{{AssignTo: &w.statusItem, Text: "就绪", Width: 640}},
 	}).Create()
 }
 
@@ -489,6 +487,9 @@ func (w *atlasWindow) updateDetail() {
 	if !ok {
 		w.setDetailText("没有可显示的能力", "", "", "请点击“更多 / 刷新清单”。", "")
 		w.setEditFields(domain.Ability{})
+		if w.detailButton != nil {
+			w.detailButton.SetEnabled(false)
+		}
 		return
 	}
 	template := ""
@@ -497,6 +498,12 @@ func (w *atlasWindow) updateDetail() {
 	}
 	w.setDetailText(item.DisplayName, compactPath(item.SourcePath), string(item.Kind), detailSummary(item), template)
 	w.setEditFields(item)
+	if w.detailButton != nil {
+		w.detailButton.SetEnabled(!w.busy && item.Kind == domain.KindSkill)
+	}
+	if item.Kind == domain.KindSkill {
+		w.setStatus("双击打开 Skill 详情")
+	}
 }
 
 func (w *atlasWindow) setDetailText(name, path, kind, summary, template string) {
@@ -656,6 +663,23 @@ func (w *atlasWindow) copyTemplate() {
 	w.setStatus("已复制调用模板")
 }
 
+func (w *atlasWindow) openSkillDetail() {
+	item, ok := w.selected()
+	if !ok {
+		return
+	}
+	if item.Kind != domain.KindSkill {
+		w.setStatus("只有 Skill 支持详情窗口")
+		walk.MsgBox(w, "无法打开详情", "只有 Skill 支持独立详情窗口。", walk.MsgBoxIconInformation)
+		return
+	}
+	if err := showSkillDetailDialog(w, w.manager, w.workDir, item); err != nil {
+		w.showError("打开 Skill 详情失败", err)
+		return
+	}
+	w.setStatus("已关闭 Skill 详情")
+}
+
 func (w *atlasWindow) copyPath() {
 	item, ok := w.selected()
 	if !ok {
@@ -745,6 +769,7 @@ func (w *atlasWindow) runAsync(label string, action func() error) {
 		err := action()
 		w.Synchronize(func() {
 			w.setBusy(false)
+			w.updateDetail()
 			if err != nil {
 				w.showError(label+"失败", err)
 				w.setStatus(label + "失败")
@@ -771,6 +796,7 @@ func (w *atlasWindow) setBusy(busy bool) {
 		w.moreButton,
 		w.editButton,
 		w.copyButton,
+		w.detailButton,
 		w.refreshScanButton,
 		w.refreshStatsButton,
 		w.refreshAllButton,
@@ -792,17 +818,81 @@ func (w *atlasWindow) setBusy(busy bool) {
 }
 
 func (w *atlasWindow) placeAsSidebar() {
-	width := int32(460)
-	screenHeight := win.GetSystemMetrics(win.SM_CYSCREEN)
-	height := int32(640)
-	if screenHeight-80 < height {
-		height = screenHeight - 80
+	x, y, width, height := sidebarBounds(
+		win.GetSystemMetrics(win.SM_CXSCREEN),
+		win.GetSystemMetrics(win.SM_CYSCREEN),
+	)
+	minWidth, minHeight := sidebarMinSize(width, height)
+	// 设计态仍保持 560x680 的舒适下限；贴边定位遇到小屏时，先把运行时最小尺寸降到屏幕可容纳范围内，
+	// 避免 Walk 的 MinSize 在 SetWindowPos 后把窗口重新夹回屏幕外。
+	_ = w.SetMinMaxSizePixels(walk.Size{Width: int(minWidth), Height: int(minHeight)}, walk.Size{})
+	win.SetWindowPos(w.Handle(), win.HWND_TOPMOST, x, y, width, height, win.SWP_SHOWWINDOW)
+}
+
+func sidebarBounds(screenWidth, screenHeight int32) (x, y, width, height int32) {
+	const (
+		margin       int32 = 12
+		targetY      int32 = 40
+		targetWidth  int32 = 680
+		targetHeight int32 = 780
+	)
+
+	if screenWidth <= 0 || screenHeight <= 0 {
+		return 0, 0, targetWidth, targetHeight
 	}
-	if height < 560 {
-		height = 560
+
+	availableWidth := screenWidth - margin*2
+	if availableWidth < 1 {
+		availableWidth = screenWidth
 	}
-	x := win.GetSystemMetrics(win.SM_CXSCREEN) - width - 12
-	win.SetWindowPos(w.Handle(), win.HWND_TOPMOST, x, 40, width, height, win.SWP_SHOWWINDOW)
+	width = minInt32(targetWidth, availableWidth)
+	if width < 1 {
+		width = 1
+	}
+	x = screenWidth - width - margin
+	if x < 0 {
+		x = 0
+	}
+
+	y = targetY
+	if screenHeight < targetY+margin {
+		y = 0
+	}
+	availableHeight := screenHeight - y - margin
+	if availableHeight < 1 {
+		availableHeight = screenHeight - y
+	}
+	height = minInt32(targetHeight, availableHeight)
+	if height < 1 {
+		height = 1
+	}
+	if y+height > screenHeight {
+		height = screenHeight - y
+	}
+	return x, y, width, height
+}
+
+func sidebarMinSize(width, height int32) (minWidth, minHeight int32) {
+	const (
+		designMinWidth  int32 = 560
+		designMinHeight int32 = 680
+	)
+	minWidth = minInt32(designMinWidth, width)
+	minHeight = minInt32(designMinHeight, height)
+	if minWidth < 1 {
+		minWidth = 1
+	}
+	if minHeight < 1 {
+		minHeight = 1
+	}
+	return minWidth, minHeight
+}
+
+func minInt32(a, b int32) int32 {
+	if a < b {
+		return a
+	}
+	return b
 }
 
 func (w *atlasWindow) setStatus(text string) {

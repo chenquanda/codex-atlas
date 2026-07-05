@@ -10,7 +10,7 @@ import (
 )
 
 func TestManagerMergesSearchesAndKeepsHiddenOutByDefault(t *testing.T) {
-	manager := NewManager(filepath.Join(t.TempDir(), "store.json"), filepath.Join(t.TempDir(), "scan.json"), "")
+	manager := NewManager(filepath.Join(t.TempDir(), "store.json"), filepath.Join(t.TempDir(), "scan.json"), "", "")
 	manager.Scan = scanner.Result{Abilities: []domain.Ability{
 		{ID: "skill:teach", Kind: domain.KindSkill, Name: "teach", Description: "Teach concepts"},
 		{ID: "skill:debug", Kind: domain.KindSkill, Name: "debug", Description: "Debug bugs"},
@@ -52,7 +52,7 @@ func TestManagerPersistsStatsCache(t *testing.T) {
 
 	storePath := filepath.Join(dir, "data", "store.json")
 	scanPath := filepath.Join(dir, "data", "last-scan.json")
-	manager := NewManager(storePath, scanPath, codexHome)
+	manager := NewManager(storePath, scanPath, "", codexHome)
 	manager.Scan = scanner.Result{Abilities: []domain.Ability{
 		{ID: "skill:teach", Kind: domain.KindSkill, Name: "teach"},
 	}}
@@ -61,7 +61,7 @@ func TestManagerPersistsStatsCache(t *testing.T) {
 		t.Fatalf("RefreshStats returned error: %v", err)
 	}
 
-	reloaded := NewManager(storePath, scanPath, codexHome)
+	reloaded := NewManager(storePath, scanPath, "", codexHome)
 	if err := reloaded.Load(); err != nil {
 		t.Fatalf("Load returned error: %v", err)
 	}
@@ -85,7 +85,7 @@ func TestManagerTreatsLegacyStatsCacheAsUnknown(t *testing.T) {
 		t.Fatalf("WriteFile legacy stats cache: %v", err)
 	}
 
-	manager := NewManager(storePath, scanPath, "")
+	manager := NewManager(storePath, scanPath, "", "")
 	if err := manager.Load(); err != nil {
 		t.Fatalf("Load should ignore legacy stats cache, got: %v", err)
 	}
@@ -106,7 +106,7 @@ func TestManagerIgnoresCorruptStatsCache(t *testing.T) {
 		t.Fatalf("WriteFile stats cache: %v", err)
 	}
 
-	manager := NewManager(storePath, scanPath, "")
+	manager := NewManager(storePath, scanPath, "", "")
 	if err := manager.Load(); err != nil {
 		t.Fatalf("Load should ignore corrupt stats cache, got: %v", err)
 	}
@@ -117,7 +117,7 @@ func TestManagerIgnoresCorruptStatsCache(t *testing.T) {
 
 func TestManagerSetUserDataPersistsManualFields(t *testing.T) {
 	dir := t.TempDir()
-	manager := NewManager(filepath.Join(dir, "store.json"), filepath.Join(dir, "scan.json"), "")
+	manager := NewManager(filepath.Join(dir, "store.json"), filepath.Join(dir, "scan.json"), "", "")
 
 	if err := manager.UpdateUser("skill:teach", func(user *domain.UserData) {
 		user.Alias = "教学"
@@ -127,12 +127,65 @@ func TestManagerSetUserDataPersistsManualFields(t *testing.T) {
 		t.Fatalf("UpdateUser returned error: %v", err)
 	}
 
-	reloaded := NewManager(filepath.Join(dir, "store.json"), filepath.Join(dir, "scan.json"), "")
+	reloaded := NewManager(filepath.Join(dir, "store.json"), filepath.Join(dir, "scan.json"), "", "")
 	if err := reloaded.Load(); err != nil {
 		t.Fatalf("Load returned error: %v", err)
 	}
 	user := reloaded.State.Users["skill:teach"]
 	if user.Alias != "教学" || !user.Favorite || len(user.CustomTemplates) != 1 {
 		t.Fatalf("manual data not persisted: %+v", user)
+	}
+}
+
+func TestManagerLoadFallsBackTranslationPathWhenStoreAndCacheUseDifferentDirs(t *testing.T) {
+	dir := t.TempDir()
+	storePath := filepath.Join(dir, "store-root", "store.json")
+	scanPath := filepath.Join(dir, "cache-root", "scan.json")
+	manager := NewManager(storePath, scanPath, "", "")
+
+	if err := manager.Load(); err != nil {
+		t.Fatalf("Load should allow fallback translation cache beside scan cache, got: %v", err)
+	}
+	if manager.TranslationPath != filepath.Join(dir, "cache-root", "translation-cache.json") {
+		t.Fatalf("TranslationPath = %q", manager.TranslationPath)
+	}
+}
+
+func TestManagerAbilitiesPreferCachedSkillSummary(t *testing.T) {
+	dir := t.TempDir()
+	storePath := filepath.Join(dir, "data", "store.json")
+	scanPath := filepath.Join(dir, "data", "last-scan.json")
+	translationPath := filepath.Join(dir, "data", "translation-cache.json")
+	teachDir := writeSkillFile(t, dir, "teach", "SKILL.md", "# Teach\n\nThis skill teaches concepts with patient examples.")
+	debugDir := writeSkillFile(t, dir, "debug", "SKILL.md", "# Debug\n\nThis skill diagnoses failures with structured steps.")
+
+	cache := seedTranslationCache(t, dir, translationPath, "skill:teach", "SKILL.md", "# Teach\n\nThis skill teaches concepts with patient examples.", "教学译文", "中文摘要")
+	if err := cache.Save(); err != nil {
+		t.Fatalf("Save translation cache: %v", err)
+	}
+
+	manager := NewManager(storePath, scanPath, translationPath, "")
+	manager.Scan = scanner.Result{Abilities: []domain.Ability{
+		{ID: "skill:teach", Kind: domain.KindSkill, Name: "teach", Directory: teachDir, Summary: "English teach summary"},
+		{ID: "skill:debug", Kind: domain.KindSkill, Name: "debug", Directory: debugDir, Summary: "English debug summary"},
+	}}
+	manager.Translations = cache
+
+	got := manager.Abilities(domain.KindSkill, "", true)
+	byID := map[string]domain.Ability{}
+	for _, ability := range got {
+		byID[ability.ID] = ability
+	}
+	if manager.TranslatedSummary(manager.Scan.Abilities[0]) != "中文摘要" {
+		t.Fatalf("TranslatedSummary(teach) should read cached Chinese summary")
+	}
+	if manager.TranslatedSummary(manager.Scan.Abilities[1]) != "" {
+		t.Fatalf("TranslatedSummary(debug) should return empty string without cache hit")
+	}
+	if byID["skill:teach"].Summary != "中文摘要" {
+		t.Fatalf("teach summary = %q, want cached Chinese summary", byID["skill:teach"].Summary)
+	}
+	if byID["skill:debug"].Summary != "English debug summary" {
+		t.Fatalf("debug summary = %q, want original summary without cache", byID["skill:debug"].Summary)
 	}
 }

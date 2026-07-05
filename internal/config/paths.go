@@ -7,10 +7,11 @@ import (
 )
 
 type Paths struct {
-	WorkDir   string
-	StorePath string
-	CachePath string
-	CodexHome string
+	WorkDir         string
+	StorePath       string
+	CachePath       string
+	TranslationPath string
+	CodexHome       string
 }
 
 // DefaultPaths 把应用自己的数据固定到当前工作目录，保持便携并满足项目内写入约束。
@@ -29,10 +30,11 @@ func DefaultPaths() (Paths, error) {
 		codexHome = filepath.Join(os.Getenv("USERPROFILE"), ".codex")
 	}
 	return Paths{
-		WorkDir:   workDir,
-		StorePath: filepath.Join(workDir, "data", "atlas-store.json"),
-		CachePath: filepath.Join(workDir, "data", "last-scan.json"),
-		CodexHome: codexHome,
+		WorkDir:         workDir,
+		StorePath:       filepath.Join(workDir, "data", "atlas-store.json"),
+		CachePath:       filepath.Join(workDir, "data", "last-scan.json"),
+		TranslationPath: filepath.Join(workDir, "data", "translation-cache.json"),
+		CodexHome:       codexHome,
 	}, nil
 }
 

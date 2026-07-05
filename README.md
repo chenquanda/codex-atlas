@@ -19,6 +19,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1
 ```
 
 构建脚本会把 Go 缓存、临时目录和产物都固定在当前项目内。
+如果当前项目存在 `data/translation-cache.json`，构建脚本会同步到 `dist/data/translation-cache.json`，并随 portable zip 一起打包；不存在时会自动跳过。
 
 ## 已实现
 
@@ -32,6 +33,15 @@ powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1
 - AI 离线整理入口，通过本机 `codex exec --ephemeral` 整理当前可见列表，结果只写入 AI 数据层。
 - 全局快捷键 `Ctrl+Alt+Space` 显示/隐藏窗口。
 
+## 第二版功能
+
+- 默认主窗口加宽，Skills 列表和详情入口在常用屏幕上更容易阅读。
+- Skills 支持独立详情弹窗：左侧浏览该 Skill 文件夹内的 Markdown / 文本文件，右侧查看当前文件内容。
+- 详情弹窗支持原文 / 译文切换。中文文件默认不需要翻译；英文或其他语言文件可以手动点击翻译。
+- 翻译只在用户手动触发时调用本机 `codex exec --ephemeral`，不会自动批量翻译整个 skill 仓库。
+- 翻译结果缓存到当前项目 `data/translation-cache.json`。缓存命中时默认显示中文译文，并保留切回原文的能力。
+- 便携构建会把 `data/translation-cache.json` 同步到 `dist/data/`，方便把已翻译内容随包带走。
+
 ## 验证
 
 最近一次验证：
@@ -41,8 +51,6 @@ go test ./...
 .\.tmp\codex-atlas-console.exe --smoke-scan
 ```
 
-真实扫描结果：`abilities=119`，`skills=86`。GUI 启动 smoke：工作集约 `21.7MB`，4 秒 CPU 时间约 `0.14s`。
-
-当前使用次数修复后验证结果：`abilities=120`，`skills=87`，新版统计缓存 `87` 项，非零使用次数 `39` 项。GUI 启动 smoke：工作集约 `23.1MB`，4 秒 CPU 时间约 `0.141s`，列表截图显示 `N 使用`。
+当前第二版验证结果：`abilities=120`，`skills=87`。GUI smoke 已确认主窗口和独立 Skill 详情窗口可以打开，进程响应正常，工作集约 `27.4MB`，CPU 时间约 `0.25s`，列表显示 `N 使用`。
 
 详细说明见 [docs/使用说明.md](docs/使用说明.md)。

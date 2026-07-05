@@ -16,29 +16,36 @@ import (
 	"codex-atlas/internal/scanner"
 	"codex-atlas/internal/stats"
 	"codex-atlas/internal/store"
+	"codex-atlas/internal/translate"
 )
 
 type Manager struct {
-	mu          sync.Mutex
-	ProjectRoot string
-	StorePath   string
-	CachePath   string
-	StatsPath   string
-	CodexHome   string
-	State       domain.Store
-	Scan        scanner.Result
-	Stats       map[string]domain.Stats
+	mu              sync.Mutex
+	ProjectRoot     string
+	StorePath       string
+	CachePath       string
+	StatsPath       string
+	TranslationPath string
+	CodexHome       string
+	State           domain.Store
+	Scan            scanner.Result
+	Stats           map[string]domain.Stats
+	Translations    *translate.Cache
 }
 
-func NewManager(storePath, cachePath, codexHome string) *Manager {
+func NewManager(storePath, cachePath, translationPath, codexHome string) *Manager {
+	if strings.TrimSpace(translationPath) == "" {
+		translationPath = translationCachePath(cachePath)
+	}
 	return &Manager{
-		ProjectRoot: inferProjectRoot(storePath, cachePath),
-		StorePath:   storePath,
-		CachePath:   cachePath,
-		StatsPath:   statsCachePath(cachePath),
-		CodexHome:   codexHome,
-		State:       domain.NewStore(),
-		Stats:       map[string]domain.Stats{},
+		ProjectRoot:     inferProjectRoot(storePath, cachePath, translationPath),
+		StorePath:       storePath,
+		CachePath:       cachePath,
+		StatsPath:       statsCachePath(cachePath),
+		TranslationPath: translationPath,
+		CodexHome:       codexHome,
+		State:           domain.NewStore(),
+		Stats:           map[string]domain.Stats{},
 	}
 }
 
@@ -70,6 +77,9 @@ func (m *Manager) Load() error {
 	m.Stats = stats
 	if m.Stats == nil {
 		m.Stats = map[string]domain.Stats{}
+	}
+	if err := m.ensureTranslationsLocked(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -104,7 +114,6 @@ func (m *Manager) UpdateUser(id string, mutate func(*domain.UserData)) error {
 // Abilities 返回 UI 列表数据。隐藏项默认不显示，但统计和用户数据仍保留。
 func (m *Manager) Abilities(kind domain.AbilityKind, query string, includeHidden bool) []domain.Ability {
 	m.mu.Lock()
-	defer m.mu.Unlock()
 	var out []domain.Ability
 	for _, raw := range m.Scan.Abilities {
 		if kind != "" && raw.Kind != kind {
@@ -131,7 +140,29 @@ func (m *Manager) Abilities(kind domain.AbilityKind, query string, includeHidden
 		}
 		return strings.ToLower(out[i].DisplayName) < strings.ToLower(out[j].DisplayName)
 	})
+	m.mu.Unlock()
+
+	for i := range out {
+		if summary := m.TranslatedSummary(out[i]); summary != "" {
+			out[i].Summary = summary
+		}
+	}
 	return out
+}
+
+func (m *Manager) ensureTranslationsLocked() error {
+	if m.Translations != nil {
+		return nil
+	}
+	if strings.TrimSpace(m.TranslationPath) == "" {
+		return errTranslationsUnavailable
+	}
+	cache, err := translate.LoadCache(m.ProjectRoot, m.TranslationPath)
+	if err != nil {
+		return err
+	}
+	m.Translations = cache
+	return nil
 }
 
 func (m *Manager) RefreshScan(ctx context.Context) error {
@@ -329,15 +360,47 @@ func statsCachePath(cachePath string) string {
 }
 
 func inferProjectRoot(paths ...string) string {
+	var roots []string
 	for _, path := range paths {
 		if strings.TrimSpace(path) == "" {
 			continue
 		}
 		dir := filepath.Dir(path)
 		if filepath.Base(dir) == "data" {
-			return filepath.Dir(dir)
+			dir = filepath.Dir(dir)
 		}
-		return dir
+		roots = append(roots, dir)
 	}
-	return "."
+	if len(roots) == 0 {
+		return "."
+	}
+	root, err := filepath.Abs(roots[0])
+	if err != nil {
+		return roots[0]
+	}
+	for _, item := range roots[1:] {
+		target, err := filepath.Abs(item)
+		if err != nil {
+			continue
+		}
+		for !isProjectRootAncestor(root, target) {
+			parent := filepath.Dir(root)
+			if parent == root {
+				return root
+			}
+			root = parent
+		}
+	}
+	return root
+}
+
+func isProjectRootAncestor(root, target string) bool {
+	relativePath, err := filepath.Rel(root, target)
+	if err != nil {
+		return false
+	}
+	if relativePath == "." {
+		return true
+	}
+	return relativePath != ".." && !strings.HasPrefix(relativePath, ".."+string(filepath.Separator)) && !filepath.IsAbs(relativePath)
 }
