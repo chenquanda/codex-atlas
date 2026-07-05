@@ -1,9 +1,13 @@
-.cache/
-.tmp/
-dist/
-target/
+.cache/*
+!.cache/.gitkeep
+.tmp/*
+!.tmp/.gitkeep
+dist/*
+!dist/.gitkeep
 node_modules/
+src-tauri/gen/
 src-tauri/target/
+target/
 
 *.exe
 *.zip

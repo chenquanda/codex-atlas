@@ -88,6 +88,7 @@ src/
     setup.ts
 src-tauri/
   Cargo.toml
+  Cargo.lock
   build.rs
   tauri.conf.json
   capabilities/default.json
@@ -184,8 +185,10 @@ dist/
 - Create: `tsconfig.node.json`
 - Create: `src/main.tsx`
 - Create: `src/App.tsx`
+- Create: `src/App.test.tsx`
 - Create: `src/styles/atlas.css`
 - Create: `src-tauri/Cargo.toml`
+- Create: `src-tauri/Cargo.lock`
 - Create: `src-tauri/build.rs`
 - Create: `src-tauri/tauri.conf.json`
 - Create: `src-tauri/capabilities/default.json`
@@ -208,20 +211,32 @@ dist/
   $ErrorActionPreference = "Stop"
   $required = @(
     "package.json",
+    "package-lock.json",
     "index.html",
     "vite.config.ts",
     "tsconfig.json",
+    "tsconfig.node.json",
     "src\main.tsx",
     "src\App.tsx",
+    "src\App.test.tsx",
     "src\styles\atlas.css",
     "src-tauri\Cargo.toml",
+    "src-tauri\Cargo.lock",
+    "src-tauri\build.rs",
     "src-tauri\tauri.conf.json",
+    "src-tauri\capabilities\default.json",
     "src-tauri\src\main.rs",
     "src-tauri\src\lib.rs",
+    "src-tauri\src\commands\mod.rs",
+    "scripts\设置开发环境.ps1",
     ".cache",
+    ".cache\.gitkeep",
     ".tmp",
+    ".tmp\.gitkeep",
     "data",
-    "dist"
+    "data\.gitkeep",
+    "dist",
+    "dist\.gitkeep"
   )
   foreach ($path in $required) {
     if (-not (Test-Path $path)) {
@@ -229,8 +244,9 @@ dist/
     }
   }
   $pkg = Get-Content "package.json" -Raw | ConvertFrom-Json
-  if ($pkg.scripts."tauri:build" -ne "tauri build") {
-    throw "package.json 缺少 tauri:build 脚本"
+  $expectedTauriBuild = "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri build"
+  if ($pkg.scripts."tauri:build" -ne $expectedTauriBuild) {
+    throw "package.json tauri:build 必须通过设置开发环境脚本调用"
   }
   $conf = Get-Content "src-tauri\tauri.conf.json" -Raw | ConvertFrom-Json
   if ($conf.identifier -ne "local.codex-atlas.rust") {
@@ -263,19 +279,16 @@ dist/
         "typecheck": "tsc --noEmit",
         "test:frontend": "vitest run",
         "test:rust": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 cargo test --manifest-path src-tauri/Cargo.toml",
-        "tauri:dev": "tauri dev",
-        "tauri:build": "tauri build",
-        "smoke:scan": "powershell -ExecutionPolicy Bypass -File scripts/smoke-scan.ps1",
-        "smoke:skill-detail": "powershell -ExecutionPolicy Bypass -File scripts/smoke-skill-detail.ps1",
-        "smoke:translation-cache": "powershell -ExecutionPolicy Bypass -File scripts/smoke-translation-cache.ps1",
-        "smoke:gui": "powershell -ExecutionPolicy Bypass -File scripts/smoke-gui.ps1"
+        "tauri:dev": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri dev",
+        "tauri:build": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri build"
       }
     }
     ```
 
   - `src-tauri/src/lib.rs` exposes a `run()` function and a temporary `health` command returning `Codex Atlas` so the Tauri skeleton compiles.
   - `src/App.tsx` renders a static top-level `Codex Atlas` shell using the second-version color tokens.
-  - `.gitignore` ignores `.cache/*`, `.tmp/*`, `node_modules/`, `src-tauri/target/`, `dist/*`, while keeping `.gitkeep` files.
+  - `src/App.test.tsx` contains a minimal real Vitest check so `npm run test:frontend` does not fail because no tests exist.
+  - `.gitignore` ignores `.cache/*`, `.tmp/*`, `node_modules/`, `src-tauri/gen/`, `src-tauri/target/`, `dist/*`, while keeping `.gitkeep` files.
 
 - [ ] **Step 4: 验证骨架通过**
 
