@@ -1,4 +1,7 @@
 pub mod commands;
+pub mod domain;
+pub mod store;
+pub mod util;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
