@@ -14,6 +14,8 @@ use crate::{
     util::{self, DataPathError},
 };
 
+pub const STATS_CACHE_FILE: &str = "stats-cache.json";
+
 /// 存储持久化约定：abilities 只保存扫描得到的原始能力；user_data、ai_data、stats 三个映射是权威覆盖层。
 #[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(default)]
@@ -69,6 +71,12 @@ impl Store {
 #[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct StoreLoadResult {
     pub store: Store,
+    pub warnings: Vec<String>,
+}
+
+#[derive(Clone, Debug, Default, Eq, PartialEq)]
+pub struct StatsCacheLoadResult {
+    pub stats: BTreeMap<String, Stats>,
     pub warnings: Vec<String>,
 }
 
@@ -168,6 +176,61 @@ pub fn save_store(
     // 创建父目录后重新校验真实父路径，防止符号链接或目录联接在创建前后变化，把存储写到项目 data 目录外。
     let path = resolve_project_data_path(project_dir, relative_path)?;
     let content = serde_json::to_string_pretty(store)?;
+
+    write_store_atomically(&path, content.as_bytes())?;
+    Ok(())
+}
+
+pub fn load_stats_cache(
+    project_dir: impl AsRef<Path>,
+) -> Result<BTreeMap<String, Stats>, StoreError> {
+    Ok(load_stats_cache_report(project_dir)?.stats)
+}
+
+pub fn load_stats_cache_report(
+    project_dir: impl AsRef<Path>,
+) -> Result<StatsCacheLoadResult, StoreError> {
+    let path = resolve_project_data_path(project_dir, STATS_CACHE_FILE)?;
+
+    match fs::read_to_string(&path) {
+        Ok(content) => match serde_json::from_str(&content) {
+            Ok(stats) => Ok(StatsCacheLoadResult {
+                stats,
+                warnings: Vec::new(),
+            }),
+            Err(error) => {
+                // stats-cache 是可重建缓存；坏 JSON 不能阻塞启动，只降级为空并把 warning 交给 UI/日志呈现。
+                Ok(StatsCacheLoadResult {
+                    stats: BTreeMap::new(),
+                    warnings: vec![format!(
+                        "stats-cache JSON 无法解析，已使用空缓存 {}: {error}",
+                        path.display()
+                    )],
+                })
+            }
+        },
+        Err(error) if error.kind() == io::ErrorKind::NotFound => Ok(StatsCacheLoadResult {
+            stats: BTreeMap::new(),
+            warnings: Vec::new(),
+        }),
+        Err(error) => Err(StoreError::Io(error)),
+    }
+}
+
+pub fn save_stats_cache(
+    project_dir: impl AsRef<Path>,
+    stats: &BTreeMap<String, Stats>,
+) -> Result<(), StoreError> {
+    let project_dir = project_dir.as_ref();
+    let path = resolve_project_data_path(project_dir, STATS_CACHE_FILE)?;
+
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent)?;
+    }
+
+    // stats-cache 与 store 使用同一条 data 目录边界，避免缓存刷新时把项目外文件当目标覆盖。
+    let path = resolve_project_data_path(project_dir, STATS_CACHE_FILE)?;
+    let content = serde_json::to_string_pretty(stats)?;
 
     write_store_atomically(&path, content.as_bytes())?;
     Ok(())

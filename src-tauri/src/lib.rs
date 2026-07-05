@@ -1,6 +1,7 @@
 pub mod commands;
 pub mod domain;
 pub mod scanner;
+pub mod stats;
 pub mod store;
 pub mod util;
 

@@ -81,6 +81,16 @@ pub struct Stats {
     pub last_used_at: Option<String>,
 }
 
+impl Stats {
+    pub fn counted(usage_count: u64) -> Self {
+        // None 表示还没有可信统计来源，不能和“已扫描但 0 次使用”的 Some(0) 混在一起。
+        Self {
+            usage_count: Some(usage_count),
+            last_used_at: None,
+        }
+    }
+}
+
 #[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
 #[serde(default)]
 pub struct UserData {
