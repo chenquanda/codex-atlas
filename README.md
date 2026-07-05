@@ -2,7 +2,7 @@
 
 Codex Atlas Rust 是 Codex Atlas 的 Rust + Tauri v2 重写项目，目标是做一个 Windows 本机个人使用的 Codex 能力字典。它不是旧的 Go + Walk 项目，也不再保留旧 exe、旧构建脚本和旧 UI 代码；当前 `dev` 分支只维护 Rust 后端、Tauri v2 外壳和 React 前端。
 
-项目第一屏就是可用的主界面：默认扫描本机 Codex 普通 Skill 和插件 Skill，按使用情况排序，整理收藏、隐藏、备注、标签和调用模板，并在 Skill 详情窗口里只读浏览相关文件。scanner 模块也支持由 manifest 输入的 plugins、tools、apps，但当前默认应用状态尚未自动接入这些 catalog。英文 Skill 文件可以由用户手动触发翻译，译文按文件内容缓存。
+项目第一屏就是可用的主界面：默认扫描本机 Codex 普通 Skill、插件 Skill，并在常见 Codex catalog manifest 存在时接入 plugins、tools、apps，按使用情况排序，整理收藏、隐藏、备注、标签和调用模板，并在 Skill 详情窗口里只读浏览相关文件。英文 Skill 文件可以由用户手动触发翻译，译文按文件内容缓存。
 
 ## 快速开始
 
@@ -39,7 +39,7 @@ powershell -ExecutionPolicy Bypass -File scripts/验证项目骨架.ps1
 
 ## 功能概览
 
-- 扫描：默认只读扫描 `.codex\skills`、`.agents\skills` 和 `.codex\plugins` 下的普通 Skill 与插件 Skill；scanner 后端支持 manifest-fed Plugin/Tool/App catalog。
+- 扫描：默认只读扫描 `.codex\skills`、`.agents\skills` 和 `.codex\plugins` 下的普通 Skill 与插件 Skill；同时发现已存在的 `.codex\plugins\plugins.json`、`.codex\plugins.json`、`.codex\tools\tools.json`、`.codex\tools.json`、`.codex\apps\apps.json`、`.codex\apps.json`，解析为 Plugin/Tool/App catalog。
 - 统计：解析 Codex 会话 JSONL，统计用户显式 `$skill` / `$plugin:skill`，以及助手真实读取 `SKILL.md` 的证据；未知统计显示 `未统计`。
 - 主界面：支持搜索、类型筛选、收藏筛选、隐藏视图、标签筛选，以及按使用次数、名称、类型排序。
 - 个人整理：支持收藏、隐藏、备注、标签、自定义调用模板，用户数据优先于扫描层和 AI 层。

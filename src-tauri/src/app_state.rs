@@ -14,6 +14,9 @@ use crate::{
 pub const STORE_FILE: &str = "store.json";
 const MAX_DEFAULT_STATS_FILES: usize = 512;
 const MAX_DEFAULT_STATS_DEPTH: usize = 8;
+const DEFAULT_PLUGIN_MANIFESTS: &[&str] = &[".codex/plugins/plugins.json", ".codex/plugins.json"];
+const DEFAULT_TOOL_MANIFESTS: &[&str] = &[".codex/tools/tools.json", ".codex/tools.json"];
+const DEFAULT_APP_MANIFESTS: &[&str] = &[".codex/apps/apps.json", ".codex/apps.json"];
 
 pub type SharedAppState = Arc<RwLock<AppState>>;
 
@@ -61,10 +64,20 @@ impl AppState {
 }
 
 pub fn default_scan_roots_for_home(home: &Path) -> ScanRoots {
-    ScanRoots::new()
+    let mut roots = ScanRoots::new()
         .with_skill_root(home.join(".codex").join("skills"))
         .with_skill_root(home.join(".agents").join("skills"))
-        .with_plugins_root(home.join(".codex").join("plugins"))
+        .with_plugins_root(home.join(".codex").join("plugins"));
+
+    collect_existing_default_manifests(
+        home,
+        DEFAULT_PLUGIN_MANIFESTS,
+        &mut roots.plugins_manifests,
+    );
+    collect_existing_default_manifests(home, DEFAULT_TOOL_MANIFESTS, &mut roots.tools_manifests);
+    collect_existing_default_manifests(home, DEFAULT_APP_MANIFESTS, &mut roots.apps_manifests);
+
+    roots
 }
 
 pub fn default_stats_roots_for_home(home: &Path) -> StatsRoots {
@@ -116,6 +129,26 @@ fn default_home_dir() -> Option<PathBuf> {
             )))
         })
         .or_else(|| std::env::var_os("HOME").map(PathBuf::from))
+}
+
+fn collect_existing_default_manifests(
+    home: &Path,
+    candidates: &[&str],
+    manifests: &mut Vec<PathBuf>,
+) {
+    for candidate in candidates {
+        let path = home.join(Path::new(candidate));
+        if is_existing_regular_file(&path) {
+            manifests.push(path);
+        }
+    }
+}
+
+fn is_existing_regular_file(path: &Path) -> bool {
+    match fs::symlink_metadata(path) {
+        Ok(metadata) => metadata.is_file() && !metadata.file_type().is_symlink(),
+        Err(_) => false,
+    }
 }
 
 #[derive(Debug)]

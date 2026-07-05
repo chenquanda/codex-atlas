@@ -76,7 +76,7 @@ textarea:focus-visible {
 }
 
 .atlas {
-  width: min(100%, 680px);
+  width: min(100%, 1040px);
   min-height: 780px;
 }
 

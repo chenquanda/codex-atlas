@@ -105,6 +105,9 @@ fn default_roots_use_real_codex_locations_under_home() {
     let fixture = ScannerFixture::new("commands-default-roots");
     fixture.write_text(".codex/sessions/2026/one.jsonl", "");
     fixture.write_text(".codex/sessions/2026/two.jsonl", "");
+    fixture.write_text(".codex/plugins/plugins.json", "{\"plugins\":[]}");
+    fixture.write_text(".codex/tools.json", "{\"tools\":[]}");
+    fixture.write_text(".codex/apps/apps.json", "{\"apps\":[]}");
 
     let scan_roots = default_scan_roots_for_home(&fixture.path("."));
     let stats_roots = default_stats_roots_for_home(&fixture.path("."));
@@ -118,11 +121,86 @@ fn default_roots_use_real_codex_locations_under_home() {
     assert!(scan_roots
         .plugins_roots
         .contains(&fixture.path(".codex/plugins")));
+    assert_eq!(
+        scan_roots.plugins_manifests,
+        vec![fixture.path(".codex/plugins/plugins.json")]
+    );
+    assert_eq!(
+        scan_roots.tools_manifests,
+        vec![fixture.path(".codex/tools.json")]
+    );
+    assert_eq!(
+        scan_roots.apps_manifests,
+        vec![fixture.path(".codex/apps/apps.json")]
+    );
     assert_eq!(stats_roots.conversation_files.len(), 2);
     assert!(stats_roots
         .conversation_files
         .iter()
         .all(|path| path.ends_with("one.jsonl") || path.ends_with("two.jsonl")));
+}
+
+#[test]
+fn refresh_scan_with_default_roots_includes_catalog_manifests() {
+    let fixture = ScannerFixture::new("commands-default-catalog-refresh");
+    fixture.write_text(
+        ".codex/plugins/plugins.json",
+        r#"{
+  "plugins": [
+    { "name": "superpowers", "description": "Workflow plugin" }
+  ]
+}"#,
+    );
+    fixture.write_text(
+        ".codex/tools/tools.json",
+        r#"{
+  "tools": [
+    { "name": "shell", "description": "Run shell commands" }
+  ]
+}"#,
+    );
+    fixture.write_text(
+        ".codex/apps/apps.json",
+        r#"{
+  "apps": [
+    { "name": "github", "description": "GitHub app" }
+  ]
+}"#,
+    );
+    let state = shared_state(
+        fixture.path("."),
+        default_scan_roots_for_home(&fixture.path(".")),
+        StatsRoots::default(),
+    );
+
+    let summary = refresh_scan_state(&state).expect("refresh scan");
+    let abilities = list_abilities_state(&state).expect("list refreshed abilities");
+
+    assert_eq!(summary.ability_count, 3);
+    assert!(summary.warnings.is_empty());
+    assert_eq!(
+        abilities
+            .iter()
+            .map(|ability| (&ability.id, &ability.kind, &ability.summary))
+            .collect::<Vec<_>>(),
+        vec![
+            (
+                &"plugin:superpowers".to_string(),
+                &AbilityKind::Plugin,
+                &"Workflow plugin".to_string()
+            ),
+            (
+                &"tool:shell".to_string(),
+                &AbilityKind::Tool,
+                &"Run shell commands".to_string()
+            ),
+            (
+                &"app:github".to_string(),
+                &AbilityKind::App,
+                &"GitHub app".to_string()
+            ),
+        ]
+    );
 }
 
 #[test]
