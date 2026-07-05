@@ -31,6 +31,23 @@ pub struct Ability {
 }
 
 impl Ability {
+    pub(crate) fn scanned(
+        id: impl Into<String>,
+        name: impl Into<String>,
+        kind: AbilityKind,
+        path: Option<PathBuf>,
+        summary: impl Into<String>,
+    ) -> Self {
+        Self {
+            id: id.into(),
+            name: name.into(),
+            kind,
+            path,
+            summary: summary.into(),
+            ..Self::default()
+        }
+    }
+
     pub fn display_tags(&self) -> Vec<String> {
         self.effective_tags()
     }
