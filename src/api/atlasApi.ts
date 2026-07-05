@@ -1,0 +1,88 @@
+import { tauriInvoke, type TauriInvoker } from "./tauriBridge";
+
+export type AbilityKind = "Skill" | "Plugin" | "Tool" | "App";
+
+export interface AIData {
+  summary_zh: string | null;
+  tags: string[];
+  call_template: string | null;
+  scenarios: string[];
+}
+
+export interface UserData {
+  alias: string | null;
+  tags: string[];
+  tags_overridden: boolean;
+  note: string | null;
+  favorite: boolean;
+  hidden: boolean;
+  custom_template: string | null;
+}
+
+export interface Stats {
+  usage_count: number | null;
+  last_used_at: string | null;
+}
+
+export interface Ability {
+  id: string;
+  name: string;
+  kind: AbilityKind;
+  path: string | null;
+  summary: string;
+  raw_tags: string[];
+  ai: AIData;
+  user: UserData;
+  stats: Stats;
+}
+
+export interface UserDataPatch {
+  alias?: string | null;
+  tags?: string[];
+  tags_overridden?: boolean;
+  note?: string | null;
+  favorite?: boolean;
+  hidden?: boolean;
+  custom_template?: string | null;
+}
+
+export interface ScanSummary {
+  ability_count: number;
+  warning_count: number;
+  warnings: string[];
+}
+
+export interface StatsSummary {
+  ability_count: number;
+  warning_count: number;
+  warnings: string[];
+  complete: boolean;
+  saved_cache: boolean;
+}
+
+export interface AtlasApi {
+  listAbilities: () => Promise<Ability[]>;
+  updateUserData: (id: string, patch: UserDataPatch) => Promise<Ability>;
+  refreshScan: () => Promise<ScanSummary>;
+  refreshStats: () => Promise<StatsSummary>;
+  copyCallTemplate: (id: string) => Promise<string>;
+}
+
+export function createAtlasApi(invokeCommand: TauriInvoker = tauriInvoke): AtlasApi {
+  return {
+    listAbilities: () => invokeCommand<Ability[]>("list_abilities"),
+    updateUserData: (id, patch) =>
+      invokeCommand<Ability>("update_user_data", {
+        id,
+        patch
+      }),
+    refreshScan: () => invokeCommand<ScanSummary>("refresh_scan"),
+    refreshStats: () => invokeCommand<StatsSummary>("refresh_stats"),
+    copyCallTemplate: (id) =>
+      invokeCommand<string>("copy_call_template", {
+        id
+      })
+  };
+}
+
+export const atlasApi = createAtlasApi();

@@ -1,60 +1,257 @@
-const summaryItems = [
-  { label: "技能", value: "0", tone: "green" },
-  { label: "插件", value: "0", tone: "blue" },
-  { label: "待扫描", value: "本机", tone: "yellow" }
-];
+import { useEffect, useMemo, useState } from "react";
+import type { Ability, AtlasApi, UserDataPatch } from "./api/atlasApi";
+import { atlasApi } from "./api/atlasApi";
+import {
+  writeClipboardText as defaultWriteClipboardText,
+  type ClipboardWriter
+} from "./api/clipboard";
+import { AbilityList } from "./components/AbilityList";
+import { AbilityToolbar } from "./components/AbilityToolbar";
+import { BottomPanel } from "./components/BottomPanel";
+import { FilterBar } from "./components/FilterBar";
+import { MetricCards } from "./components/MetricCards";
+import { SearchBox } from "./components/SearchBox";
+import {
+  type AbilityFilterState,
+  type AbilitySort,
+  filterAbilities,
+  type KindFilter
+} from "./lib/abilityFilters";
+import { uniqueAbilityTags } from "./lib/abilityFormatting";
 
-const shellRows = [
-  { name: "技能索引", meta: "等待扫描 Codex 能力目录", state: "就绪" },
-  { name: "详情阅读器", meta: "后续任务接入 Skill 文件浏览", state: "预留" },
-  { name: "翻译缓存", meta: "项目内 data 目录保存用户数据", state: "预留" }
-];
+interface AppProps {
+  api?: AtlasApi;
+  writeClipboardText?: ClipboardWriter;
+}
 
-export default function App() {
+const initialFilters: AbilityFilterState = {
+  query: "",
+  kind: "Skill",
+  favoriteOnly: false,
+  hiddenOnly: false,
+  tag: "",
+  sortBy: "usage"
+};
+
+export default function App({
+  api = atlasApi,
+  writeClipboardText = defaultWriteClipboardText
+}: AppProps) {
+  const [abilities, setAbilities] = useState<Ability[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [filters, setFilters] = useState<AbilityFilterState>(initialFilters);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<string | null>(null);
+  const [copyStatus, setCopyStatus] = useState<string | null>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    setLoading(true);
+    api
+      .listAbilities()
+      .then((nextAbilities) => {
+        if (!active) {
+          return;
+        }
+        setAbilities(nextAbilities);
+        setError(null);
+      })
+      .catch((reason: unknown) => {
+        if (!active) {
+          return;
+        }
+        setError(errorMessage(reason));
+      })
+      .finally(() => {
+        if (active) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [api]);
+
+  const filteredAbilities = useMemo(
+    () => filterAbilities(abilities, filters),
+    [abilities, filters]
+  );
+  const tagOptions = useMemo(() => uniqueAbilityTags(abilities), [abilities]);
+  const selectedAbility =
+    filteredAbilities.find((ability) => ability.id === selectedId) ?? filteredAbilities[0] ?? null;
+
+  useEffect(() => {
+    if (selectedAbility && selectedAbility.id !== selectedId) {
+      setSelectedId(selectedAbility.id);
+      setMoreOpen(false);
+      setCopyStatus(null);
+    }
+  }, [selectedAbility, selectedId]);
+
+  function updateFilters(patch: Partial<AbilityFilterState>) {
+    setFilters((current) => ({
+      ...current,
+      ...patch
+    }));
+    setMoreOpen(false);
+  }
+
+  async function reloadAbilities() {
+    const nextAbilities = await api.listAbilities();
+    setAbilities(nextAbilities);
+  }
+
+  async function handleRefreshScan() {
+    setError(null);
+    setStatus(null);
+    setCopyStatus(null);
+    try {
+      setStatus("正在刷新扫描");
+      await api.refreshScan();
+      await reloadAbilities();
+      setStatus("扫描已刷新");
+    } catch (reason) {
+      setStatus(null);
+      setCopyStatus(null);
+      setError(errorMessage(reason));
+    }
+  }
+
+  async function handleRefreshStats() {
+    setError(null);
+    setStatus(null);
+    setCopyStatus(null);
+    try {
+      setStatus("正在刷新统计");
+      await api.refreshStats();
+      await reloadAbilities();
+      setStatus("统计已刷新");
+    } catch (reason) {
+      setStatus(null);
+      setCopyStatus(null);
+      setError(errorMessage(reason));
+    }
+  }
+
+  async function handleUpdateUserData(ability: Ability, patch: UserDataPatch) {
+    setError(null);
+    setStatus(null);
+    try {
+      const nextAbility = await api.updateUserData(ability.id, patch);
+      setAbilities((current) =>
+        current.map((item) => (item.id === nextAbility.id ? nextAbility : item))
+      );
+      setStatus("元数据已保存");
+    } catch (reason) {
+      setStatus(null);
+      setError(errorMessage(reason));
+    }
+  }
+
+  async function handleCopy(ability: Ability) {
+    setError(null);
+    setStatus(null);
+    setCopyStatus(null);
+    try {
+      const template = await api.copyCallTemplate(ability.id);
+      await writeClipboardText(template);
+      setCopyStatus(`已复制 ${template}`);
+      setStatus("调用模板已复制");
+    } catch (reason) {
+      setStatus(null);
+      setCopyStatus(null);
+      setError(errorMessage(reason));
+    }
+  }
+
   return (
-    <main className="atlas-shell" aria-label="Codex Atlas">
-      <section className="atlas-panel">
-        <header className="atlas-header">
-          <div>
-            <p className="atlas-kicker">Local capability index</p>
-            <h1>Codex Atlas</h1>
-          </div>
-          <span className="atlas-status">Tauri v2</span>
-        </header>
-
-        <div className="atlas-toolbar" aria-label="能力概览">
-          {summaryItems.map((item) => (
-            <div className={`atlas-metric atlas-metric--${item.tone}`} key={item.label}>
-              <span>{item.label}</span>
-              <strong>{item.value}</strong>
-            </div>
-          ))}
+    <main className="atlas-page" aria-label="Codex Atlas">
+      <section className="window atlas" aria-label="Codex Atlas 主窗口">
+        <div className="window-bar">
+          <span className="dot" aria-hidden="true" />
+          <span className="dot" aria-hidden="true" />
+          <span className="dot" aria-hidden="true" />
+          <span className="bar-title">Codex Atlas</span>
+          <span className="bar-kbd">Ctrl Alt Space</span>
         </div>
 
-        <section className="atlas-workspace" aria-label="工作区">
-          <div className="atlas-list">
-            <div className="atlas-list-head">
-              <span>模块</span>
-              <span>状态</span>
+        <div className="atlas-body">
+          <div className="topline">
+            <div className="brand-row">
+              <div className="brand-mark">CA</div>
+              <div className="brand-copy">
+                <h1>能力索引</h1>
+                <span>搜索、阅读、整理 Codex abilities</span>
+              </div>
             </div>
-            {shellRows.map((row) => (
-              <article className="atlas-row" key={row.name}>
-                <div>
-                  <h2>{row.name}</h2>
-                  <p>{row.meta}</p>
-                </div>
-                <span>{row.state}</span>
-              </article>
-            ))}
+            <div className="top-actions">
+              <button className="small-btn" onClick={handleRefreshScan} type="button">
+                扫描
+              </button>
+              <button className="small-btn" onClick={handleRefreshStats} type="button">
+                统计
+              </button>
+            </div>
           </div>
 
-          <aside className="atlas-side" aria-label="当前阶段">
-            <span className="atlas-side-label">当前阶段</span>
-            <strong>项目骨架</strong>
-            <p>React 入口、Tauri 配置和 Rust 命令层已经准备好承接后续扫描与统计功能。</p>
-          </aside>
-        </section>
+          <MetricCards abilities={abilities} />
+
+          <div className="search-row">
+            <SearchBox value={filters.query} onChange={(query) => updateFilters({ query })} />
+            <AbilityToolbar
+              value={filters.kind}
+              onChange={(kind: KindFilter) => updateFilters({ kind })}
+            />
+          </div>
+
+          <FilterBar
+            favoriteOnly={filters.favoriteOnly}
+            hiddenOnly={filters.hiddenOnly}
+            tag={filters.tag}
+            tagOptions={tagOptions}
+            sortBy={filters.sortBy}
+            onFavoriteOnlyChange={(favoriteOnly) => updateFilters({ favoriteOnly })}
+            onHiddenOnlyChange={(hiddenOnly) => updateFilters({ hiddenOnly })}
+            onTagChange={(tag) => updateFilters({ tag })}
+            onSortChange={(sortBy: AbilitySort) => updateFilters({ sortBy })}
+          />
+
+          {error ? <div className="notice error">{error}</div> : null}
+          {status ? (
+            <div className="notice" role="status">
+              {status}
+            </div>
+          ) : null}
+
+          <AbilityList
+            abilities={filteredAbilities}
+            loading={loading}
+            selectedId={selectedAbility?.id ?? null}
+            onSelect={(ability) => {
+              setSelectedId(ability.id);
+              setMoreOpen(false);
+              setCopyStatus(null);
+            }}
+          />
+
+          <BottomPanel
+            ability={selectedAbility}
+            copyStatus={copyStatus}
+            moreOpen={moreOpen}
+            onCopy={handleCopy}
+            onMoreChange={setMoreOpen}
+            onUpdateUserData={handleUpdateUserData}
+          />
+        </div>
       </section>
     </main>
   );
+}
+
+function errorMessage(reason: unknown): string {
+  return reason instanceof Error ? reason.message : String(reason);
 }
