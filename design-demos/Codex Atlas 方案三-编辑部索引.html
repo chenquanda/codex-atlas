@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex Atlas 方案三 - 编辑部索引</title>
+  <style>
+    /* 设计假设：用编辑部式强层级解决“列表工具不好看”的问题，但仍保持侧边栏短、轻、可扫读。 */
+    /* 视觉方向：浅色高对比、发丝线、少量链接蓝；避免渐变、装饰图和过长后台感。 */
+    :root {
+      --paper: #fbfaf6;
+      --ink: #0b0c0d;
+      --muted: #6d6e69;
+      --line: #d9d6cc;
+      --blue: #0047ff;
+      --red: #e24b3b;
+      --soft-blue: #eef3ff;
+      font-synthesis: none;
+      line-break: strict;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #e8e8e3;
+      color: var(--ink);
+      font-family: "Segoe UI", "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
+    }
+
+    .atlas {
+      width: 430px;
+      height: 596px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      background: var(--paper);
+      border: 1px solid #c8c5bb;
+      border-radius: 6px;
+      box-shadow: 0 18px 40px rgba(18, 17, 14, .15);
+    }
+
+    .mast {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 12px 12px 10px;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .mast h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: .9;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .mast p {
+      margin: 6px 0 0;
+      color: #555752;
+      font-size: 11px;
+      line-height: 1.35;
+      max-width: 30em;
+    }
+
+    .stamp {
+      width: 68px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      align-self: start;
+      border: 1px solid var(--ink);
+      background: #fff;
+      font: 700 11px/1.1 "Cascadia Mono", "Consolas", monospace;
+      text-align: center;
+    }
+
+    .control {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      background: #fffdfa;
+    }
+
+    .search {
+      height: 32px;
+      display: flex;
+      align-items: center;
+      padding: 0 9px;
+      border: 1px solid var(--ink);
+      background: #fff;
+      font-size: 12px;
+      color: #777973;
+    }
+
+    .sort {
+      height: 32px;
+      display: grid;
+      place-items: center;
+      padding: 0 9px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tab {
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-right: 1px solid var(--line);
+      background: #fff;
+      color: #595b56;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .tab:last-child { border-right: 0; }
+
+    .tab.active {
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .content {
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: var(--paper);
+    }
+
+    .lede {
+      display: grid;
+      grid-template-columns: 1fr 86px;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lede strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .lede span {
+      color: #62645f;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .metric {
+      border-left: 3px solid var(--red);
+      padding-left: 8px;
+      font-family: "Cascadia Mono", "Consolas", monospace;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 22px;
+      line-height: .95;
+    }
+
+    .metric small {
+      color: #646660;
+      font-size: 10px;
+    }
+
+    .index {
+      overflow: hidden;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      min-height: 46px;
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .entry.active {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .num {
+      color: var(--blue);
+      font: 700 11px/1 "Cascadia Mono", "Consolas", monospace;
+    }
+
+    .active .num { color: #86a6ff; }
+
+    .entry-main {
+      min-width: 0;
+    }
+
+    .entry-title {
+      font-size: 13px;
+      font-weight: 780;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .entry-sub {
+      margin-top: 2px;
+      color: #6e706a;
+      font: 10px/1.25 "Cascadia Mono", "Consolas", monospace;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .active .entry-sub { color: #cfd4dc; }
+
+    .label {
+      padding: 3px 5px;
+      border: 1px solid currentColor;
+      color: var(--blue);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .active .label { color: #fff; }
+
+    .brief {
+      padding: 11px 12px 12px;
+      border-top: 1px solid var(--ink);
+      background: #fff;
+    }
+
+    .brief-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .brief-head strong {
+      font-size: 13px;
+    }
+
+    .brief-head span {
+      color: #fff;
+      background: var(--red);
+      padding: 3px 6px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .quote {
+      margin: 0 0 9px;
+      color: #333531;
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    .call {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      font: 10.5px/1.35 "Cascadia Mono", "Consolas", monospace;
+    }
+
+    .call button {
+      height: 26px;
+      border: 1px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      font: 700 11px/1 "Segoe UI", sans-serif;
+      border-radius: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="atlas" aria-label="Codex Atlas 编辑部索引设计">
+    <header class="mast">
+      <div>
+        <h1>ATLAS</h1>
+        <p>把隐藏在本机的 skills、plugins、tools 和 apps 变成一张可调用的个人能力索引。</p>
+      </div>
+      <div class="stamp">119<br>items</div>
+    </header>
+
+    <section class="control">
+      <div class="search">搜索：能力名、中文别名、标签、用途</div>
+      <div class="sort">会话数</div>
+    </section>
+
+    <nav class="tabs" aria-label="能力类型">
+      <span class="tab active">Skills</span>
+      <span class="tab">Plugins</span>
+      <span class="tab">Tools</span>
+      <span class="tab">Apps</span>
+    </nav>
+
+    <section class="content">
+      <div class="lede">
+        <div>
+          <strong>今日先看常用能力</strong>
+          <span>双击复制模板；选中后在底部编辑别名、标签、备注和隐藏状态。</span>
+        </div>
+        <div class="metric"><b>18</b><small>收藏能力</small></div>
+      </div>
+
+      <div class="index">
+        <article class="entry active">
+          <span class="num">01</span>
+          <div class="entry-main">
+            <div class="entry-title">花叔设计</div>
+            <div class="entry-sub">huashu-design · HTML prototype</div>
+          </div>
+          <span class="label">设计</span>
+        </article>
+        <article class="entry">
+          <span class="num">02</span>
+          <div class="entry-main">
+            <div class="entry-title">系统排查 Bug</div>
+            <div class="entry-sub">diagnosing-bugs · evidence loop</div>
+          </div>
+          <span class="label">调试</span>
+        </article>
+        <article class="entry">
+          <span class="num">03</span>
+          <div class="entry-main">
+            <div class="entry-title">自动 Git 同步</div>
+            <div class="entry-sub">auto-git-sync · commit & push</div>
+          </div>
+          <span class="label">Git</span>
+        </article>
+        <article class="entry">
+          <span class="num">04</span>
+          <div class="entry-main">
+            <div class="entry-title">代码库架构设计</div>
+            <div class="entry-sub">codebase-design · module vocabulary</div>
+          </div>
+          <span class="label">架构</span>
+        </article>
+      </div>
+    </section>
+
+    <aside class="brief" aria-label="选中能力详情">
+      <div class="brief-head">
+        <strong>花叔设计 / huashu-design</strong>
+        <span>SKILL</span>
+      </div>
+      <p class="quote">适合先做真实可看的 UI mockup，再通过截图选择方向；不把产品界面画成营销页。</p>
+      <div class="call">
+        <span>请使用 $huashu-design 重新设计这个侧边栏界面</span>
+        <button>复制</button>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>

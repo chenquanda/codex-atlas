@@ -1,0 +1,3167 @@
+{
+  "codexHome": "C:\\Users\\Administrator\\.codex",
+  "scannedAt": "2026-07-05T18:44:49.1649861+08:00",
+  "abilities": [
+    {
+      "id": "app:data-analytics:amplitude",
+      "kind": "app",
+      "name": "amplitude",
+      "displayName": "amplitude",
+      "plugin": "data-analytics",
+      "description": "connector_690e2dabf430819196f8b3701ec838ec",
+      "summary": "connector_690e2dabf430819196f8b3701ec838ec",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:bigquery",
+      "kind": "app",
+      "name": "bigquery",
+      "displayName": "bigquery",
+      "plugin": "data-analytics",
+      "description": "connector_7c3f2c8cdbf64bb0b183ff52f527a06e",
+      "summary": "connector_7c3f2c8cdbf64bb0b183ff52f527a06e",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:deepnote",
+      "kind": "app",
+      "name": "deepnote",
+      "displayName": "deepnote",
+      "plugin": "data-analytics",
+      "description": "asdk_app_69fb51f9519081919c1f3e44ea9a5a05",
+      "summary": "asdk_app_69fb51f9519081919c1f3e44ea9a5a05",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:figma:figma",
+      "kind": "app",
+      "name": "figma",
+      "displayName": "figma",
+      "plugin": "figma",
+      "description": "connector_68df038e0ba48191908c8434991bbac2",
+      "summary": "connector_68df038e0ba48191908c8434991bbac2",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12",
+      "status": "必需",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:github",
+      "kind": "app",
+      "name": "github",
+      "displayName": "github",
+      "plugin": "data-analytics",
+      "description": "connector_76869538009648d5b282a4bb21c3d157",
+      "summary": "connector_76869538009648d5b282a4bb21c3d157",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:github:github",
+      "kind": "app",
+      "name": "github",
+      "displayName": "github",
+      "plugin": "github",
+      "description": "connector_76869538009648d5b282a4bb21c3d157",
+      "summary": "connector_76869538009648d5b282a4bb21c3d157",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5",
+      "status": "必需",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:gmail",
+      "kind": "app",
+      "name": "gmail",
+      "displayName": "gmail",
+      "plugin": "data-analytics",
+      "description": "connector_2128aebfecb84f64a069897515042a44",
+      "summary": "connector_2128aebfecb84f64a069897515042a44",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:google_calendar",
+      "kind": "app",
+      "name": "google_calendar",
+      "displayName": "google_calendar",
+      "plugin": "data-analytics",
+      "description": "connector_947e0d954944416db111db556030eea6",
+      "summary": "connector_947e0d954944416db111db556030eea6",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:google_drive",
+      "kind": "app",
+      "name": "google_drive",
+      "displayName": "google_drive",
+      "plugin": "data-analytics",
+      "description": "connector_5f3c8c41a1e54ad7a76272c89e2554fa",
+      "summary": "connector_5f3c8c41a1e54ad7a76272c89e2554fa",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:hex",
+      "kind": "app",
+      "name": "hex",
+      "displayName": "hex",
+      "plugin": "data-analytics",
+      "description": "connector_690a9430a270819196671dcb4c95898e",
+      "summary": "connector_690a9430a270819196671dcb4c95898e",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:mixpanel",
+      "kind": "app",
+      "name": "mixpanel",
+      "displayName": "mixpanel",
+      "plugin": "data-analytics",
+      "description": "asdk_app_69b2e9aed45c8191b254b207dfcc2bb4",
+      "summary": "asdk_app_69b2e9aed45c8191b254b207dfcc2bb4",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:notion",
+      "kind": "app",
+      "name": "notion",
+      "displayName": "notion",
+      "plugin": "data-analytics",
+      "description": "asdk_app_69c18c28f1188191bf5b8445c4ab0a2e",
+      "summary": "asdk_app_69c18c28f1188191bf5b8445c4ab0a2e",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:omni-analytics",
+      "kind": "app",
+      "name": "omni-analytics",
+      "displayName": "omni-analytics",
+      "plugin": "data-analytics",
+      "description": "asdk_app_694e8b8715108191a49fe2db4398d9e2",
+      "summary": "asdk_app_694e8b8715108191a49fe2db4398d9e2",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:outlook_calendar",
+      "kind": "app",
+      "name": "outlook_calendar",
+      "displayName": "outlook_calendar",
+      "plugin": "data-analytics",
+      "description": "connector_e6a7394682e24467ac68c60696f275a4",
+      "summary": "connector_e6a7394682e24467ac68c60696f275a4",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:outlook_email",
+      "kind": "app",
+      "name": "outlook_email",
+      "displayName": "outlook_email",
+      "plugin": "data-analytics",
+      "description": "connector_4aaab2856305417b993eca9a216aaf6e",
+      "summary": "connector_4aaab2856305417b993eca9a216aaf6e",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:posthog",
+      "kind": "app",
+      "name": "posthog",
+      "displayName": "posthog",
+      "plugin": "data-analytics",
+      "description": "asdk_app_699caef2d680819188727b0ddbb349dd",
+      "summary": "asdk_app_699caef2d680819188727b0ddbb349dd",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:sharepoint",
+      "kind": "app",
+      "name": "sharepoint",
+      "displayName": "sharepoint",
+      "plugin": "data-analytics",
+      "description": "connector_1e4f6a44acf14e3ca1d96672f8c945bc",
+      "summary": "connector_1e4f6a44acf14e3ca1d96672f8c945bc",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:slack",
+      "kind": "app",
+      "name": "slack",
+      "displayName": "slack",
+      "plugin": "data-analytics",
+      "description": "asdk_app_69a1d78e929881919bba0dbda1f6436d",
+      "summary": "asdk_app_69a1d78e929881919bba0dbda1f6436d",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:statsig",
+      "kind": "app",
+      "name": "statsig",
+      "displayName": "statsig",
+      "plugin": "data-analytics",
+      "description": "asdk_app_6967f065ac9481918969c660ff7686e9",
+      "summary": "asdk_app_6967f065ac9481918969c660ff7686e9",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:teams",
+      "kind": "app",
+      "name": "teams",
+      "displayName": "teams",
+      "plugin": "data-analytics",
+      "description": "connector_246af0940da3457da0e751171dc1ce60",
+      "summary": "connector_246af0940da3457da0e751171dc1ce60",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "app:data-analytics:thoughtspot",
+      "kind": "app",
+      "name": "thoughtspot",
+      "displayName": "thoughtspot",
+      "plugin": "data-analytics",
+      "description": "asdk_app_69d8425f7a1c8191a438821b9c553b79",
+      "summary": "asdk_app_69d8425f7a1c8191a438821b9c553b79",
+      "source": "plugin app manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.app.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "可选",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:data-analytics",
+      "kind": "plugin",
+      "name": "data-analytics",
+      "displayName": "Data Analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Turn data into clear decisions",
+      "summary": "Turn data into clear decisions",
+      "tags": [
+        "Interactive",
+        "Read",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "本地可见",
+      "childIds": [
+        "skill:data-analytics:analyze-data-quality",
+        "skill:data-analytics:build-dashboard",
+        "skill:data-analytics:build-report",
+        "skill:data-analytics:report-to-google-doc",
+        "skill:data-analytics:report-to-google-slides",
+        "skill:data-analytics:report-to-pdf",
+        "skill:data-analytics:create-data-context",
+        "skill:data-analytics:design-kpis",
+        "skill:data-analytics:gather-business-context",
+        "skill:data-analytics:index",
+        "skill:data-analytics:jupyter-notebooks",
+        "skill:data-analytics:kpi-reporting",
+        "skill:data-analytics:market-sizing",
+        "skill:data-analytics:metric-diagnostics",
+        "skill:data-analytics:product-business-analysis",
+        "skill:data-analytics:validate-data",
+        "skill:data-analytics:visualize-data"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:documents",
+      "kind": "plugin",
+      "name": "documents",
+      "displayName": "Documents",
+      "version": "26.630.12135",
+      "description": "Create and edit document artifacts",
+      "summary": "Create and edit document artifacts",
+      "tags": [
+        "Interactive",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\documents\\26.630.12135\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\documents\\26.630.12135",
+      "status": "本地可见",
+      "childIds": [
+        "skill:documents:documents"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:figma",
+      "kind": "plugin",
+      "name": "figma",
+      "displayName": "Figma",
+      "version": "2.0.12",
+      "description": "Design-to-code workflows powered by the Figma integration",
+      "summary": "Design-to-code workflows powered by the Figma integration",
+      "tags": [
+        "Interactive",
+        "Read",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12",
+      "status": "本地可见",
+      "childIds": [
+        "skill:figma:figma-code-connect",
+        "skill:figma:figma-create-new-file",
+        "skill:figma:figma-generate-design",
+        "skill:figma:figma-generate-diagram",
+        "skill:figma:figma-generate-library",
+        "skill:figma:figma-implement-motion",
+        "skill:figma:figma-swiftui",
+        "skill:figma:figma-use",
+        "skill:figma:figma-use-figjam",
+        "skill:figma:figma-use-motion",
+        "skill:figma:figma-use-slides"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:github",
+      "kind": "plugin",
+      "name": "github",
+      "displayName": "GitHub",
+      "version": "0.1.5",
+      "description": "Triage PRs, issues, CI, and publish flows",
+      "summary": "Triage PRs, issues, CI, and publish flows",
+      "tags": [
+        "Interactive",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5",
+      "status": "本地可见",
+      "childIds": [
+        "skill:github:gh-address-comments",
+        "skill:github:gh-fix-ci",
+        "skill:github:github",
+        "skill:github:yeet"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:pdf",
+      "kind": "plugin",
+      "name": "pdf",
+      "displayName": "PDF",
+      "version": "26.630.12135",
+      "description": "Read, create, and verify PDF files",
+      "summary": "Read, create, and verify PDF files",
+      "tags": [
+        "Interactive",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.630.12135\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.630.12135",
+      "status": "本地可见",
+      "childIds": [
+        "skill:pdf:pdf"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:presentations",
+      "kind": "plugin",
+      "name": "presentations",
+      "displayName": "Presentations",
+      "version": "26.630.12135",
+      "description": "Create and edit presentations",
+      "summary": "Create and edit presentations",
+      "tags": [
+        "Interactive",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\presentations\\26.630.12135\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\presentations\\26.630.12135",
+      "status": "本地可见",
+      "childIds": [
+        "skill:presentations:Presentations"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:product-design",
+      "kind": "plugin",
+      "name": "product-design",
+      "displayName": "Product Design",
+      "version": "0.1.47",
+      "description": "Explore and prototype ideas",
+      "summary": "Explore and prototype ideas",
+      "tags": [
+        "Interactive",
+        "Read",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47",
+      "status": "本地可见",
+      "childIds": [
+        "skill:product-design:audit",
+        "skill:product-design:design-qa",
+        "skill:product-design:get-context",
+        "skill:product-design:ideate",
+        "skill:product-design:image-to-code",
+        "skill:product-design:index",
+        "skill:product-design:prototype",
+        "skill:product-design:research",
+        "skill:product-design:share",
+        "skill:product-design:url-to-code",
+        "skill:product-design:user-context"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:spreadsheets",
+      "kind": "plugin",
+      "name": "spreadsheets",
+      "displayName": "Spreadsheets",
+      "version": "26.630.12135",
+      "description": "Create and edit spreadsheet files",
+      "summary": "Create and edit spreadsheet files",
+      "tags": [
+        "Interactive",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\spreadsheets\\26.630.12135\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\spreadsheets\\26.630.12135",
+      "status": "本地可见",
+      "childIds": [
+        "skill:spreadsheets:Spreadsheets"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:superpowers",
+      "kind": "plugin",
+      "name": "superpowers",
+      "displayName": "Superpowers",
+      "version": "5.1.4",
+      "description": "Planning, TDD, debugging, and delivery workflows for coding agents",
+      "summary": "Planning, TDD, debugging, and delivery workflows for coding agents",
+      "tags": [
+        "Interactive",
+        "Read",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4",
+      "status": "本地可见",
+      "childIds": [
+        "skill:superpowers:brainstorming",
+        "skill:superpowers:dispatching-parallel-agents",
+        "skill:superpowers:executing-plans",
+        "skill:superpowers:finishing-a-development-branch",
+        "skill:superpowers:receiving-code-review",
+        "skill:superpowers:requesting-code-review",
+        "skill:superpowers:subagent-driven-development",
+        "skill:superpowers:systematic-debugging",
+        "skill:superpowers:test-driven-development",
+        "skill:superpowers:using-git-worktrees",
+        "skill:superpowers:using-superpowers",
+        "skill:superpowers:verification-before-completion",
+        "skill:superpowers:writing-plans",
+        "skill:superpowers:writing-skills"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "plugin:template-creator",
+      "kind": "plugin",
+      "name": "template-creator",
+      "displayName": "Template Creator",
+      "version": "26.630.12135",
+      "description": "Create or update personal artifact templates",
+      "summary": "Create or update personal artifact templates",
+      "tags": [
+        "Interactive",
+        "Write"
+      ],
+      "source": "plugin manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\template-creator\\26.630.12135\\.codex-plugin\\plugin.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\template-creator\\26.630.12135",
+      "status": "本地可见",
+      "childIds": [
+        "skill:template-creator:template-creator"
+      ],
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:ask-matt",
+      "kind": "skill",
+      "name": "ask-matt",
+      "displayName": "ask-matt",
+      "description": "Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.",
+      "summary": "Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\ask-matt\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\ask-matt",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:auto-git-sync",
+      "kind": "skill",
+      "name": "auto-git-sync",
+      "displayName": "auto-git-sync",
+      "description": "全局 Git 自动提交与推送工作流。Use when Codex has completed edits in a git repository, needs to save repository changes, commit, push, sync to GitHub/remote, or the user asks to提交、commit、push、同步、保存修改、完成后提交。默认行为：除非用户明确说不要 push、只 commit、别推送、先别提交或只修改不提交，否则完成修改后自动执行 git add、git commit、git push。",
+      "summary": "全局 Git 自动提交与推送工作流。Use when Codex has completed edits in a git repository, needs to save repository changes, commit, push, sync to GitHub/remote, or the user asks to提交、commit、push、同步、保存修改、完成后提交。默认行为：除非用户明确说不要 push、只 commit、别推送、先别提交或只修改不提交，否则完成修改后自动执行 git add、git commit、git push。",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\auto-git-sync\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\auto-git-sync",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:codebase-design",
+      "kind": "skill",
+      "name": "codebase-design",
+      "displayName": "codebase-design",
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.",
+      "summary": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\codebase-design\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\codebase-design",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:analyze-data-quality",
+      "kind": "skill",
+      "name": "data-analytics:analyze-data-quality",
+      "displayName": "analyze-data-quality",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Assess whether structured data, query results, dashboards, or analytical evidence are trustworthy enough to use. Use when the task is to check data quality, reconcile conflicting sources or metric definitions, or decide whether evidence is safe to cite.",
+      "summary": "Assess whether structured data, query results, dashboards, or analytical evidence are trustworthy enough to use. Use when the task is to check data quality, reconcile conflicting sources or metric definitions, or decide whether evidence is safe to cite.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\analyze-data-quality\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\analyze-data-quality",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:build-dashboard",
+      "kind": "skill",
+      "name": "data-analytics:build-dashboard",
+      "displayName": "build-dashboard",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Build source-backed dashboards for monitoring performance, exploring drivers, or acting on product and business metrics. Use when the task needs a dashboard, scorecard, or monitoring view with clear metrics, filters, source definitions, and QA.",
+      "summary": "Build source-backed dashboards for monitoring performance, exploring drivers, or acting on product and business metrics. Use when the task needs a dashboard, scorecard, or monitoring view with clear metrics, filters, source definitions, and QA.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-dashboard\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-dashboard",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:build-report",
+      "kind": "skill",
+      "name": "data-analytics:build-report",
+      "displayName": "build-report",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Build polished analytical reports for executive, product, business, or technical audiences. Use when the task needs a durable answer-first narrative with evidence-backed findings, visuals or tables, caveats, and source context.",
+      "summary": "Build polished analytical reports for executive, product, business, or technical audiences. Use when the task needs a durable answer-first narrative with evidence-backed findings, visuals or tables, caveats, and source context.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:create-data-context",
+      "kind": "skill",
+      "name": "data-analytics:create-data-context",
+      "displayName": "create-data-context",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Create, update, inspect, or repair Data Analytics semantic layers. Use when the user asks to save data context or create a semantic layer that future Data Analytics work can inspect and cite.",
+      "summary": "Create, update, inspect, or repair Data Analytics semantic layers. Use when the user asks to save data context or create a semantic layer that future Data Analytics work can inspect and cite.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\create-data-context\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\create-data-context",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:design-kpis",
+      "kind": "skill",
+      "name": "data-analytics:design-kpis",
+      "displayName": "design-kpis",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Design KPI frameworks, metric definitions, targets, guardrails, and measurement plans for product or business decisions. Use when success metrics, drivers, guardrails, targets, or the measurement approach need to be defined or improved.",
+      "summary": "Design KPI frameworks, metric definitions, targets, guardrails, and measurement plans for product or business decisions. Use when success metrics, drivers, guardrails, targets, or the measurement approach need to be defined or improved.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\design-kpis\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\design-kpis",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:gather-business-context",
+      "kind": "skill",
+      "name": "data-analytics:gather-business-context",
+      "displayName": "gather-business-context",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Gather business context from connected or provided sources so downstream analysis starts with the right framing. Use when an analytical question depends on missing context, such as what a metric means, what changed recently, or which sources should be checked. If the same prompt asks for diagnosis, recommendation, or a deliverable, gather context first and continue to the focused skill.",
+      "summary": "Gather business context from connected or provided sources so downstream analysis starts with the right framing. Use when an analytical question depends on missing context, such as what a metric means, what changed recently, or which sources should be checked. If the same prompt asks for diagnosis, recommendation, or a deliverable, gather context first and continue to the focused skill.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\gather-business-context\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\gather-business-context",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:index",
+      "kind": "skill",
+      "name": "data-analytics:index",
+      "displayName": "index",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Route Data Analytics plugin-level requests and broad analytics work to the right focused workflow. Use when Data Analytics is at-mentioned, or for analytics requests involving data, metrics, dashboards, reports, charts, notebooks, spreadsheets, KPIs, market sizing, or semantic layers.",
+      "summary": "Route Data Analytics plugin-level requests and broad analytics work to the right focused workflow. Use when Data Analytics is at-mentioned, or for analytics requests involving data, metrics, dashboards, reports, charts, notebooks, spreadsheets, KPIs, market sizing, or semantic layers.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\index\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\index",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:jupyter-notebooks",
+      "kind": "skill",
+      "name": "data-analytics:jupyter-notebooks",
+      "displayName": "jupyter-notebooks",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Create, edit, or validate reproducible SQL or Python notebooks. Use for notebooks, SQL/Python scratchpads, reproducible exploration, audit trails, or runnable companions where the analysis should be reviewable or rerunnable.",
+      "summary": "Create, edit, or validate reproducible SQL or Python notebooks. Use for notebooks, SQL/Python scratchpads, reproducible exploration, audit trails, or runnable companions where the analysis should be reviewable or rerunnable.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\jupyter-notebooks\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\jupyter-notebooks",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:kpi-reporting",
+      "kind": "skill",
+      "name": "data-analytics:kpi-reporting",
+      "displayName": "kpi-reporting",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Prepare KPI readouts, scorecards, WBR/MBR/QBR updates, and executive summaries from quantitative business or product metrics; use when the task is to report status, compare against targets, explain validated drivers, and state operating implications.",
+      "summary": "Prepare KPI readouts, scorecards, WBR/MBR/QBR updates, and executive summaries from quantitative business or product metrics; use when the task is to report status, compare against targets, explain validated drivers, and state operating implications.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\kpi-reporting\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\kpi-reporting",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:market-sizing",
+      "kind": "skill",
+      "name": "data-analytics:market-sizing",
+      "displayName": "market-sizing",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Estimate market, segment, or opportunity size with transparent assumptions and uncertainty. Use for TAM/SAM/SOM, sizing scenarios, or comparing the scale of possible opportunities.",
+      "summary": "Estimate market, segment, or opportunity size with transparent assumptions and uncertainty. Use for TAM/SAM/SOM, sizing scenarios, or comparing the scale of possible opportunities.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\market-sizing\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\market-sizing",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:metric-diagnostics",
+      "kind": "skill",
+      "name": "data-analytics:metric-diagnostics",
+      "displayName": "metric-diagnostics",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Diagnose why a metric changed or differs from expectation. Use when the task is to identify likely drivers of a metric movement, anomaly, gap, or discrepancy.",
+      "summary": "Diagnose why a metric changed or differs from expectation. Use when the task is to identify likely drivers of a metric movement, anomaly, gap, or discrepancy.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\metric-diagnostics\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\metric-diagnostics",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:product-business-analysis",
+      "kind": "skill",
+      "name": "data-analytics:product-business-analysis",
+      "displayName": "product-business-analysis",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Analyze product or business data to support a decision or recommendation. Use when a decision depends on metric-backed evidence, such as choosing a direction, prioritizing an opportunity, evaluating a change, segmenting users, sizing tradeoffs, or deciding what to do next.",
+      "summary": "Analyze product or business data to support a decision or recommendation. Use when a decision depends on metric-backed evidence, such as choosing a direction, prioritizing an opportunity, evaluating a change, segmenting users, sizing tradeoffs, or deciding what to do next.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\product-business-analysis\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\product-business-analysis",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:report-to-google-doc",
+      "kind": "skill",
+      "name": "data-analytics:report-to-google-doc",
+      "displayName": "report-to-google-doc",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Narrow conversion skill. Invoke only when the user explicitly asks to convert an existing local or blob-hosted HTML analytics report into a Google Doc, DOCX, or shareable document.",
+      "summary": "Narrow conversion skill. Invoke only when the user explicitly asks to convert an existing local or blob-hosted HTML analytics report into a Google Doc, DOCX, or shareable document.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\report-to-google-doc\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\report-to-google-doc",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:report-to-google-slides",
+      "kind": "skill",
+      "name": "data-analytics:report-to-google-slides",
+      "displayName": "report-to-google-slides",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Narrow conversion skill. Invoke only when the user explicitly asks to convert an existing HTML analytics report into a native Google Slides deck.",
+      "summary": "Narrow conversion skill. Invoke only when the user explicitly asks to convert an existing HTML analytics report into a native Google Slides deck.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\report-to-google-slides\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\report-to-google-slides",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:report-to-pdf",
+      "kind": "skill",
+      "name": "data-analytics:report-to-pdf",
+      "displayName": "report-to-pdf",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Narrow conversion skill. Invoke only when the user explicitly asks to convert an existing Data Analytics report, dashboard, or inline chart export into a PDF artifact.",
+      "summary": "Narrow conversion skill. Invoke only when the user explicitly asks to convert an existing Data Analytics report, dashboard, or inline chart export into a PDF artifact.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\report-to-pdf\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\build-report\\report-to-pdf",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:validate-data",
+      "kind": "skill",
+      "name": "data-analytics:validate-data",
+      "displayName": "validate-data",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Validate whether an analysis is accurate, well-supported, and ready to share or use for a decision. Use when reviewing methodology, calculations, comparisons, visuals, caveats, or conclusions.",
+      "summary": "Validate whether an analysis is accurate, well-supported, and ready to share or use for a decision. Use when reviewing methodology, calculations, comparisons, visuals, caveats, or conclusions.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\validate-data\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\validate-data",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:data-analytics:visualize-data",
+      "kind": "skill",
+      "name": "data-analytics:visualize-data",
+      "displayName": "visualize-data",
+      "plugin": "data-analytics",
+      "version": "0.1.49-2470779139f2",
+      "description": "Design, build, revise, or QA quantitative charts and figures. Use when an analytical answer needs visual judgment, whether for an inline answer, report, dashboard, notebook, or artifact.",
+      "summary": "Design, build, revise, or QA quantitative charts and figures. Use when an analytical answer needs visual judgment, whether for an inline answer, report, dashboard, notebook, or artifact.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\visualize-data\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\skills\\visualize-data",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:diagnosing-bugs",
+      "kind": "skill",
+      "name": "diagnosing-bugs",
+      "displayName": "diagnosing-bugs",
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+      "summary": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\diagnosing-bugs\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\diagnosing-bugs",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:documents:documents",
+      "kind": "skill",
+      "name": "documents:documents",
+      "displayName": "documents",
+      "plugin": "documents",
+      "version": "26.630.12135",
+      "description": "Create, edit, redline, and comment on `.docx`, Word, and Google Docs-targeted document artifacts inside the container, with a strict render-and-verify workflow. Use `render_docx.py` to generate page PNGs (and optional PDF) for visual QA, then iterate until layout is flawless before delivering the final document.",
+      "summary": "Create, edit, redline, and comment on `.docx`, Word, and Google Docs-targeted document artifacts inside the container, with a strict render-and-verify workflow. Use `render_docx.py` to generate page PNGs (and optional PDF) for visual QA, then iterate until layout is flawless before delivering the final document.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\documents\\26.630.12135\\skills\\documents\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\documents\\26.630.12135\\skills\\documents",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:domain-modeling",
+      "kind": "skill",
+      "name": "domain-modeling",
+      "displayName": "domain-modeling",
+      "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model.",
+      "summary": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\domain-modeling\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\domain-modeling",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-code-connect",
+      "kind": "skill",
+      "name": "figma:figma-code-connect",
+      "displayName": "figma-code-connect",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "Creates and maintains Figma Code Connect template files that map Figma components to code snippets. Use when the user mentions Code Connect, Figma component mapping, design-to-code translation, or asks to create/update .figma.ts or .figma.js files.",
+      "summary": "Creates and maintains Figma Code Connect template files that map Figma components to code snippets. Use when the user mentions Code Connect, Figma component mapping, design-to-code translation, or asks to create/update .figma.ts or .figma.js files.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-code-connect\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-code-connect",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-create-new-file",
+      "kind": "skill",
+      "name": "figma:figma-create-new-file",
+      "displayName": "figma-create-new-file",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `create_new_file` tool call. NEVER call `create_new_file` directly without loading this skill first. Trigger whenever the user wants a new blank Figma file — a new design, FigJam, or Slides file — or when you need a fresh file before calling `use_figma`. Usage — /figma-create-new-file [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard, /figma-create-new-file slides Q3 Review)",
+      "summary": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `create_new_file` tool call. NEVER call `create_new_file` directly without loading this skill first. Trigger whenever the user wants a new blank Figma file — a new design, FigJam, or Slides file — or when you need a fresh file before calling `use_figma`. Usage — /figma-create-new-file [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard, /figma-create-new-file slides Q3 Review)",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-create-new-file\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-create-new-file",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-generate-design",
+      "kind": "skill",
+      "name": "figma:figma-generate-design",
+      "displayName": "figma-generate-design",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "Use this skill alongside figma-use when the task involves translating an application page, view, or multi-section layout into Figma. Triggers: 'write to Figma', 'create in Figma from code', 'push page to Figma', 'take this app/page and build it in Figma', 'create a screen', 'build a landing page in Figma', 'update the Figma screen to match code', 'convert this modal/dialog/drawer/panel to Figma'. This is the preferred workflow skill whenever the user wants to build or update a full page, modal, dialog, drawer, sidebar, panel, or any composed multi-section view in Figma from code or a description. Discovers design system components, variables, and styles from Code Connect files, existing screens, and library search, then imports them and assembles views incrementally section-by-section using design system tokens instead of hardcoded values.",
+      "summary": "Use this skill alongside figma-use when the task involves translating an application page, view, or multi-section layout into Figma. Triggers: 'write to Figma', 'create in Figma from code', 'push page to Figma', 'take this app/page and build it in Figma', 'create a screen', 'build a landing page in Figma', 'update the Figma screen to match code', 'convert this modal/dialog/drawer/panel to Figma'. This is the preferred workflow skill whenever the user wants to build or update a full page, modal, dialog, drawer, sidebar, panel, or any composed multi-section view in Figma from code or a description. Discovers design system components, variables, and styles from Code Connect files, existing screens, and library search, then imports them and assembles views incrementally section-by-section using design system tokens instead of hardcoded values.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-generate-design\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-generate-design",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-generate-diagram",
+      "kind": "skill",
+      "name": "figma:figma-generate-diagram",
+      "displayName": "figma-generate-diagram",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. NEVER call `generate_diagram` directly without loading this skill first. Trigger whenever the user asks to create, generate, draw, render, sketch, or build a diagram — flowchart, architecture diagram, sequence diagram, ERD or entity-relationship diagram, state diagram or state machine, gantt chart, or timeline. Also trigger when the user mentions Mermaid syntax or wants a system architecture, decision tree, dependency graph, API call flow, auth handshake, schema, or pipeline visualized in FigJam. Routes to type-specific guidance, sets universal Mermaid constraints, and tells you when to use a different diagram type or skip the tool entirely (mindmaps, pie charts, class diagrams, etc.).",
+      "summary": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. NEVER call `generate_diagram` directly without loading this skill first. Trigger whenever the user asks to create, generate, draw, render, sketch, or build a diagram — flowchart, architecture diagram, sequence diagram, ERD or entity-relationship diagram, state diagram or state machine, gantt chart, or timeline. Also trigger when the user mentions Mermaid syntax or wants a system architecture, decision tree, dependency graph, API call flow, auth handshake, schema, or pipeline visualized in FigJam. Routes to type-specific guidance, sets universal Mermaid constraints, and tells you when to use a different diagram type or skip the tool entirely (mindmaps, pie charts, class diagrams, etc.).",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-generate-diagram\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-generate-diagram",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-generate-library",
+      "kind": "skill",
+      "name": "figma:figma-generate-library",
+      "displayName": "figma-generate-library",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, create individual components with proper variant sets and variable bindings, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. Also use when the user asks to create or generate any component in Figma — even a single one — since components require proper variable foundations, variant states, and design token bindings to be production-quality. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
+      "summary": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, create individual components with proper variant sets and variable bindings, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. Also use when the user asks to create or generate any component in Figma — even a single one — since components require proper variable foundations, variant states, and design token bindings to be production-quality. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-generate-library\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-generate-library",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-implement-motion",
+      "kind": "skill",
+      "name": "figma:figma-implement-motion",
+      "displayName": "figma-implement-motion",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "Translates Figma motion and animations into production-ready application code. Use when implementing animation/motion from a Figma design — user mentions \"implement this motion\", \"add animation from Figma\", \"animate this component\", provides a Figma URL whose node is animated, or when `get_design_context` returns motion data or instructs you to call `get_motion_context`.",
+      "summary": "Translates Figma motion and animations into production-ready application code. Use when implementing animation/motion from a Figma design — user mentions \"implement this motion\", \"add animation from Figma\", \"animate this component\", provides a Figma URL whose node is animated, or when `get_design_context` returns motion data or instructs you to call `get_motion_context`.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-implement-motion\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-implement-motion",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-swiftui",
+      "kind": "skill",
+      "name": "figma:figma-swiftui",
+      "displayName": "figma-swiftui",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "SwiftUI ↔ Figma translation. Use whenever the user mentions Swift, SwiftUI, iOS, iPhone, or iPad — in EITHER direction — translating a Figma design into SwiftUI (design → code), or pushing SwiftUI views / screens / tokens back into a Figma file (code → design). Triggers on phrases like 'implement this Figma design in SwiftUI', 'build this screen in Swift', 'push this SwiftUI view to Figma', 'mirror my Swift code in a Figma file', or whenever a Figma URL appears alongside `.swift` files / an `.xcodeproj`. Routes to a direction-specific reference doc; loads alongside `figma-use` for the code → design path.",
+      "summary": "SwiftUI ↔ Figma translation. Use whenever the user mentions Swift, SwiftUI, iOS, iPhone, or iPad — in EITHER direction — translating a Figma design into SwiftUI (design → code), or pushing SwiftUI views / screens / tokens back into a Figma file (code → design). Triggers on phrases like 'implement this Figma design in SwiftUI', 'build this screen in Swift', 'push this SwiftUI view to Figma', 'mirror my Swift code in a Figma file', or whenever a Figma URL appears alongside `.swift` files / an `.xcodeproj`. Routes to a direction-specific reference doc; loads alongside `figma-use` for the code → design path.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-swiftui\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-swiftui",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-use",
+      "kind": "skill",
+      "name": "figma:figma-use",
+      "displayName": "figma-use",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.",
+      "summary": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-use-figjam",
+      "kind": "skill",
+      "name": "figma:figma-use-figjam",
+      "displayName": "figma-use-figjam",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "This skill helps agents use Figma's use_figma MCP tool in the FigJam context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
+      "summary": "This skill helps agents use Figma's use_figma MCP tool in the FigJam context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use-figjam\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use-figjam",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-use-motion",
+      "kind": "skill",
+      "name": "figma:figma-use-motion",
+      "displayName": "figma-use-motion",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "Motion / animation context for the `use_figma` MCP tool — animating Figma nodes via manual keyframes, animation styles, easing, and timeline duration. Load alongside figma-use whenever a task involves adding, editing, or inspecting animation on a node.",
+      "summary": "Motion / animation context for the `use_figma` MCP tool — animating Figma nodes via manual keyframes, animation styles, easing, and timeline duration. Load alongside figma-use whenever a task involves adding, editing, or inspecting animation on a node.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use-motion\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use-motion",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:figma:figma-use-slides",
+      "kind": "skill",
+      "name": "figma:figma-use-slides",
+      "displayName": "figma-use-slides",
+      "plugin": "figma",
+      "version": "2.0.12",
+      "description": "This skill helps agents use Figma's use_figma MCP tool in the Slides context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
+      "summary": "This skill helps agents use Figma's use_figma MCP tool in the Slides context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use-slides\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\skills\\figma-use-slides",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:github:gh-address-comments",
+      "kind": "skill",
+      "name": "github:gh-address-comments",
+      "displayName": "gh-address-comments",
+      "plugin": "github",
+      "version": "0.1.5",
+      "description": "Address actionable GitHub pull request review feedback. Use when the user wants to inspect unresolved review threads, requested changes, or inline review comments on a PR, then implement selected fixes. Use the GitHub app for PR metadata and flat comment reads, and use the bundled GraphQL script via `gh` whenever thread-level state, resolution status, or inline review context matters.",
+      "summary": "Address actionable GitHub pull request review feedback. Use when the user wants to inspect unresolved review threads, requested changes, or inline review comments on a PR, then implement selected fixes. Use the GitHub app for PR metadata and flat comment reads, and use the bundled GraphQL script via `gh` whenever thread-level state, resolution status, or inline review context matters.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\gh-address-comments\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\gh-address-comments",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:github:gh-fix-ci",
+      "kind": "skill",
+      "name": "github:gh-fix-ci",
+      "displayName": "gh-fix-ci",
+      "plugin": "github",
+      "version": "0.1.5",
+      "description": "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions. Use the GitHub app from this plugin for PR metadata and patch context, and use `gh` for Actions check and log inspection before implementing any approved fix.",
+      "summary": "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions. Use the GitHub app from this plugin for PR metadata and patch context, and use `gh` for Actions check and log inspection before implementing any approved fix.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\gh-fix-ci\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\gh-fix-ci",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:github:github",
+      "kind": "skill",
+      "name": "github:github",
+      "displayName": "github",
+      "plugin": "github",
+      "version": "0.1.5",
+      "description": "Triage and orient GitHub repository, pull request, and issue work through the connected GitHub app. Use when the user asks for general GitHub help, wants PR or issue summaries, or needs repository context before choosing a more specific GitHub workflow.",
+      "summary": "Triage and orient GitHub repository, pull request, and issue work through the connected GitHub app. Use when the user asks for general GitHub help, wants PR or issue summaries, or needs repository context before choosing a more specific GitHub workflow.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\github\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\github",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:github:yeet",
+      "kind": "skill",
+      "name": "github:yeet",
+      "displayName": "yeet",
+      "plugin": "github",
+      "version": "0.1.5",
+      "description": "Publish local changes to GitHub by confirming scope, committing intentionally, pushing the branch, and opening a draft PR through the GitHub app from this plugin, with `gh` used only as a fallback where connector coverage is insufficient.",
+      "summary": "Publish local changes to GitHub by confirming scope, committing intentionally, pushing the branch, and opening a draft PR through the GitHub app from this plugin, with `gh` used only as a fallback where connector coverage is insufficient.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\yeet\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5\\skills\\yeet",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:grill-me",
+      "kind": "skill",
+      "name": "grill-me",
+      "displayName": "grill-me",
+      "description": "A relentless interview to sharpen a plan or design.",
+      "summary": "A relentless interview to sharpen a plan or design.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\grill-me\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\grill-me",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:grill-with-docs",
+      "kind": "skill",
+      "name": "grill-with-docs",
+      "displayName": "grill-with-docs",
+      "description": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "summary": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\grill-with-docs\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\grill-with-docs",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:grilling",
+      "kind": "skill",
+      "name": "grilling",
+      "displayName": "grilling",
+      "description": "Interview the user relentlessly about a plan or design. Use when the user wants to stress-test a plan before building, or uses any 'grill' trigger phrases.",
+      "summary": "Interview the user relentlessly about a plan or design. Use when the user wants to stress-test a plan before building, or uses any 'grill' trigger phrases.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\grilling\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\grilling",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:handoff",
+      "kind": "skill",
+      "name": "handoff",
+      "displayName": "handoff",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "summary": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\handoff\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\handoff",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:huashu-design",
+      "kind": "skill",
+      "name": "huashu-design",
+      "displayName": "huashu-design",
+      "description": "花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审，需求模糊时给设计方向。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。",
+      "summary": "花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审，需求模糊时给设计方向。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\huashu-design\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\huashu-design",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:imagegen",
+      "kind": "skill",
+      "name": "imagegen",
+      "displayName": "imagegen",
+      "description": "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas.",
+      "summary": "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\.system\\imagegen\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\.system\\imagegen",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:improve-codebase-architecture",
+      "kind": "skill",
+      "name": "improve-codebase-architecture",
+      "displayName": "improve-codebase-architecture",
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+      "summary": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\improve-codebase-architecture\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\improve-codebase-architecture",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:omo-agent-workflow",
+      "kind": "skill",
+      "name": "omo-agent-workflow",
+      "displayName": "omo-agent-workflow",
+      "description": "Use when a coding task would benefit from OMO-style multi-agent coordination: complex implementation, unfamiliar codebase exploration, external library research, architecture second opinions, parallel subagent work, worker delegation, or requests mentioning OMO, Sisyphus, Explore, Librarian, Oracle, Sisyphus-Junior, agents, subagents, delegation, 并行, 子代理, or 多代理.",
+      "summary": "Use when a coding task would benefit from OMO-style multi-agent coordination: complex implementation, unfamiliar codebase exploration, external library research, architecture second opinions, parallel subagent work, worker delegation, or requests mentioning OMO, Sisyphus, Explore, Librarian, Oracle, Sisyphus-Junior, agents, subagents, delegation, 并行, 子代理, or 多代理.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\omo-agent-workflow\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\omo-agent-workflow",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:openai-docs",
+      "kind": "skill",
+      "name": "openai-docs",
+      "displayName": "openai-docs",
+      "description": "Use when the user asks how to build with OpenAI products or APIs, asks about Codex itself or choosing Codex surfaces, needs up-to-date official documentation with citations, help choosing the latest model for a use case, or model upgrade and prompt-upgrade guidance; use OpenAI docs MCP tools for non-Codex docs questions, use the Codex manual helper first for broad Codex self-knowledge, and restrict fallback browsing to official OpenAI domains.",
+      "summary": "Use when the user asks how to build with OpenAI products or APIs, asks about Codex itself or choosing Codex surfaces, needs up-to-date official documentation with citations, help choosing the latest model for a use case, or model upgrade and prompt-upgrade guidance; use OpenAI docs MCP tools for non-Codex docs questions, use the Codex manual helper first for broad Codex self-knowledge, and restrict fallback browsing to official OpenAI domains.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\.system\\openai-docs\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\.system\\openai-docs",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:pdf:pdf",
+      "kind": "skill",
+      "name": "pdf:pdf",
+      "displayName": "pdf",
+      "plugin": "pdf",
+      "version": "26.630.12135",
+      "description": "Read, create, inspect, render, and verify PDF files where visual layout matters. Use Poppler rendering plus Python tools such as reportlab, pdfplumber, and pypdf for generation and extraction.",
+      "summary": "Read, create, inspect, render, and verify PDF files where visual layout matters. Use Poppler rendering plus Python tools such as reportlab, pdfplumber, and pypdf for generation and extraction.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.630.12135\\skills\\pdf\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.630.12135\\skills\\pdf",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:plugin-creator",
+      "kind": "skill",
+      "name": "plugin-creator",
+      "displayName": "plugin-creator",
+      "description": "Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entries by default. Use when Codex needs to create a new personal plugin, add optional plugin structure, generate or update marketplace entries for plugin ordering and availability metadata, or update an existing local plugin during development with the CLI-driven cachebuster and reinstall flow.",
+      "summary": "Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entries by default. Use when Codex needs to create a new personal plugin, add optional plugin structure, generate or update marketplace entries for plugin ordering and availability metadata, or update an existing local plugin during development with the CLI-driven cachebuster and reinstall flow.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\.system\\plugin-creator\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\.system\\plugin-creator",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:presentations:Presentations",
+      "kind": "skill",
+      "name": "presentations:Presentations",
+      "displayName": "Presentations",
+      "plugin": "presentations",
+      "version": "26.630.12135",
+      "description": "Create or edit PowerPoint or Google Slides decks",
+      "summary": "Create or edit PowerPoint or Google Slides decks",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\presentations\\26.630.12135\\skills\\presentations\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\presentations\\26.630.12135\\skills\\presentations",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:audit",
+      "kind": "skill",
+      "name": "product-design:audit",
+      "displayName": "audit",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Audit or critique a product flow, journey, workflow, funnel, onboarding path, checkout path, settings path, screen, or multi-step product experience by capturing screenshots first, placing them in Figma or a local folder, then reporting UX, design, and accessibility findings from that evidence. Use when the user asks to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on a product experience.",
+      "summary": "Audit or critique a product flow, journey, workflow, funnel, onboarding path, checkout path, settings path, screen, or multi-step product experience by capturing screenshots first, placing them in Figma or a local folder, then reporting UX, design, and accessibility findings from that evidence. Use when the user asks to audit, review, critique, inspect, assess, analyze, evaluate, or give feedback on a product experience.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\audit\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\audit",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:design-qa",
+      "kind": "skill",
+      "name": "product-design:design-qa",
+      "displayName": "design-qa",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Internal prototype QA helper. Use only after a Product Design prototype, URL-to-code build, or image-to-code build has a source visual target and a rendered implementation to compare before handoff. Do not use for broad UX critique, design critique, product audits, or flow reviews; route those user-facing requests to audit.",
+      "summary": "Internal prototype QA helper. Use only after a Product Design prototype, URL-to-code build, or image-to-code build has a source visual target and a rendered implementation to compare before handoff. Do not use for broad UX critique, design critique, product audits, or flow reviews; route those user-facing requests to audit.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\design-qa\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\design-qa",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:get-context",
+      "kind": "skill",
+      "name": "product-design:get-context",
+      "displayName": "get-context",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Mandatory design-brief gate for Product Design build and design workflows. Use before ideation, prototyping, image-to-code builds, redesigns, or product UI work to clarify missing product, visual, and interactivity context or play back the supplied brief before proceeding.",
+      "summary": "Mandatory design-brief gate for Product Design build and design workflows. Use before ideation, prototyping, image-to-code builds, redesigns, or product UI work to clarify missing product, visual, and interactivity context or play back the supplied brief before proceeding.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\get-context\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\get-context",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:ideate",
+      "kind": "skill",
+      "name": "product-design:ideate",
+      "displayName": "ideate",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Generate image-based visual alternatives, remixes, or concept directions after Product Design get-context has confirmed the design brief. Use when the user asks for design variants, visual exploration, remixes, or image-generated approaches from provided context.",
+      "summary": "Generate image-based visual alternatives, remixes, or concept directions after Product Design get-context has confirmed the design brief. Use when the user asks for design variants, visual exploration, remixes, or image-generated approaches from provided context.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\ideate\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\ideate",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:image-to-code",
+      "kind": "skill",
+      "name": "product-design:image-to-code",
+      "displayName": "image-to-code",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Implement a selected image, screenshot, mockup, or Image Gen reference as a faithful responsive frontend after Product Design get-context has confirmed the design brief.",
+      "summary": "Implement a selected image, screenshot, mockup, or Image Gen reference as a faithful responsive frontend after Product Design get-context has confirmed the design brief.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\image-to-code\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\image-to-code",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:index",
+      "kind": "skill",
+      "name": "product-design:index",
+      "displayName": "index",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Use to discover specific skills for the Product Design plugin, when it is at-mentioned directly, or for any mentions of potentially relevant work, including: UX research; product, screen, or flow audits; visual ideation; app or interface design, redesign, cloning, prototyping, or implementation from ideas, URLs, images, Figma, or code; design QA; and prototype sharing or deployment.",
+      "summary": "Use to discover specific skills for the Product Design plugin, when it is at-mentioned directly, or for any mentions of potentially relevant work, including: UX research; product, screen, or flow audits; visual ideation; app or interface design, redesign, cloning, prototyping, or implementation from ideas, URLs, images, Figma, or code; design QA; and prototype sharing or deployment.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\index\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\index",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:prototype",
+      "kind": "skill",
+      "name": "product-design:prototype",
+      "displayName": "prototype",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Route coded prototype requests after Product Design get-context has confirmed the design brief. Use for building prototypes from URLs, images, mockups, Figma, existing code, or ideas that need visual exploration before build.",
+      "summary": "Route coded prototype requests after Product Design get-context has confirmed the design brief. Use for building prototypes from URLs, images, mockups, Figma, existing code, or ideas that need visual exploration before build.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\prototype\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\prototype",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:research",
+      "kind": "skill",
+      "name": "product-design:research",
+      "displayName": "research",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Run fast, source-grounded UX research on the highest-signal problems users are experiencing with a user-specified digital product. Use when the user asks to research user pain, UX friction, onboarding issues, docs/help problems, developer experience friction, support pain, product workflow issues, or current user complaints for a named product.",
+      "summary": "Run fast, source-grounded UX research on the highest-signal problems users are experiencing with a user-specified digital product. Use when the user asks to research user pain, UX friction, onboarding issues, docs/help problems, developer experience friction, support pain, product workflow issues, or current user complaints for a named product.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\research\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\research",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:share",
+      "kind": "skill",
+      "name": "product-design:share",
+      "displayName": "share",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Share a runnable prototype using the user's preferred deployment tool.",
+      "summary": "Share a runnable prototype using the user's preferred deployment tool.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\share\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\share",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:url-to-code",
+      "kind": "skill",
+      "name": "product-design:url-to-code",
+      "displayName": "url-to-code",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Clone a live URL as a runnable frontend-only local app using Browser/Chrome source evidence after Product Design get-context has confirmed the design brief.",
+      "summary": "Clone a live URL as a runnable frontend-only local app using Browser/Chrome source evidence after Product Design get-context has confirmed the design brief.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\url-to-code\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\url-to-code",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:product-design:user-context",
+      "kind": "skill",
+      "name": "product-design:user-context",
+      "displayName": "user-context",
+      "plugin": "product-design",
+      "version": "0.1.47",
+      "description": "Load or manage Product Design's saved user context. Use when the user asks to set up Product Design, get started, onboard, save product or design sources, see what Product Design remembers, update saved context, or remember Product Design preferences. Examples include product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, and general product/design notes.",
+      "summary": "Load or manage Product Design's saved user context. Use when the user asks to set up Product Design, get started, onboard, save product or design sources, see what Product Design remembers, update saved context, or remember Product Design preferences. Examples include product URLs, Figma files, screenshots, reference images, codebase paths, Storybook, tokens, design systems, brand assets, and general product/design notes.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\user-context\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\product-design\\0.1.47\\skills\\user-context",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:prototype",
+      "kind": "skill",
+      "name": "prototype",
+      "displayName": "prototype",
+      "description": "Build a throwaway prototype to flesh out a design — a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route.",
+      "summary": "Build a throwaway prototype to flesh out a design — a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\prototype\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\prototype",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:setup-matt-pocock-skills",
+      "kind": "skill",
+      "name": "setup-matt-pocock-skills",
+      "displayName": "setup-matt-pocock-skills",
+      "description": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "summary": "Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\setup-matt-pocock-skills\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\setup-matt-pocock-skills",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:skill-creator",
+      "kind": "skill",
+      "name": "skill-creator",
+      "displayName": "skill-creator",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "summary": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\.system\\skill-creator\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\.system\\skill-creator",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:skill-installer",
+      "kind": "skill",
+      "name": "skill-installer",
+      "displayName": "skill-installer",
+      "description": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).",
+      "summary": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\.system\\skill-installer\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\.system\\skill-installer",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:spreadsheets:Spreadsheets",
+      "kind": "skill",
+      "name": "spreadsheets:Spreadsheets",
+      "displayName": "Spreadsheets",
+      "plugin": "spreadsheets",
+      "version": "26.630.12135",
+      "description": "Use this skill when a user requests to create, modify, analyze, visualize, or work with spreadsheet files (`.xlsx`, `.xls`, `.csv`, `.tsv`) or Google Sheets-targeted spreadsheet artifacts with formulas, formatting, charts, tables, and recalculation.",
+      "summary": "Use this skill when a user requests to create, modify, analyze, visualize, or work with spreadsheet files (`.xlsx`, `.xls`, `.csv`, `.tsv`) or Google Sheets-targeted spreadsheet artifacts with formulas, formatting, charts, tables, and recalculation.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\spreadsheets\\26.630.12135\\skills\\spreadsheets\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\spreadsheets\\26.630.12135\\skills\\spreadsheets",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:brainstorming",
+      "kind": "skill",
+      "name": "superpowers:brainstorming",
+      "displayName": "brainstorming",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "summary": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\brainstorming\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\brainstorming",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:dispatching-parallel-agents",
+      "kind": "skill",
+      "name": "superpowers:dispatching-parallel-agents",
+      "displayName": "dispatching-parallel-agents",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+      "summary": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\dispatching-parallel-agents\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\dispatching-parallel-agents",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:executing-plans",
+      "kind": "skill",
+      "name": "superpowers:executing-plans",
+      "displayName": "executing-plans",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "summary": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\executing-plans\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\executing-plans",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:finishing-a-development-branch",
+      "kind": "skill",
+      "name": "superpowers:finishing-a-development-branch",
+      "displayName": "finishing-a-development-branch",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "summary": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\finishing-a-development-branch\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\finishing-a-development-branch",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:receiving-code-review",
+      "kind": "skill",
+      "name": "superpowers:receiving-code-review",
+      "displayName": "receiving-code-review",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "summary": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\receiving-code-review\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\receiving-code-review",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:requesting-code-review",
+      "kind": "skill",
+      "name": "superpowers:requesting-code-review",
+      "displayName": "requesting-code-review",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "summary": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\requesting-code-review\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\requesting-code-review",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:subagent-driven-development",
+      "kind": "skill",
+      "name": "superpowers:subagent-driven-development",
+      "displayName": "subagent-driven-development",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when executing implementation plans with independent tasks in the current session",
+      "summary": "Use when executing implementation plans with independent tasks in the current session",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\subagent-driven-development\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\subagent-driven-development",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:systematic-debugging",
+      "kind": "skill",
+      "name": "superpowers:systematic-debugging",
+      "displayName": "systematic-debugging",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "summary": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\systematic-debugging\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\systematic-debugging",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:test-driven-development",
+      "kind": "skill",
+      "name": "superpowers:test-driven-development",
+      "displayName": "test-driven-development",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when implementing any feature or bugfix, before writing implementation code",
+      "summary": "Use when implementing any feature or bugfix, before writing implementation code",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\test-driven-development\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\test-driven-development",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:using-git-worktrees",
+      "kind": "skill",
+      "name": "superpowers:using-git-worktrees",
+      "displayName": "using-git-worktrees",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback",
+      "summary": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\using-git-worktrees\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\using-git-worktrees",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:using-superpowers",
+      "kind": "skill",
+      "name": "superpowers:using-superpowers",
+      "displayName": "using-superpowers",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+      "summary": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\using-superpowers\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\using-superpowers",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:verification-before-completion",
+      "kind": "skill",
+      "name": "superpowers:verification-before-completion",
+      "displayName": "verification-before-completion",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "summary": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\verification-before-completion\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\verification-before-completion",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:writing-plans",
+      "kind": "skill",
+      "name": "superpowers:writing-plans",
+      "displayName": "writing-plans",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "summary": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\writing-plans\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\writing-plans",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:superpowers:writing-skills",
+      "kind": "skill",
+      "name": "superpowers:writing-skills",
+      "displayName": "writing-skills",
+      "plugin": "superpowers",
+      "version": "5.1.4",
+      "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+      "summary": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\writing-skills\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\superpowers\\5.1.4\\skills\\writing-skills",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:tdd",
+      "kind": "skill",
+      "name": "tdd",
+      "displayName": "tdd",
+      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\", or wants integration tests.",
+      "summary": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\", or wants integration tests.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\tdd\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\tdd",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:teach",
+      "kind": "skill",
+      "name": "teach",
+      "displayName": "teach",
+      "description": "Teach the user a new skill or concept, within this workspace.",
+      "summary": "Teach the user a new skill or concept, within this workspace.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\teach\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\teach",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:template-creator:template-creator",
+      "kind": "skill",
+      "name": "template-creator:template-creator",
+      "displayName": "template-creator",
+      "plugin": "template-creator",
+      "version": "26.630.12135",
+      "description": "Create or update a reusable personal Codex artifact-template skill. Use when the user invokes $template-creator or asks in natural language to create a template using, from, or based on an attached Word document, PowerPoint presentation, or Excel workbook, or explicitly asks to edit or update a passed artifact-template skill. Do not use for one-off artifact creation from an existing template.",
+      "summary": "Create or update a reusable personal Codex artifact-template skill. Use when the user invokes $template-creator or asks in natural language to create a template using, from, or based on an attached Word document, PowerPoint presentation, or Excel workbook, or explicitly asks to edit or update a passed artifact-template skill. Do not use for one-off artifact creation from an existing template.",
+      "source": "plugin skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\template-creator\\26.630.12135\\skills\\template-creator\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-primary-runtime\\template-creator\\26.630.12135\\skills\\template-creator",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:to-issues",
+      "kind": "skill",
+      "name": "to-issues",
+      "displayName": "to-issues",
+      "description": "Break a plan, spec, or PRD into independently-grabbable issues on the project issue tracker using tracer-bullet vertical slices.",
+      "summary": "Break a plan, spec, or PRD into independently-grabbable issues on the project issue tracker using tracer-bullet vertical slices.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\to-issues\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\to-issues",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:to-prd",
+      "kind": "skill",
+      "name": "to-prd",
+      "displayName": "to-prd",
+      "description": "Turn the current conversation into a PRD and publish it to the project issue tracker — no interview, just synthesis of what you've already discussed.",
+      "summary": "Turn the current conversation into a PRD and publish it to the project issue tracker — no interview, just synthesis of what you've already discussed.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\to-prd\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\to-prd",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:triage",
+      "kind": "skill",
+      "name": "triage",
+      "displayName": "triage",
+      "description": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent-ready briefs.",
+      "summary": "Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent-ready briefs.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\triage\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\triage",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "skill:writing-great-skills",
+      "kind": "skill",
+      "name": "writing-great-skills",
+      "displayName": "writing-great-skills",
+      "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+      "summary": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",
+      "source": "local skill",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\skills\\writing-great-skills\\SKILL.md",
+      "directory": "C:\\Users\\Administrator\\.codex\\skills\\writing-great-skills",
+      "status": "本地可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "tool:data-analytics:dataAnalyticsWidgets",
+      "kind": "tool",
+      "name": "dataAnalyticsWidgets",
+      "displayName": "Data Analytics",
+      "plugin": "data-analytics",
+      "description": "Render Data Analytics charts, tables, dashboards, and report artifacts.",
+      "summary": "Render Data Analytics charts, tables, dashboards, and report artifacts.",
+      "source": "plugin mcp manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2\\.mcp.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\data-analytics\\0.1.49-2470779139f2",
+      "status": "本地清单可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "tool:figma:figma",
+      "kind": "tool",
+      "name": "figma",
+      "displayName": "figma",
+      "plugin": "figma",
+      "source": "plugin mcp manifest",
+      "sourcePath": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12\\.mcp.json",
+      "directory": "C:\\Users\\Administrator\\.codex\\plugins\\cache\\openai-curated-remote\\figma\\2.0.12",
+      "status": "本地清单可见",
+      "stats": {
+        "usageCount": 0,
+        "sessionsUsed": 0,
+        "mentions": 0,
+        "lastUsedAt": "0001-01-01T00:00:00Z"
+      },
+      "user": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      },
+      "ai": {
+        "updatedAt": "0001-01-01T00:00:00Z"
+      }
+    }
+  ]
+}

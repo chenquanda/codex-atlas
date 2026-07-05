@@ -1,0 +1,524 @@
+{
+  "skill:ask-matt": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:auto-git-sync": {
+    "usageCount": 48,
+    "sessionsUsed": 14,
+    "mentions": 48,
+    "lastUsedAt": "2026-07-02T13:52:36.707Z"
+  },
+  "skill:codebase-design": {
+    "usageCount": 5,
+    "sessionsUsed": 3,
+    "mentions": 5,
+    "lastUsedAt": "2026-07-01T14:43:18.034Z"
+  },
+  "skill:data-analytics:analyze-data-quality": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:build-dashboard": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:build-report": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:create-data-context": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:design-kpis": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:gather-business-context": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:index": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:jupyter-notebooks": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:kpi-reporting": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:market-sizing": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:metric-diagnostics": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:product-business-analysis": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:report-to-google-doc": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:report-to-google-slides": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:report-to-pdf": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:validate-data": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:data-analytics:visualize-data": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:diagnosing-bugs": {
+    "usageCount": 5,
+    "sessionsUsed": 3,
+    "mentions": 5,
+    "lastUsedAt": "2026-07-05T10:31:01.406Z"
+  },
+  "skill:documents:documents": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:domain-modeling": {
+    "usageCount": 5,
+    "sessionsUsed": 2,
+    "mentions": 5,
+    "lastUsedAt": "2026-07-01T16:18:55.608Z"
+  },
+  "skill:figma:figma-code-connect": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:figma:figma-create-new-file": {
+    "usageCount": 3,
+    "sessionsUsed": 1,
+    "mentions": 3,
+    "lastUsedAt": "2026-06-25T16:33:37.325Z"
+  },
+  "skill:figma:figma-generate-design": {
+    "usageCount": 3,
+    "sessionsUsed": 1,
+    "mentions": 3,
+    "lastUsedAt": "2026-06-25T16:25:03.484Z"
+  },
+  "skill:figma:figma-generate-diagram": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:figma:figma-generate-library": {
+    "usageCount": 3,
+    "sessionsUsed": 1,
+    "mentions": 3,
+    "lastUsedAt": "2026-06-25T16:25:03.484Z"
+  },
+  "skill:figma:figma-implement-motion": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:figma:figma-swiftui": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:figma:figma-use": {
+    "usageCount": 3,
+    "sessionsUsed": 1,
+    "mentions": 3,
+    "lastUsedAt": "2026-06-25T16:25:03.484Z"
+  },
+  "skill:figma:figma-use-figjam": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:figma:figma-use-motion": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:figma:figma-use-slides": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:github:gh-address-comments": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:github:gh-fix-ci": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:github:github": {
+    "usageCount": 1,
+    "sessionsUsed": 1,
+    "mentions": 1,
+    "lastUsedAt": "2026-06-26T17:03:34.009Z"
+  },
+  "skill:github:yeet": {
+    "usageCount": 1,
+    "sessionsUsed": 1,
+    "mentions": 1,
+    "lastUsedAt": "2026-06-22T13:39:27.442Z"
+  },
+  "skill:grill-me": {
+    "usageCount": 2,
+    "sessionsUsed": 1,
+    "mentions": 2,
+    "lastUsedAt": "2026-07-02T12:23:18.898Z"
+  },
+  "skill:grill-with-docs": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:grilling": {
+    "usageCount": 3,
+    "sessionsUsed": 1,
+    "mentions": 3,
+    "lastUsedAt": "2026-07-02T13:29:32.504Z"
+  },
+  "skill:handoff": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:huashu-design": {
+    "usageCount": 10,
+    "sessionsUsed": 3,
+    "mentions": 10,
+    "lastUsedAt": "2026-07-02T15:24:49.011Z"
+  },
+  "skill:imagegen": {
+    "usageCount": 6,
+    "sessionsUsed": 4,
+    "mentions": 6,
+    "lastUsedAt": "2026-07-02T14:45:37.01Z"
+  },
+  "skill:improve-codebase-architecture": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:omo-agent-workflow": {
+    "usageCount": 7,
+    "sessionsUsed": 5,
+    "mentions": 7,
+    "lastUsedAt": "2026-07-02T13:55:06.042Z"
+  },
+  "skill:openai-docs": {
+    "usageCount": 11,
+    "sessionsUsed": 8,
+    "mentions": 11,
+    "lastUsedAt": "2026-07-01T14:36:53.835Z"
+  },
+  "skill:pdf:pdf": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:plugin-creator": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:presentations:Presentations": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:product-design:audit": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:product-design:design-qa": {
+    "usageCount": 1,
+    "sessionsUsed": 1,
+    "mentions": 1,
+    "lastUsedAt": "2026-06-25T16:58:27.064Z"
+  },
+  "skill:product-design:get-context": {
+    "usageCount": 10,
+    "sessionsUsed": 5,
+    "mentions": 10,
+    "lastUsedAt": "2026-07-02T14:45:36.963Z"
+  },
+  "skill:product-design:ideate": {
+    "usageCount": 5,
+    "sessionsUsed": 4,
+    "mentions": 5,
+    "lastUsedAt": "2026-07-02T14:45:36.999Z"
+  },
+  "skill:product-design:image-to-code": {
+    "usageCount": 1,
+    "sessionsUsed": 1,
+    "mentions": 1,
+    "lastUsedAt": "2026-06-25T16:58:18.884Z"
+  },
+  "skill:product-design:index": {
+    "usageCount": 10,
+    "sessionsUsed": 5,
+    "mentions": 10,
+    "lastUsedAt": "2026-07-02T14:45:36.958Z"
+  },
+  "skill:product-design:prototype": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:product-design:research": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:product-design:share": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:product-design:url-to-code": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:product-design:user-context": {
+    "usageCount": 8,
+    "sessionsUsed": 5,
+    "mentions": 8,
+    "lastUsedAt": "2026-07-02T14:26:27.882Z"
+  },
+  "skill:prototype": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:setup-matt-pocock-skills": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:skill-creator": {
+    "usageCount": 6,
+    "sessionsUsed": 4,
+    "mentions": 6,
+    "lastUsedAt": "2026-06-27T14:50:30.69Z"
+  },
+  "skill:skill-installer": {
+    "usageCount": 2,
+    "sessionsUsed": 2,
+    "mentions": 2,
+    "lastUsedAt": "2026-07-02T14:55:21.241Z"
+  },
+  "skill:spreadsheets:Spreadsheets": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:superpowers:brainstorming": {
+    "usageCount": 55,
+    "sessionsUsed": 23,
+    "mentions": 55,
+    "lastUsedAt": "2026-07-02T14:13:38.429Z"
+  },
+  "skill:superpowers:dispatching-parallel-agents": {
+    "usageCount": 1,
+    "sessionsUsed": 1,
+    "mentions": 1,
+    "lastUsedAt": "2026-06-27T15:33:57.267Z"
+  },
+  "skill:superpowers:executing-plans": {
+    "usageCount": 11,
+    "sessionsUsed": 4,
+    "mentions": 11,
+    "lastUsedAt": "2026-07-01T15:11:19.521Z"
+  },
+  "skill:superpowers:finishing-a-development-branch": {
+    "usageCount": 2,
+    "sessionsUsed": 2,
+    "mentions": 2,
+    "lastUsedAt": "2026-07-01T15:12:31.099Z"
+  },
+  "skill:superpowers:receiving-code-review": {
+    "usageCount": 5,
+    "sessionsUsed": 2,
+    "mentions": 5,
+    "lastUsedAt": "2026-07-02T14:24:17.249Z"
+  },
+  "skill:superpowers:requesting-code-review": {
+    "usageCount": 13,
+    "sessionsUsed": 4,
+    "mentions": 13,
+    "lastUsedAt": "2026-07-05T10:44:45.888Z"
+  },
+  "skill:superpowers:subagent-driven-development": {
+    "usageCount": 6,
+    "sessionsUsed": 3,
+    "mentions": 6,
+    "lastUsedAt": "2026-07-02T14:16:19.888Z"
+  },
+  "skill:superpowers:systematic-debugging": {
+    "usageCount": 15,
+    "sessionsUsed": 6,
+    "mentions": 15,
+    "lastUsedAt": "2026-07-02T15:39:55.711Z"
+  },
+  "skill:superpowers:test-driven-development": {
+    "usageCount": 25,
+    "sessionsUsed": 9,
+    "mentions": 25,
+    "lastUsedAt": "2026-07-05T10:38:09.843Z"
+  },
+  "skill:superpowers:using-git-worktrees": {
+    "usageCount": 7,
+    "sessionsUsed": 1,
+    "mentions": 7,
+    "lastUsedAt": "2026-06-27T09:13:38.141Z"
+  },
+  "skill:superpowers:using-superpowers": {
+    "usageCount": 72,
+    "sessionsUsed": 55,
+    "mentions": 72,
+    "lastUsedAt": "2026-07-02T14:55:21.251Z"
+  },
+  "skill:superpowers:verification-before-completion": {
+    "usageCount": 52,
+    "sessionsUsed": 19,
+    "mentions": 52,
+    "lastUsedAt": "2026-07-05T10:38:09.881Z"
+  },
+  "skill:superpowers:writing-plans": {
+    "usageCount": 17,
+    "sessionsUsed": 10,
+    "mentions": 17,
+    "lastUsedAt": "2026-07-02T14:13:38.469Z"
+  },
+  "skill:superpowers:writing-skills": {
+    "usageCount": 2,
+    "sessionsUsed": 2,
+    "mentions": 2,
+    "lastUsedAt": "2026-06-27T14:50:25.929Z"
+  },
+  "skill:tdd": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:teach": {
+    "usageCount": 4,
+    "sessionsUsed": 4,
+    "mentions": 4,
+    "lastUsedAt": "2026-07-05T10:44:28.462Z"
+  },
+  "skill:template-creator:template-creator": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:to-issues": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:to-prd": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:triage": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  },
+  "skill:writing-great-skills": {
+    "usageCount": 0,
+    "sessionsUsed": 0,
+    "mentions": 0,
+    "lastUsedAt": "0001-01-01T00:00:00Z"
+  }
+}

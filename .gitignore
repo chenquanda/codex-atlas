@@ -1,0 +1,10 @@
+.cache/
+.tmp/
+dist/
+
+*.exe
+*.zip
+*.log
+
+# 个人整理数据由应用在本机生成，避免以后把私人备注误提交。
+data/atlas-store.json
