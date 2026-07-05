@@ -245,7 +245,9 @@ fn skill_detail_window_label_and_url_are_stable_and_safe() {
         .strip_prefix(label_prefix)
         .expect("label has hash suffix");
     assert_eq!(hash_suffix.len(), 16);
-    assert!(hash_suffix.chars().all(|character| character.is_ascii_hexdigit()));
+    assert!(hash_suffix
+        .chars()
+        .all(|character| character.is_ascii_hexdigit()));
     assert_eq!(
         target.app_url,
         "index.html?skillDetail=skill%3Aunsafe%20id%2F..%5Cpath%3Fx%3D1%26%E4%B8%AD"

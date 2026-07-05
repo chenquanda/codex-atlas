@@ -5,7 +5,8 @@ import type {
   SkillDetailWindowInfo,
   SkillFileContent,
   SkillFileEntry,
-  SkillFileList
+  SkillFileList,
+  TranslationState
 } from "../api/atlasApi";
 import {
   formatUsageLabel,
@@ -17,7 +18,10 @@ import { detectContentLanguage } from "../lib/language";
 
 interface DetailWindowProps {
   ability: Ability;
-  api: Pick<AtlasApi, "listSkillFiles" | "readSkillFile">;
+  api: Pick<
+    AtlasApi,
+    "listSkillFiles" | "readSkillFile" | "getTranslationState" | "translateSkillFile"
+  >;
   detailInfo?: SkillDetailWindowInfo | null;
   onClose: () => void;
 }
@@ -30,7 +34,13 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
   const [contentLoading, setContentLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [contentError, setContentError] = useState<string | null>(null);
+  const [translationState, setTranslationState] = useState<TranslationState | null>(null);
+  const [translationText, setTranslationText] = useState<string | null>(null);
+  const [translationChecking, setTranslationChecking] = useState(false);
+  const [translationLoading, setTranslationLoading] = useState(false);
+  const [translationError, setTranslationError] = useState<string | null>(null);
   const readRequestSequence = useRef(0);
+  const translationInFlight = useRef(false);
 
   const name = getAbilityName(ability);
   const summary = getAbilitySummary(ability);
@@ -47,6 +57,7 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
       setContent(null);
       setSelectedPath(null);
       setFileList(null);
+      resetTranslationState();
 
       try {
         const nextFiles = await api.listSkillFiles(ability.id);
@@ -74,6 +85,8 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
         }
         setContent(firstContent);
         setContentError(null);
+        setContentLoading(false);
+        await loadTranslationState(firstFile.relative_path, requestId, () => active);
       } catch (reason) {
         if (active && requestId === readRequestSequence.current) {
           setError(errorMessage(reason));
@@ -98,10 +111,29 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
     [fileList, selectedPath]
   );
   const visibleContent = content?.relative_path === selectedPath ? content : null;
-  // 翻译控件的显示边界在前端按当前内容判断；任务 7 不调用翻译，只为任务 8 保留英文入口。
-  const contentLanguage = visibleContent ? detectContentLanguage(visibleContent.content) : "Other";
-  const showTranslationAction = visibleContent !== null && contentLanguage !== "Chinese";
+  const visibleTranslation =
+    translationState?.relative_path === selectedPath ? translationText : null;
+  const displayedContent = visibleTranslation ?? visibleContent?.content ?? null;
+  const contentLanguage = visibleTranslation
+    ? "Chinese"
+    : visibleContent
+      ? detectContentLanguage(visibleContent.content)
+      : "Other";
+  const showTranslationAction =
+    visibleContent !== null &&
+    translationState?.relative_path === selectedPath &&
+    translationState.show_translate_action &&
+    visibleTranslation === null;
   const rootPath = detailInfo?.root_path ?? fileList?.root_path ?? ability.path ?? ability.id;
+  const languageNote = translationChecking
+    ? "正在检查缓存"
+    : visibleTranslation
+      ? translationState?.cached_translation
+        ? "缓存命中"
+        : "手动翻译"
+      : contentLanguage === "Chinese"
+        ? "隐藏翻译控件"
+        : "仅保留手动翻译入口";
 
   async function handleSelectFile(entry: SkillFileEntry) {
     const requestId = ++readRequestSequence.current;
@@ -109,6 +141,7 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
     setContent(null);
     setContentLoading(true);
     setContentError(null);
+    resetTranslationState();
 
     try {
       const nextContent = await api.readSkillFile(ability.id, entry.relative_path);
@@ -117,6 +150,8 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
         return;
       }
       setContent(nextContent);
+      setContentLoading(false);
+      await loadTranslationState(entry.relative_path, requestId);
     } catch (reason) {
       if (requestId !== readRequestSequence.current) {
         return;
@@ -128,6 +163,81 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
         setContentLoading(false);
       }
     }
+  }
+
+  async function loadTranslationState(
+    relativePath: string,
+    requestId: number,
+    isActive: () => boolean = () => true
+  ) {
+    setTranslationChecking(true);
+    setTranslationError(null);
+
+    try {
+      const nextState = await api.getTranslationState(ability.id, relativePath);
+      if (!isActive() || requestId !== readRequestSequence.current) {
+        return;
+      }
+      setTranslationState(nextState);
+      setTranslationText(nextState.cached_translation);
+    } catch (reason) {
+      if (!isActive() || requestId !== readRequestSequence.current) {
+        return;
+      }
+      setTranslationState(null);
+      setTranslationText(null);
+      setTranslationError(errorMessage(reason));
+    } finally {
+      if (isActive() && requestId === readRequestSequence.current) {
+        setTranslationChecking(false);
+      }
+    }
+  }
+
+  async function handleTranslate() {
+    if (!selectedPath || !visibleContent || translationInFlight.current) {
+      return;
+    }
+
+    const relativePath = selectedPath;
+    const requestId = readRequestSequence.current;
+    translationInFlight.current = true;
+    setTranslationLoading(true);
+    setTranslationError(null);
+
+    try {
+      const result = await api.translateSkillFile(ability.id, relativePath);
+      if (requestId !== readRequestSequence.current || result.relative_path !== selectedPath) {
+        return;
+      }
+      setTranslationText(result.translation);
+      setTranslationState({
+        skill_id: result.skill_id,
+        relative_path: result.relative_path,
+        content_hash: result.content_hash,
+        show_translate_action: false,
+        cached_translation: result.cached ? result.translation : null
+      });
+    } catch (reason) {
+      if (requestId !== readRequestSequence.current) {
+        return;
+      }
+      setTranslationError(errorMessage(reason));
+    } finally {
+      if (requestId === readRequestSequence.current) {
+        setTranslationLoading(false);
+        translationInFlight.current = false;
+      }
+    }
+  }
+
+  function resetTranslationState() {
+    setTranslationState(null);
+    setTranslationText(null);
+    setTranslationChecking(false);
+    setTranslationLoading(false);
+    setTranslationError(null);
+    translationInFlight.current = false;
   }
 
   return (
@@ -217,12 +327,12 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
                 <div className="toolbar-actions">
                   {showTranslationAction ? (
                     <button
-                      className="action"
-                      disabled
-                      title="任务 8 接入手动翻译"
+                      className="action primary"
+                      disabled={translationLoading || translationChecking}
+                      onClick={handleTranslate}
                       type="button"
                     >
-                      翻译
+                      {translationLoading ? "翻译中" : "翻译"}
                     </button>
                   ) : null}
                   <button className="action" onClick={onClose} type="button">
@@ -235,12 +345,15 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
                 <article className="article">
                   {error ? <div className="notice error">{error}</div> : null}
                   {contentError ? <div className="notice error">{contentError}</div> : null}
+                  {translationError ? (
+                    <div className="notice error">{translationError}</div>
+                  ) : null}
                   {contentLoading ? <div className="list-state">正在读取内容</div> : null}
                   {!contentLoading && !visibleContent && !error && !contentError ? (
                     <div className="list-state">请选择左侧文件</div>
                   ) : null}
-                  {visibleContent ? (
-                    <pre className="reader-pre">{visibleContent.content}</pre>
+                  {displayedContent !== null ? (
+                    <pre className="reader-pre">{displayedContent}</pre>
                   ) : null}
                 </article>
                 <aside className="side-meta">
@@ -256,12 +369,14 @@ export function DetailWindow({ ability, api, detailInfo = null, onClose }: Detai
                   </div>
                   <div className="meta-block">
                     <small>语言判断</small>
-                    <b>{contentLanguage === "Chinese" ? "中文内容" : "非中文内容"}</b>
-                    <span>
-                      {contentLanguage === "Chinese"
-                        ? "隐藏翻译控件"
-                        : "仅保留手动翻译入口"}
-                    </span>
+                    <b>
+                      {visibleTranslation
+                        ? "中文译文"
+                        : contentLanguage === "Chinese"
+                          ? "中文内容"
+                          : "非中文内容"}
+                    </b>
+                    <span>{languageNote}</span>
                   </div>
                 </aside>
               </div>
@@ -285,5 +400,14 @@ function formatBytes(size: number | null | undefined): string {
 }
 
 function errorMessage(reason: unknown): string {
+  if (
+    reason !== null &&
+    typeof reason === "object" &&
+    "message" in reason &&
+    typeof reason.message === "string"
+  ) {
+    return reason.message;
+  }
+
   return reason instanceof Error ? reason.message : String(reason);
 }

@@ -19,6 +19,11 @@ use crate::{
     },
     stats::{refresh_usage_stats, AbilityUsageIndex},
     store::{save_stats_cache, save_store, Store, StoreError},
+    translate::{
+        get_translation_state as get_translation_state_for_ability,
+        translate_skill_file as translate_skill_file_for_ability, TranslationError,
+        TranslationResult, TranslationRunnerError, TranslationState,
+    },
 };
 
 #[tauri::command]
@@ -120,6 +125,83 @@ impl Display for CommandError {
 
 impl std::error::Error for CommandError {}
 
+#[derive(Clone, Debug, Default, Deserialize, Eq, PartialEq, Serialize)]
+pub struct TranslationCommandError {
+    pub kind: String,
+    pub message: String,
+    pub status_code: Option<i32>,
+    pub stdout: Option<String>,
+    pub stderr: Option<String>,
+    pub timeout_millis: Option<u64>,
+}
+
+impl TranslationCommandError {
+    fn new(kind: impl Into<String>, message: impl Into<String>) -> Self {
+        Self {
+            kind: kind.into(),
+            message: message.into(),
+            status_code: None,
+            stdout: None,
+            stderr: None,
+            timeout_millis: None,
+        }
+    }
+}
+
+impl Display for TranslationCommandError {
+    fn fmt(&self, formatter: &mut Formatter<'_>) -> std::fmt::Result {
+        formatter.write_str(&self.message)
+    }
+}
+
+impl From<CommandError> for TranslationCommandError {
+    fn from(error: CommandError) -> Self {
+        Self::new("command", error.to_string())
+    }
+}
+
+impl From<TranslationError> for TranslationCommandError {
+    fn from(error: TranslationError) -> Self {
+        let message = error.to_string();
+
+        match error {
+            TranslationError::Command { error, .. } => match error {
+                TranslationRunnerError::Timeout { timeout_millis } => Self {
+                    kind: "timeout".to_string(),
+                    message,
+                    timeout_millis: Some(timeout_millis),
+                    ..Self::default()
+                },
+                TranslationRunnerError::Failed {
+                    status_code,
+                    stdout,
+                    stderr,
+                } => Self {
+                    kind: "failed".to_string(),
+                    message,
+                    status_code,
+                    stdout: Some(stdout),
+                    stderr: Some(stderr),
+                    ..Self::default()
+                },
+                TranslationRunnerError::EmptyOutput { stdout, stderr } => Self {
+                    kind: "empty_output".to_string(),
+                    message,
+                    stdout: Some(stdout),
+                    stderr: Some(stderr),
+                    ..Self::default()
+                },
+                TranslationRunnerError::Io(_) => Self::new("io", message),
+            },
+            TranslationError::AlreadyChinese { .. } => Self::new("already_chinese", message),
+            TranslationError::CachePath(_) => Self::new("cache_path", message),
+            TranslationError::Io(_) => Self::new("io", message),
+            TranslationError::Json(_) => Self::new("cache_json", message),
+            TranslationError::SkillDoc(_) => Self::new("skill_file", message),
+        }
+    }
+}
+
 impl From<StoreError> for CommandError {
     fn from(error: StoreError) -> Self {
         Self::new(error.to_string())
@@ -128,6 +210,12 @@ impl From<StoreError> for CommandError {
 
 impl From<SkillDocError> for CommandError {
     fn from(error: SkillDocError) -> Self {
+        Self::new(error.to_string())
+    }
+}
+
+impl From<TranslationError> for CommandError {
+    fn from(error: TranslationError) -> Self {
         Self::new(error.to_string())
     }
 }
@@ -192,6 +280,24 @@ pub fn read_skill_file(
     relative_path: String,
 ) -> Result<SkillFileContent, String> {
     command_result(read_skill_file_state(state.inner(), &id, &relative_path))
+}
+
+#[tauri::command]
+pub fn get_translation_state(
+    state: State<'_, SharedAppState>,
+    id: String,
+    relative_path: String,
+) -> Result<TranslationState, TranslationCommandError> {
+    get_translation_state_state(state.inner(), &id, &relative_path)
+}
+
+#[tauri::command]
+pub fn translate_skill_file(
+    state: State<'_, SharedAppState>,
+    id: String,
+    relative_path: String,
+) -> Result<TranslationResult, TranslationCommandError> {
+    translate_skill_file_state(state.inner(), &id, &relative_path)
 }
 
 pub fn list_abilities_state(state: &SharedAppState) -> CommandResult<Vec<Ability>> {
@@ -405,6 +511,39 @@ pub fn read_skill_file_state(
 ) -> CommandResult<SkillFileContent> {
     let ability = get_ability_state(state, id)?;
     Ok(read_skill_file_for_ability(&ability, relative_path)?)
+}
+
+pub fn get_translation_state_state(
+    state: &SharedAppState,
+    id: &str,
+    relative_path: &str,
+) -> Result<TranslationState, TranslationCommandError> {
+    let (project_dir, ability) = {
+        let state = read_state(state).map_err(TranslationCommandError::from)?;
+        let ability =
+            merged_ability(&state.store, id).ok_or_else(|| CommandError::ability_not_found(id))?;
+        (state.project_dir.clone(), ability)
+    };
+
+    get_translation_state_for_ability(project_dir, &ability, relative_path)
+        .map_err(TranslationCommandError::from)
+}
+
+pub fn translate_skill_file_state(
+    state: &SharedAppState,
+    id: &str,
+    relative_path: &str,
+) -> Result<TranslationResult, TranslationCommandError> {
+    let (project_dir, ability) = {
+        let state = read_state(state).map_err(TranslationCommandError::from)?;
+        let ability =
+            merged_ability(&state.store, id).ok_or_else(|| CommandError::ability_not_found(id))?;
+        (state.project_dir.clone(), ability)
+    };
+
+    // 手动翻译是慢外部命令，不能在 AppState 读锁内执行；这里只带出只读参数。
+    translate_skill_file_for_ability(project_dir, &ability, relative_path)
+        .map_err(TranslationCommandError::from)
 }
 
 fn command_result<T>(result: CommandResult<T>) -> Result<T, String> {

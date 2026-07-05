@@ -5,6 +5,7 @@ pub mod scanner;
 pub mod skilldoc;
 pub mod stats;
 pub mod store;
+pub mod translate;
 pub mod util;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -24,7 +25,9 @@ pub fn run() {
             commands::copy_call_template,
             commands::open_skill_detail_window,
             commands::list_skill_files,
-            commands::read_skill_file
+            commands::read_skill_file,
+            commands::get_translation_state,
+            commands::translate_skill_file
         ])
         .run(tauri::generate_context!())
         .expect("运行 Codex Atlas Tauri 应用失败");

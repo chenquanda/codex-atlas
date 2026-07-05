@@ -39,16 +39,36 @@ interface TestSkillDetailInfo {
   root_path: string;
 }
 
+interface TestTranslationState {
+  skill_id: string;
+  relative_path: string;
+  content_hash: string;
+  show_translate_action: boolean;
+  cached_translation: string | null;
+}
+
+interface TestTranslationResult {
+  skill_id: string;
+  relative_path: string;
+  content_hash: string;
+  translation: string;
+  cached: boolean;
+}
+
 interface DetailApiPart {
   openSkillDetailWindow: (id: string) => Promise<TestSkillDetailInfo>;
   listSkillFiles: (id: string) => Promise<TestSkillFileList>;
   readSkillFile: (id: string, relativePath: string) => Promise<TestSkillFileContent>;
+  getTranslationState: (id: string, relativePath: string) => Promise<TestTranslationState>;
+  translateSkillFile: (id: string, relativePath: string) => Promise<TestTranslationResult>;
 }
 
 interface CreateApiOptions {
   files?: TestSkillFileEntry[];
   contents?: Record<string, string>;
   readSkillFile?: (id: string, relativePath: string) => Promise<TestSkillFileContent>;
+  getTranslationState?: (id: string, relativePath: string) => Promise<TestTranslationState>;
+  translateSkillFile?: (id: string, relativePath: string) => Promise<TestTranslationResult>;
 }
 
 function skillContent(
@@ -62,6 +82,23 @@ function skillContent(
     content,
     size_bytes: content.length,
     language: /[\u4e00-\u9fff]/.test(content) ? "Chinese" : "Other"
+  };
+}
+
+function translationState(
+  id: string,
+  relativePath: string,
+  content: string,
+  cachedTranslation: string | null = null
+): TestTranslationState {
+  const isChinese = /[\u4e00-\u9fff]/.test(content);
+
+  return {
+    skill_id: id,
+    relative_path: relativePath,
+    content_hash: `${content.length}-${content.charCodeAt(0) || 0}`,
+    show_translate_action: !isChinese && cachedTranslation === null,
+    cached_translation: cachedTranslation
   };
 }
 
@@ -147,6 +184,25 @@ function createApi(abilities = [ability()], options: CreateApiOptions = {}): Atl
       }
       const content = contents[relativePath] ?? "";
       return skillContent(id, relativePath, content);
+    }),
+    getTranslationState: vi.fn(async (id: string, relativePath: string) => {
+      if (options.getTranslationState) {
+        return options.getTranslationState(id, relativePath);
+      }
+      const content = contents[relativePath] ?? "";
+      return translationState(id, relativePath, content);
+    }),
+    translateSkillFile: vi.fn(async (id: string, relativePath: string) => {
+      if (options.translateSkillFile) {
+        return options.translateSkillFile(id, relativePath);
+      }
+      return {
+        skill_id: id,
+        relative_path: relativePath,
+        content_hash: "translated",
+        translation: "默认中文译文",
+        cached: false
+      };
     })
   };
 }
@@ -510,6 +566,119 @@ describe("App", () => {
 
     expect(await screen.findByText("这是中文 Skill 文档，不需要翻译按钮。")).toBeTruthy();
     expect(screen.queryByRole("button", { name: /翻译/ })).toBeNull();
+  });
+
+  it("shows translation action for uncached English content and renders the manual translation", async () => {
+    const api = createApi([ability({ id: "skill:translate", name: "translate" })], {
+      files: [{ relative_path: "SKILL.md", size_bytes: 32, extension: "md" }],
+      contents: {
+        "SKILL.md": "# Skill\n\nUse this when planning."
+      },
+      translateSkillFile: async (id, relativePath) => ({
+        skill_id: id,
+        relative_path: relativePath,
+        content_hash: "manual",
+        translation: "手动翻译后的中文说明。",
+        cached: false
+      })
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /translate/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    const translateButton = await screen.findByRole("button", { name: "翻译" });
+    await user.click(translateButton);
+
+    expect(api.getTranslationState).toHaveBeenCalledWith("skill:translate", "SKILL.md");
+    expect(api.translateSkillFile).toHaveBeenCalledWith("skill:translate", "SKILL.md");
+    expect(await screen.findByText("手动翻译后的中文说明。")).toBeTruthy();
+  });
+
+  it("does not start duplicate translation commands while one is in flight", async () => {
+    const translation = deferred<TestTranslationResult>();
+    const translateSkillFile = vi.fn(async (id: string, relativePath: string) => {
+      expect(id).toBe("skill:translate-once");
+      expect(relativePath).toBe("SKILL.md");
+      return translation.promise;
+    });
+    const api = createApi([ability({ id: "skill:translate-once", name: "translate-once" })], {
+      files: [{ relative_path: "SKILL.md", size_bytes: 32, extension: "md" }],
+      contents: {
+        "SKILL.md": "# Skill\n\nTranslate once."
+      },
+      translateSkillFile
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /translate-once/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    await user.dblClick(await screen.findByRole("button", { name: "翻译" }));
+
+    expect(translateSkillFile).toHaveBeenCalledTimes(1);
+    translation.resolve({
+      skill_id: "skill:translate-once",
+      relative_path: "SKILL.md",
+      content_hash: "once",
+      translation: "只翻译一次。",
+      cached: false
+    });
+    expect(await screen.findByText("只翻译一次。")).toBeTruthy();
+  });
+
+  it("shows the structured translation error message from Tauri", async () => {
+    const api = createApi([ability({ id: "skill:translate-error", name: "translate-error" })], {
+      files: [{ relative_path: "SKILL.md", size_bytes: 32, extension: "md" }],
+      contents: {
+        "SKILL.md": "# Skill\n\nTranslate this file."
+      },
+      translateSkillFile: async () => {
+        throw {
+          kind: "timeout",
+          message: "Codex 翻译命令超时: 120000 ms",
+          status_code: null,
+          stdout: null,
+          stderr: null,
+          timeout_millis: 120000
+        };
+      }
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /translate-error/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    await user.click(await screen.findByRole("button", { name: "翻译" }));
+
+    expect(await screen.findByText("Codex 翻译命令超时: 120000 ms")).toBeTruthy();
+  });
+
+  it("renders cached translation by default for English content", async () => {
+    const api = createApi([ability({ id: "skill:cached", name: "cached" })], {
+      files: [{ relative_path: "SKILL.md", size_bytes: 30, extension: "md" }],
+      contents: {
+        "SKILL.md": "# Skill\n\nCached English source."
+      },
+      getTranslationState: async (id, relativePath) =>
+        translationState(
+          id,
+          relativePath,
+          "# Skill\n\nCached English source.",
+          "缓存命中的中文译文。"
+        )
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /cached/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    expect(await screen.findByText("缓存命中的中文译文。")).toBeTruthy();
+    expect(screen.queryByText("Cached English source.")).toBeNull();
   });
 
   it("opens the detail reader from a skillDetail URL parameter", async () => {

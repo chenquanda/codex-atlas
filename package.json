@@ -10,6 +10,7 @@
     "test:frontend": "vitest run",
     "test:rust": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 cargo test --manifest-path src-tauri/Cargo.toml",
     "smoke:skill-detail": "powershell -ExecutionPolicy Bypass -File scripts/smoke-skill-detail.ps1",
+    "smoke:translation-cache": "powershell -ExecutionPolicy Bypass -File scripts/smoke-translation-cache.ps1",
     "tauri:dev": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri dev",
     "tauri:build": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri build"
   },

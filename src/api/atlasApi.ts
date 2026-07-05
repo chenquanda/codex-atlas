@@ -89,6 +89,31 @@ export interface SkillFileContent {
   language: SkillFileLanguage;
 }
 
+export interface TranslationState {
+  skill_id: string;
+  relative_path: string;
+  content_hash: string;
+  show_translate_action: boolean;
+  cached_translation: string | null;
+}
+
+export interface TranslationResult {
+  skill_id: string;
+  relative_path: string;
+  content_hash: string;
+  translation: string;
+  cached: boolean;
+}
+
+export interface TranslationCommandError {
+  kind: string;
+  message: string;
+  status_code: number | null;
+  stdout: string | null;
+  stderr: string | null;
+  timeout_millis: number | null;
+}
+
 export interface AtlasApi {
   listAbilities: () => Promise<Ability[]>;
   updateUserData: (id: string, patch: UserDataPatch) => Promise<Ability>;
@@ -98,6 +123,8 @@ export interface AtlasApi {
   openSkillDetailWindow: (id: string) => Promise<SkillDetailWindowInfo>;
   listSkillFiles: (id: string) => Promise<SkillFileList>;
   readSkillFile: (id: string, relativePath: string) => Promise<SkillFileContent>;
+  getTranslationState: (id: string, relativePath: string) => Promise<TranslationState>;
+  translateSkillFile: (id: string, relativePath: string) => Promise<TranslationResult>;
 }
 
 export function createAtlasApi(invokeCommand: TauriInvoker = tauriInvoke): AtlasApi {
@@ -124,6 +151,16 @@ export function createAtlasApi(invokeCommand: TauriInvoker = tauriInvoke): Atlas
       }),
     readSkillFile: (id, relativePath) =>
       invokeCommand<SkillFileContent>("read_skill_file", {
+        id,
+        relativePath
+      }),
+    getTranslationState: (id, relativePath) =>
+      invokeCommand<TranslationState>("get_translation_state", {
+        id,
+        relativePath
+      }),
+    translateSkillFile: (id, relativePath) =>
+      invokeCommand<TranslationResult>("translate_skill_file", {
         id,
         relativePath
       })
