@@ -12,6 +12,7 @@ interface BottomPanelProps {
   copyStatus: string | null;
   moreOpen: boolean;
   onCopy: (ability: Ability) => Promise<void>;
+  onOpenDetail: (ability: Ability) => void;
   onMoreChange: (open: boolean) => void;
   onUpdateUserData: (ability: Ability, patch: UserDataPatch) => Promise<void>;
 }
@@ -21,6 +22,7 @@ export function BottomPanel({
   copyStatus,
   moreOpen,
   onCopy,
+  onOpenDetail,
   onMoreChange,
   onUpdateUserData
 }: BottomPanelProps) {
@@ -59,8 +61,9 @@ export function BottomPanel({
         <div className="actions">
           <button
             className="action primary"
-            disabled
-            title="任务 7 接入详情窗口后启用"
+            disabled={ability.kind !== "Skill"}
+            onClick={() => onOpenDetail(ability)}
+            title={ability.kind === "Skill" ? "打开 Skill 文件阅读器" : "仅 Skill 支持详情阅读"}
             type="button"
           >
             打开详情

@@ -60,12 +60,44 @@ export interface StatsSummary {
   saved_cache: boolean;
 }
 
+export interface SkillDetailWindowInfo {
+  skill_id: string;
+  title: string;
+  root_path: string;
+}
+
+export interface SkillFileEntry {
+  relative_path: string;
+  size_bytes: number;
+  extension: string | null;
+}
+
+export interface SkillFileList {
+  skill_id: string;
+  root_path: string;
+  files: SkillFileEntry[];
+  warnings: string[];
+}
+
+export type SkillFileLanguage = "Chinese" | "Other";
+
+export interface SkillFileContent {
+  skill_id: string;
+  relative_path: string;
+  content: string;
+  size_bytes: number;
+  language: SkillFileLanguage;
+}
+
 export interface AtlasApi {
   listAbilities: () => Promise<Ability[]>;
   updateUserData: (id: string, patch: UserDataPatch) => Promise<Ability>;
   refreshScan: () => Promise<ScanSummary>;
   refreshStats: () => Promise<StatsSummary>;
   copyCallTemplate: (id: string) => Promise<string>;
+  openSkillDetailWindow: (id: string) => Promise<SkillDetailWindowInfo>;
+  listSkillFiles: (id: string) => Promise<SkillFileList>;
+  readSkillFile: (id: string, relativePath: string) => Promise<SkillFileContent>;
 }
 
 export function createAtlasApi(invokeCommand: TauriInvoker = tauriInvoke): AtlasApi {
@@ -81,6 +113,19 @@ export function createAtlasApi(invokeCommand: TauriInvoker = tauriInvoke): Atlas
     copyCallTemplate: (id) =>
       invokeCommand<string>("copy_call_template", {
         id
+      }),
+    openSkillDetailWindow: (id) =>
+      invokeCommand<SkillDetailWindowInfo>("open_skill_detail_window", {
+        id
+      }),
+    listSkillFiles: (id) =>
+      invokeCommand<SkillFileList>("list_skill_files", {
+        id
+      }),
+    readSkillFile: (id, relativePath) =>
+      invokeCommand<SkillFileContent>("read_skill_file", {
+        id,
+        relativePath
       })
   };
 }

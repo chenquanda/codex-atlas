@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Ability, AtlasApi, UserDataPatch } from "./api/atlasApi";
+import type {
+  Ability,
+  AtlasApi,
+  SkillDetailWindowInfo,
+  UserDataPatch
+} from "./api/atlasApi";
 import { atlasApi } from "./api/atlasApi";
 import {
   writeClipboardText as defaultWriteClipboardText,
@@ -8,6 +13,7 @@ import {
 import { AbilityList } from "./components/AbilityList";
 import { AbilityToolbar } from "./components/AbilityToolbar";
 import { BottomPanel } from "./components/BottomPanel";
+import { DetailWindow } from "./components/DetailWindow";
 import { FilterBar } from "./components/FilterBar";
 import { MetricCards } from "./components/MetricCards";
 import { SearchBox } from "./components/SearchBox";
@@ -18,6 +24,7 @@ import {
   type KindFilter
 } from "./lib/abilityFilters";
 import { uniqueAbilityTags } from "./lib/abilityFormatting";
+import { isTauriRuntime } from "./lib/runtime";
 
 interface AppProps {
   api?: AtlasApi;
@@ -45,6 +52,8 @@ export default function App({
   const [status, setStatus] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [detailAbility, setDetailAbility] = useState<Ability | null>(null);
+  const [detailInfo, setDetailInfo] = useState<SkillDetailWindowInfo | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -75,6 +84,26 @@ export default function App({
       active = false;
     };
   }, [api]);
+
+  useEffect(() => {
+    if (detailAbility || abilities.length === 0) {
+      return;
+    }
+
+    const requestedId = consumeSkillDetailParam();
+    if (!requestedId) {
+      return;
+    }
+
+    const requestedAbility = abilities.find((ability) => ability.id === requestedId);
+    if (!requestedAbility) {
+      return;
+    }
+
+    setSelectedId(requestedAbility.id);
+    setDetailInfo(null);
+    setDetailAbility(requestedAbility);
+  }, [abilities, detailAbility]);
 
   const filteredAbilities = useMemo(
     () => filterAbilities(abilities, filters),
@@ -168,6 +197,26 @@ export default function App({
     }
   }
 
+  async function handleOpenDetail(ability: Ability) {
+    if (ability.kind !== "Skill") {
+      return;
+    }
+
+    setError(null);
+    setStatus(null);
+    setCopyStatus(null);
+    try {
+      const info = await api.openSkillDetailWindow(ability.id);
+      if (!isTauriRuntime()) {
+        setDetailInfo(info);
+        setDetailAbility(ability);
+      }
+    } catch (reason) {
+      setDetailInfo(null);
+      setError(errorMessage(reason));
+    }
+  }
+
   return (
     <main className="atlas-page" aria-label="Codex Atlas">
       <section className="window atlas" aria-label="Codex Atlas 主窗口">
@@ -243,15 +292,43 @@ export default function App({
             copyStatus={copyStatus}
             moreOpen={moreOpen}
             onCopy={handleCopy}
+            onOpenDetail={handleOpenDetail}
             onMoreChange={setMoreOpen}
             onUpdateUserData={handleUpdateUserData}
           />
         </div>
       </section>
+
+      {detailAbility ? (
+        <DetailWindow
+          ability={detailAbility}
+          api={api}
+          detailInfo={detailInfo}
+          onClose={() => {
+            setDetailInfo(null);
+            setDetailAbility(null);
+          }}
+        />
+      ) : null}
     </main>
   );
 }
 
 function errorMessage(reason: unknown): string {
   return reason instanceof Error ? reason.message : String(reason);
+}
+
+function consumeSkillDetailParam(): string | null {
+  const url = new URL(window.location.href);
+  const requestedId = url.searchParams.get("skillDetail");
+  if (!requestedId) {
+    return null;
+  }
+
+  url.searchParams.delete("skillDetail");
+  const search = url.searchParams.toString();
+  const nextUrl = `${url.pathname}${search ? `?${search}` : ""}${url.hash}`;
+  window.history.replaceState(window.history.state, "", nextUrl);
+
+  return requestedId;
 }

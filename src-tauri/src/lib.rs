@@ -2,6 +2,7 @@ pub mod app_state;
 pub mod commands;
 pub mod domain;
 pub mod scanner;
+pub mod skilldoc;
 pub mod stats;
 pub mod store;
 pub mod util;
@@ -20,7 +21,10 @@ pub fn run() {
             commands::refresh_stats,
             commands::get_ability,
             commands::update_user_data,
-            commands::copy_call_template
+            commands::copy_call_template,
+            commands::open_skill_detail_window,
+            commands::list_skill_files,
+            commands::read_skill_file
         ])
         .run(tauri::generate_context!())
         .expect("运行 Codex Atlas Tauri 应用失败");

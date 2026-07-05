@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen, within } from "@testing-library/react";
+import { cleanup, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
@@ -8,10 +8,82 @@ import { ability } from "./test/fixtures";
 
 afterEach(() => {
   cleanup();
+  window.history.pushState({}, "", "/");
+  delete (window as Window & { __TAURI_INTERNALS__?: unknown }).__TAURI_INTERNALS__;
 });
 
-function createApi(abilities = [ability()]): AtlasApi {
+interface TestSkillFileEntry {
+  relative_path: string;
+  size_bytes: number;
+  extension: string | null;
+}
+
+interface TestSkillFileList {
+  skill_id: string;
+  root_path: string;
+  files: TestSkillFileEntry[];
+  warnings: string[];
+}
+
+interface TestSkillFileContent {
+  skill_id: string;
+  relative_path: string;
+  content: string;
+  size_bytes: number;
+  language: "Chinese" | "Other";
+}
+
+interface TestSkillDetailInfo {
+  skill_id: string;
+  title: string;
+  root_path: string;
+}
+
+interface DetailApiPart {
+  openSkillDetailWindow: (id: string) => Promise<TestSkillDetailInfo>;
+  listSkillFiles: (id: string) => Promise<TestSkillFileList>;
+  readSkillFile: (id: string, relativePath: string) => Promise<TestSkillFileContent>;
+}
+
+interface CreateApiOptions {
+  files?: TestSkillFileEntry[];
+  contents?: Record<string, string>;
+  readSkillFile?: (id: string, relativePath: string) => Promise<TestSkillFileContent>;
+}
+
+function skillContent(
+  id: string,
+  relativePath: string,
+  content: string
+): TestSkillFileContent {
+  return {
+    skill_id: id,
+    relative_path: relativePath,
+    content,
+    size_bytes: content.length,
+    language: /[\u4e00-\u9fff]/.test(content) ? "Chinese" : "Other"
+  };
+}
+
+function deferred<T>() {
+  let resolve!: (value: T) => void;
+  const promise = new Promise<T>((nextResolve) => {
+    resolve = nextResolve;
+  });
+
+  return { promise, resolve };
+}
+
+function createApi(abilities = [ability()], options: CreateApiOptions = {}): AtlasApi & DetailApiPart {
   let currentAbilities = abilities;
+  const files = options.files ?? [
+    { relative_path: "SKILL.md", size_bytes: 24, extension: "md" },
+    { relative_path: "references/guide.md", size_bytes: 18, extension: "md" }
+  ];
+  const contents = options.contents ?? {
+    "SKILL.md": "# Reader\n\nPrimary skill file.",
+    "references/guide.md": "Guide content."
+  };
 
   return {
     listAbilities: vi.fn(async () => currentAbilities),
@@ -54,8 +126,36 @@ function createApi(abilities = [ability()]): AtlasApi {
     copyCallTemplate: vi.fn(async (id: string) => {
       const target = currentAbilities.find((item) => item.id === id);
       return target?.user.custom_template ?? target?.ai.call_template ?? `$${target?.name ?? id}`;
+    }),
+    openSkillDetailWindow: vi.fn(async (id: string) => {
+      const target = currentAbilities.find((item) => item.id === id);
+      return {
+        skill_id: id,
+        title: target?.name ?? id,
+        root_path: String(target?.path ?? "")
+      };
+    }),
+    listSkillFiles: vi.fn(async (id: string) => ({
+      skill_id: id,
+      root_path: "C:/fixtures/skills/reader",
+      files,
+      warnings: []
+    })),
+    readSkillFile: vi.fn(async (id: string, relativePath: string) => {
+      if (options.readSkillFile) {
+        return options.readSkillFile(id, relativePath);
+      }
+      const content = contents[relativePath] ?? "";
+      return skillContent(id, relativePath, content);
     })
   };
+}
+
+function markTauriRuntime() {
+  Object.defineProperty(window, "__TAURI_INTERNALS__", {
+    configurable: true,
+    value: {}
+  });
 }
 
 describe("App", () => {
@@ -298,14 +398,150 @@ describe("App", () => {
     expect(screen.getByLabelText("备注")).toBeTruthy();
   });
 
-  it("does not render an enabled dead detail button", async () => {
+  it("opens detail reader for a skill and lists files", async () => {
     const api = createApi([ability({ id: "skill:details", name: "details" })]);
+    const user = userEvent.setup();
 
     render(<App api={api} />);
     await screen.findByRole("button", { name: /details/ });
 
-    const detailButton = screen.queryByRole("button", { name: "打开详情" });
-    expect(detailButton === null || detailButton.hasAttribute("disabled")).toBe(true);
-    expect(detailButton?.getAttribute("title") ?? "").toContain("任务 7");
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    expect(api.openSkillDetailWindow).toHaveBeenCalledWith("skill:details");
+    expect(api.listSkillFiles).toHaveBeenCalledWith("skill:details");
+    expect(await screen.findByRole("dialog", { name: /Skill 详情/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "SKILL.md" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "references/guide.md" })).toBeTruthy();
+  });
+
+  it("does not open an overlay in the main window when running inside Tauri", async () => {
+    markTauriRuntime();
+    const api = createApi([ability({ id: "skill:details", name: "details" })]);
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /details/ });
+
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    await waitFor(() =>
+      expect(api.openSkillDetailWindow).toHaveBeenCalledWith("skill:details")
+    );
+    expect(screen.queryByRole("dialog", { name: /Skill 详情/ })).toBeNull();
+    expect(api.listSkillFiles).not.toHaveBeenCalled();
+  });
+
+  it("shows the selected file content on the right", async () => {
+    const api = createApi([ability({ id: "skill:details", name: "details" })], {
+      contents: {
+        "SKILL.md": "# Reader\n\nPrimary skill file.",
+        "references/guide.md": "Selected guide content."
+      }
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /details/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    expect(await screen.findByText(/Primary skill file/)).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: "references/guide.md" }));
+
+    expect(await screen.findByText("Selected guide content.")).toBeTruthy();
+    expect(api.readSkillFile).toHaveBeenLastCalledWith("skill:details", "references/guide.md");
+  });
+
+  it("clears stale content and keeps the latest selected file when reads finish out of order", async () => {
+    const slowRead = deferred<TestSkillFileContent>();
+    const api = createApi([ability({ id: "skill:details", name: "details" })], {
+      files: [
+        { relative_path: "SKILL.md", size_bytes: 18, extension: "md" },
+        { relative_path: "slow.md", size_bytes: 21, extension: "md" },
+        { relative_path: "fast.md", size_bytes: 20, extension: "md" }
+      ],
+      readSkillFile: async (id, relativePath) => {
+        if (relativePath === "slow.md") {
+          return slowRead.promise;
+        }
+
+        return skillContent(
+          id,
+          relativePath,
+          relativePath === "fast.md" ? "Fast selected content." : "Initial skill content."
+        );
+      }
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /details/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+    expect(await screen.findByText("Initial skill content.")).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: "slow.md" }));
+
+    expect(screen.queryByText("Initial skill content.")).toBeNull();
+    expect(screen.getByText("正在读取内容")).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: "fast.md" }));
+    expect(await screen.findByText("Fast selected content.")).toBeTruthy();
+
+    slowRead.resolve(skillContent("skill:details", "slow.md", "Slow stale content."));
+
+    await waitFor(() => {
+      expect(screen.getByText("Fast selected content.")).toBeTruthy();
+      expect(screen.queryByText("Slow stale content.")).toBeNull();
+    });
+  });
+
+  it("does not show translation controls for Chinese content", async () => {
+    const api = createApi([ability({ id: "skill:zh", name: "zh" })], {
+      files: [{ relative_path: "README.zh.md", size_bytes: 24, extension: "md" }],
+      contents: {
+        "README.zh.md": "这是中文 Skill 文档，不需要翻译按钮。"
+      }
+    });
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+    await screen.findByRole("button", { name: /zh/ });
+    await user.click(screen.getByRole("button", { name: "打开详情" }));
+
+    expect(await screen.findByText("这是中文 Skill 文档，不需要翻译按钮。")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /翻译/ })).toBeNull();
+  });
+
+  it("opens the detail reader from a skillDetail URL parameter", async () => {
+    window.history.pushState({}, "", "/?skillDetail=skill%3Adetails");
+    const api = createApi([ability({ id: "skill:details", name: "details" })]);
+
+    render(<App api={api} />);
+
+    expect(await screen.findByRole("dialog", { name: /Skill 详情 · details/ })).toBeTruthy();
+    expect(api.listSkillFiles).toHaveBeenCalledWith("skill:details");
+    expect(await screen.findByText(/Primary skill file/)).toBeTruthy();
+  });
+
+  it("consumes the skillDetail URL parameter so closing the detail reader does not reopen it", async () => {
+    window.history.pushState({}, "", "/?skillDetail=skill%3Adetails&keep=1#x");
+    const api = createApi([ability({ id: "skill:details", name: "details" })]);
+    const user = userEvent.setup();
+
+    render(<App api={api} />);
+
+    const dialog = await screen.findByRole("dialog", { name: /Skill 详情 · details/ });
+    expect(window.location.search).toBe("?keep=1");
+    expect(window.location.hash).toBe("#x");
+    expect(new URLSearchParams(window.location.search).has("skillDetail")).toBe(false);
+
+    await user.click(within(dialog).getAllByRole("button", { name: "关闭" })[0]);
+
+    await waitFor(() => {
+      expect(screen.queryByRole("dialog", { name: /Skill 详情/ })).toBeNull();
+    });
+    expect(api.listSkillFiles).toHaveBeenCalledTimes(1);
+    expect(window.location.search).toBe("?keep=1");
+    expect(window.location.hash).toBe("#x");
   });
 });

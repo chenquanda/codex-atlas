@@ -5,12 +5,18 @@ use std::{
 };
 
 use serde::{Deserialize, Serialize};
-use tauri::State;
+use tauri::{AppHandle, Manager, State, WebviewUrl, WebviewWindowBuilder};
 
 use crate::{
     app_state::{AppState, SharedAppState, STORE_FILE},
     domain::{Ability, UserData},
     scanner::scan_all,
+    skilldoc::{
+        list_skill_files as list_skill_files_for_ability,
+        open_skill_detail_window as open_skill_detail_window_for_ability,
+        read_skill_file as read_skill_file_for_ability, skill_detail_window_target,
+        SkillDetailWindowInfo, SkillDocError, SkillFileContent, SkillFileList,
+    },
     stats::{refresh_usage_stats, AbilityUsageIndex},
     store::{save_stats_cache, save_store, Store, StoreError},
 };
@@ -120,6 +126,12 @@ impl From<StoreError> for CommandError {
     }
 }
 
+impl From<SkillDocError> for CommandError {
+    fn from(error: SkillDocError) -> Self {
+        Self::new(error.to_string())
+    }
+}
+
 pub type CommandResult<T> = Result<T, CommandError>;
 
 #[tauri::command]
@@ -154,6 +166,32 @@ pub fn refresh_stats(state: State<'_, SharedAppState>) -> Result<StatsSummary, S
 #[tauri::command]
 pub fn copy_call_template(state: State<'_, SharedAppState>, id: String) -> Result<String, String> {
     command_result(copy_call_template_state(state.inner(), &id))
+}
+
+#[tauri::command]
+pub fn open_skill_detail_window(
+    app: AppHandle,
+    state: State<'_, SharedAppState>,
+    id: String,
+) -> Result<SkillDetailWindowInfo, String> {
+    command_result(open_skill_detail_window_command(&app, state.inner(), &id))
+}
+
+#[tauri::command]
+pub fn list_skill_files(
+    state: State<'_, SharedAppState>,
+    id: String,
+) -> Result<SkillFileList, String> {
+    command_result(list_skill_files_state(state.inner(), &id))
+}
+
+#[tauri::command]
+pub fn read_skill_file(
+    state: State<'_, SharedAppState>,
+    id: String,
+    relative_path: String,
+) -> Result<SkillFileContent, String> {
+    command_result(read_skill_file_state(state.inner(), &id, &relative_path))
 }
 
 pub fn list_abilities_state(state: &SharedAppState) -> CommandResult<Vec<Ability>> {
@@ -314,6 +352,59 @@ fn default_call_template(ability: &Ability) -> String {
     }
 
     format!("${}", ability.id)
+}
+
+pub fn open_skill_detail_window_state(
+    state: &SharedAppState,
+    id: &str,
+) -> CommandResult<SkillDetailWindowInfo> {
+    let ability = get_ability_state(state, id)?;
+
+    Ok(open_skill_detail_window_for_ability(&ability)?)
+}
+
+fn open_skill_detail_window_command(
+    app: &AppHandle,
+    state: &SharedAppState,
+    id: &str,
+) -> CommandResult<SkillDetailWindowInfo> {
+    let info = open_skill_detail_window_state(state, id)?;
+    let target = skill_detail_window_target(&info.skill_id);
+
+    // 独立窗口只加载本应用同源入口和编码后的 skill id；
+    // 不能把文件路径塞进 URL，真实文件列表与内容仍必须通过受限 command 做 canonical path 校验。
+    if let Some(window) = app.get_webview_window(&target.label) {
+        window
+            .show()
+            .map_err(|error| CommandError::new(format!("显示 Skill 详情窗口失败: {error}")))?;
+        window
+            .set_focus()
+            .map_err(|error| CommandError::new(format!("聚焦 Skill 详情窗口失败: {error}")))?;
+        return Ok(info);
+    }
+
+    WebviewWindowBuilder::new(app, target.label, WebviewUrl::App(target.app_url.into()))
+        .title(format!("Skill 详情 · {}", info.title))
+        .inner_size(990.0, 720.0)
+        .resizable(true)
+        .build()
+        .map_err(|error| CommandError::new(format!("创建 Skill 详情窗口失败: {error}")))?;
+
+    Ok(info)
+}
+
+pub fn list_skill_files_state(state: &SharedAppState, id: &str) -> CommandResult<SkillFileList> {
+    let ability = get_ability_state(state, id)?;
+    Ok(list_skill_files_for_ability(&ability)?)
+}
+
+pub fn read_skill_file_state(
+    state: &SharedAppState,
+    id: &str,
+    relative_path: &str,
+) -> CommandResult<SkillFileContent> {
+    let ability = get_ability_state(state, id)?;
+    Ok(read_skill_file_for_ability(&ability, relative_path)?)
 }
 
 fn command_result<T>(result: CommandResult<T>) -> Result<T, String> {

@@ -1,4 +1,5 @@
 import type { Ability, AbilityKind } from "../api/atlasApi";
+import { isChineseContent } from "./language";
 
 export function formatUsageLabel(usageCount: number | null | undefined): string {
   return usageCount === null || usageCount === undefined ? "未统计" : `${usageCount} 使用`;
@@ -40,7 +41,7 @@ export function getLanguageLabel(ability: Ability): { label: string; cached: boo
     return { label: "中文优先", cached: true };
   }
 
-  if (containsChinese(ability.summary) || containsChinese(ability.user.note ?? "")) {
+  if (isChineseContent(ability.summary) || isChineseContent(ability.user.note ?? "")) {
     return { label: "中文", cached: false };
   }
 
@@ -51,10 +52,6 @@ export function uniqueAbilityTags(abilities: Ability[]): string[] {
   return Array.from(new Set(abilities.flatMap(getAbilityTags))).sort((left, right) =>
     left.localeCompare(right, "zh-Hans-CN")
   );
-}
-
-function containsChinese(value: string): boolean {
-  return /[\u4e00-\u9fff]/.test(value);
 }
 
 function nonEmpty(value: string | null | undefined): string | undefined {
