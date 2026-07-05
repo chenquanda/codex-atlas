@@ -9,6 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test:frontend": "vitest run",
     "test:rust": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 cargo test --manifest-path src-tauri/Cargo.toml",
+    "smoke:scan": "powershell -ExecutionPolicy Bypass -File scripts/smoke-scan.ps1",
+    "smoke:gui": "powershell -ExecutionPolicy Bypass -File scripts/smoke-gui.ps1",
     "smoke:skill-detail": "powershell -ExecutionPolicy Bypass -File scripts/smoke-skill-detail.ps1",
     "smoke:translation-cache": "powershell -ExecutionPolicy Bypass -File scripts/smoke-translation-cache.ps1",
     "tauri:dev": "powershell -ExecutionPolicy Bypass -File scripts/设置开发环境.ps1 tauri dev",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.0.0",
+    "@playwright/test": "^1.55.0",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.0.0",

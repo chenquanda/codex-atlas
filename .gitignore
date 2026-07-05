@@ -4,6 +4,7 @@
 !.tmp/.gitkeep
 dist/*
 !dist/.gitkeep
+!dist/说明.md
 node_modules/
 src-tauri/gen/
 src-tauri/target/
