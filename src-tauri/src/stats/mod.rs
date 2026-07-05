@@ -8,9 +8,21 @@ use serde_json::Value;
 
 use crate::domain::{Ability, Stats};
 
-#[derive(Clone, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct StatsRoots {
     pub conversation_files: Vec<PathBuf>,
+    pub discovery_complete: bool,
+    pub discovery_warnings: Vec<String>,
+}
+
+impl Default for StatsRoots {
+    fn default() -> Self {
+        Self {
+            conversation_files: Vec::new(),
+            discovery_complete: true,
+            discovery_warnings: Vec::new(),
+        }
+    }
 }
 
 #[derive(Clone, Debug, Default, Eq, PartialEq)]
@@ -60,14 +72,23 @@ impl StatsReport {
 }
 
 pub fn refresh_usage_stats(roots: &StatsRoots, ability_index: &AbilityUsageIndex) -> StatsReport {
+    let mut warnings = roots.discovery_warnings.clone();
+    let mut complete = roots.discovery_complete;
+
+    if roots.conversation_files.is_empty() {
+        warnings.push("统计根目录为空，已跳过统计刷新以保留现有统计".to_string());
+        return StatsReport {
+            stats: BTreeMap::new(),
+            warnings,
+            complete: false,
+        };
+    }
+
     let mut counts = ability_index
         .entries
         .iter()
         .map(|entry| (entry.id.clone(), 0_u64))
         .collect::<BTreeMap<_, _>>();
-    let mut warnings = Vec::new();
-    let mut complete = true;
-
     for path in &roots.conversation_files {
         let content = match fs::read_to_string(path) {
             Ok(content) => content,

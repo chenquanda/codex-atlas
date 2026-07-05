@@ -61,6 +61,7 @@ fn counts_explicit_user_skill_mentions_repeatedly() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -87,6 +88,7 @@ fn counts_plugin_skill_mentions_repeatedly() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -120,6 +122,7 @@ fn counts_assistant_skill_file_reads() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -174,6 +177,7 @@ fn ignores_system_developer_tool_and_function_noise() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&abilities);
 
@@ -244,6 +248,7 @@ fn bad_jsonl_line_warns_and_scan_continues() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -275,6 +280,7 @@ fn missing_conversation_file_marks_report_incomplete_and_unsaveable() {
             fixture.path("conversations/readable.jsonl"),
             fixture.path("conversations/missing.jsonl"),
         ],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -312,6 +318,7 @@ fn assistant_skill_reads_require_read_signal_and_component_suffix_match() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -349,6 +356,7 @@ fn assistant_skill_reads_disambiguate_same_skill_names_by_source_path() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&abilities);
 
@@ -377,6 +385,7 @@ fn assistant_plugin_skill_path_does_not_match_user_skill_marker() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -405,6 +414,7 @@ fn assistant_direct_plugin_skill_candidate_does_not_match_user_short_marker() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -442,6 +452,7 @@ fn assistant_structured_tool_call_paths_count_as_actual_reads() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -473,6 +484,7 @@ fn user_mentions_handle_punctuation_and_skip_code_or_money() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&abilities);
 
@@ -501,6 +513,7 @@ fn user_mentions_skip_double_backtick_inline_code() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -525,6 +538,7 @@ fn user_mentions_accept_trailing_colon() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 
@@ -584,6 +598,7 @@ fn nested_system_developer_tool_and_function_roles_are_noise() {
 
     let roots = StatsRoots {
         conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
     };
     let index = AbilityUsageIndex::from_abilities(&[ability]);
 

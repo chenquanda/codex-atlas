@@ -1,6 +1,6 @@
 {
   "identifier": "default",
-  "description": "Codex Atlas 默认窗口权限",
+  "description": "Codex Atlas 默认窗口权限；自定义 Tauri commands 由 Rust invoke_handler 注册",
   "windows": ["main"],
   "permissions": ["core:default"]
 }

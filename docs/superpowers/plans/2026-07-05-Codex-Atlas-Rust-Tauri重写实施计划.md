@@ -546,7 +546,7 @@ dist/
   Run:
 
   ```powershell
-  npm run test:rust -- src-tauri/tests/command_tests.rs
+  npm run test:rust -- --test command_tests
   ```
 
   Expected: FAIL because command handlers are missing.
@@ -569,7 +569,7 @@ dist/
   Run:
 
   ```powershell
-  npm run test:rust -- src-tauri/tests/command_tests.rs
+  npm run test:rust -- --test command_tests
   npm run test:rust
   ```
 

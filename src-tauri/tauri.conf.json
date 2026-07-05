@@ -12,6 +12,7 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "Codex Atlas",
         "width": 760,
         "height": 840,
