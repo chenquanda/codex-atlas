@@ -482,12 +482,9 @@ fn assistant_read_evidence(value: &Value) -> Vec<String> {
     let mut output = Vec::new();
     let mut seen = BTreeSet::new();
 
-    append_content_read_evidence(value, &mut output, &mut seen);
-    append_known_structured_read_fields(value, &mut output, &mut seen);
-
-    if let Some(message) = value.get("message") {
-        append_content_read_evidence(message, &mut output, &mut seen);
-        append_known_structured_read_fields(message, &mut output, &mut seen);
+    for scope in record_scopes(value) {
+        append_content_read_evidence(scope, &mut output, &mut seen);
+        append_known_structured_read_fields(scope, &mut output, &mut seen);
     }
 
     output
@@ -636,36 +633,52 @@ fn is_signal_word_part(character: char) -> bool {
 }
 
 fn extract_role(value: &Value) -> Option<&str> {
-    value
-        .get("role")
-        .and_then(Value::as_str)
-        .or_else(|| value.pointer("/message/role").and_then(Value::as_str))
-        .or_else(|| {
-            value
-                .pointer("/message/author/role")
-                .and_then(Value::as_str)
-        })
+    for pointer in [
+        "/role",
+        "/payload/role",
+        "/message/role",
+        "/payload/message/role",
+        "/message/author/role",
+        "/payload/message/author/role",
+    ] {
+        if let Some(role) = value.pointer(pointer).and_then(Value::as_str) {
+            return Some(role);
+        }
+    }
+
+    None
 }
 
 fn extract_record_text(value: &Value) -> String {
     let mut output = String::new();
     let mut seen = BTreeSet::new();
 
-    for key in ["content", "text", "path"] {
-        if let Some(child) = value.get(key) {
-            append_json_text(child, &mut output, &mut seen);
-        }
-    }
-
-    if let Some(message) = value.get("message") {
+    for scope in record_scopes(value) {
         for key in ["content", "text", "path"] {
-            if let Some(child) = message.get(key) {
+            if let Some(child) = scope.get(key) {
                 append_json_text(child, &mut output, &mut seen);
             }
         }
     }
 
     output
+}
+
+fn record_scopes<'a>(value: &'a Value) -> Vec<&'a Value> {
+    let mut scopes = vec![value];
+
+    if let Some(payload) = value.get("payload") {
+        scopes.push(payload);
+        if let Some(message) = payload.get("message") {
+            scopes.push(message);
+        }
+    }
+
+    if let Some(message) = value.get("message") {
+        scopes.push(message);
+    }
+
+    scopes
 }
 
 fn append_json_text(value: &Value, output: &mut String, seen: &mut BTreeSet<String>) {

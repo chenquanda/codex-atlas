@@ -102,6 +102,69 @@ fn counts_plugin_skill_mentions_repeatedly() {
 }
 
 #[test]
+fn counts_explicit_mentions_from_real_payload_envelope_records() {
+    let fixture = ScannerFixture::new("stats-payload-user-mentions");
+    let abilities = vec![
+        skill(
+            "skill:brainstorming",
+            "brainstorming",
+            fixture.path("skills/brainstorming/SKILL.md"),
+        ),
+        skill(
+            "superpowers:test-driven-development",
+            "test-driven-development",
+            fixture.path("plugins/superpowers/skills/test-driven-development/SKILL.md"),
+        ),
+    ];
+    fixture.write_text(
+        "conversations/session.jsonl",
+        &jsonl(&[
+            json!({
+                "type": "message",
+                "payload": {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": "先用 $brainstorming。"
+                        }
+                    ],
+                },
+            }),
+            json!({
+                "type": "message",
+                "payload": {
+                    "message": {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "然后走 $superpowers:test-driven-development。"
+                            }
+                        ],
+                    },
+                },
+            }),
+        ]),
+    );
+
+    let roots = StatsRoots {
+        conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
+    };
+    let index = AbilityUsageIndex::from_abilities(&abilities);
+
+    let report = refresh_usage_stats(&roots, &index);
+
+    assert!(report.warnings.is_empty());
+    assert_eq!(report_count(&report, "skill:brainstorming"), Some(1));
+    assert_eq!(
+        report_count(&report, "superpowers:test-driven-development"),
+        Some(1)
+    );
+}
+
+#[test]
 fn counts_assistant_skill_file_reads() {
     let fixture = ScannerFixture::new("stats-assistant-read");
     let skill_path = fixture.path("skills/brainstorming/SKILL.md");
@@ -130,6 +193,67 @@ fn counts_assistant_skill_file_reads() {
 
     assert!(report.warnings.is_empty());
     assert_eq!(report_count(&report, "skill:brainstorming"), Some(1));
+}
+
+#[test]
+fn counts_assistant_skill_reads_from_real_payload_envelope_records() {
+    let fixture = ScannerFixture::new("stats-payload-assistant-read");
+    let skill_path = fixture.path("skills/brainstorming/SKILL.md");
+    let plugin_path = fixture.path("plugins/superpowers/skills/test-driven-development/SKILL.md");
+    let abilities = vec![
+        skill("skill:brainstorming", "brainstorming", skill_path.clone()),
+        skill(
+            "superpowers:test-driven-development",
+            "test-driven-development",
+            plugin_path.clone(),
+        ),
+    ];
+    fixture.write_text(
+        "conversations/session.jsonl",
+        &jsonl(&[
+            json!({
+                "type": "message",
+                "payload": {
+                    "role": "assistant",
+                    "content": [
+                        {
+                            "type": "output_text",
+                            "text": format!("Read file {}", skill_path.display()),
+                        }
+                    ],
+                },
+            }),
+            json!({
+                "type": "message",
+                "payload": {
+                    "message": {
+                        "role": "assistant",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": format!("Read file {}", plugin_path.display()),
+                            }
+                        ],
+                    },
+                },
+            }),
+        ]),
+    );
+
+    let roots = StatsRoots {
+        conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
+    };
+    let index = AbilityUsageIndex::from_abilities(&abilities);
+
+    let report = refresh_usage_stats(&roots, &index);
+
+    assert!(report.warnings.is_empty());
+    assert_eq!(report_count(&report, "skill:brainstorming"), Some(1));
+    assert_eq!(
+        report_count(&report, "superpowers:test-driven-development"),
+        Some(1)
+    );
 }
 
 #[test]
@@ -189,6 +313,68 @@ fn ignores_system_developer_tool_and_function_noise() {
         report_count(&report, "superpowers:test-driven-development"),
         Some(0)
     );
+}
+
+#[test]
+fn ignores_noise_roles_inside_real_payload_envelope_records() {
+    let fixture = ScannerFixture::new("stats-payload-role-noise");
+    let skill_path = fixture.path("skills/brainstorming/SKILL.md");
+    let ability = skill("skill:brainstorming", "brainstorming", skill_path.clone());
+    fixture.write_text(
+        "conversations/session.jsonl",
+        &jsonl(&[
+            json!({
+                "type": "message",
+                "payload": {
+                    "role": "system",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": format!("Read file {} and mention $brainstorming", skill_path.display()),
+                        }
+                    ],
+                },
+            }),
+            json!({
+                "type": "message",
+                "payload": {
+                    "role": "developer",
+                    "content": "$brainstorming",
+                },
+            }),
+            json!({
+                "type": "message",
+                "payload": {
+                    "message": {
+                        "role": "tool",
+                        "content": format!("Read file {}", skill_path.display()),
+                    },
+                },
+            }),
+            json!({
+                "type": "message",
+                "payload": {
+                    "message": {
+                        "author": {
+                            "role": "function",
+                        },
+                        "content": "$brainstorming",
+                    },
+                },
+            }),
+        ]),
+    );
+
+    let roots = StatsRoots {
+        conversation_files: vec![fixture.path("conversations/session.jsonl")],
+        ..StatsRoots::default()
+    };
+    let index = AbilityUsageIndex::from_abilities(&[ability]);
+
+    let report = refresh_usage_stats(&roots, &index);
+
+    assert!(report.warnings.is_empty());
+    assert_eq!(report_count(&report, "skill:brainstorming"), Some(0));
 }
 
 #[test]

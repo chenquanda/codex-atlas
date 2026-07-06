@@ -120,7 +120,7 @@ async function installMockedTauriApi(page: Page) {
         async invoke(command, args) {
           const input = args ?? {};
           const id = String(input.id ?? "skill:atlas-smoke");
-          const relativePath = String(input.relativePath ?? "SKILL.md");
+          const relativePath = String(input.relative_path ?? "SKILL.md");
 
           switch (command) {
             case "list_abilities":

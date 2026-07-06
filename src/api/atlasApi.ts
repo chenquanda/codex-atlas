@@ -152,17 +152,17 @@ export function createAtlasApi(invokeCommand: TauriInvoker = tauriInvoke): Atlas
     readSkillFile: (id, relativePath) =>
       invokeCommand<SkillFileContent>("read_skill_file", {
         id,
-        relativePath
+        relative_path: relativePath
       }),
     getTranslationState: (id, relativePath) =>
       invokeCommand<TranslationState>("get_translation_state", {
         id,
-        relativePath
+        relative_path: relativePath
       }),
     translateSkillFile: (id, relativePath) =>
       invokeCommand<TranslationResult>("translate_skill_file", {
         id,
-        relativePath
+        relative_path: relativePath
       })
   };
 }
