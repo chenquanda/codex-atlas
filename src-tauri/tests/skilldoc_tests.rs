@@ -16,6 +16,7 @@ use codex_atlas_rust_lib::{
     store::{save_store, Store},
 };
 use fixtures::ScannerFixture;
+use serde_json::Value;
 
 fn skill_ability(id: &str, name: &str, skill_md_path: PathBuf) -> Ability {
     Ability {
@@ -272,6 +273,66 @@ fn skill_detail_window_labels_do_not_collide_after_sanitizing() {
     assert_ne!(slash_id.label, space_id.label);
     assert_eq!(slash_id.app_url, "index.html?skillDetail=skill%3Aa%2Fb");
     assert_eq!(space_id.app_url, "index.html?skillDetail=skill%3Aa%20b");
+}
+
+#[test]
+fn default_capability_covers_main_and_dynamic_skill_detail_windows() {
+    let capability_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("capabilities/default.json");
+    let capability: Value = serde_json::from_str(
+        &std::fs::read_to_string(&capability_path).expect("read default capability"),
+    )
+    .expect("parse default capability");
+    let windows = capability["windows"]
+        .as_array()
+        .expect("windows should be an array")
+        .iter()
+        .map(|value| value.as_str().expect("window entry should be string"))
+        .collect::<Vec<_>>();
+    let atlas_label = skill_detail_window_target("skill:atlas").label;
+    let escaped_label = skill_detail_window_target("skill:unsafe id/..\\path?x=1&中").label;
+
+    assert!(windows.iter().all(|pattern| *pattern != "*"));
+    assert!(windows.iter().any(|pattern| glob_matches(pattern, "main")));
+    assert!(windows
+        .iter()
+        .any(|pattern| glob_matches(pattern, &atlas_label)));
+    assert!(windows
+        .iter()
+        .any(|pattern| glob_matches(pattern, &escaped_label)));
+}
+
+fn glob_matches(pattern: &str, value: &str) -> bool {
+    let pattern = pattern.as_bytes();
+    let value = value.as_bytes();
+    let mut pattern_index = 0_usize;
+    let mut value_index = 0_usize;
+    let mut star_index = None;
+    let mut match_index = 0_usize;
+
+    while value_index < value.len() {
+        if pattern_index < pattern.len()
+            && (pattern[pattern_index] == value[value_index] || pattern[pattern_index] == b'?')
+        {
+            pattern_index += 1;
+            value_index += 1;
+        } else if pattern_index < pattern.len() && pattern[pattern_index] == b'*' {
+            star_index = Some(pattern_index);
+            pattern_index += 1;
+            match_index = value_index;
+        } else if let Some(star) = star_index {
+            pattern_index = star + 1;
+            match_index += 1;
+            value_index = match_index;
+        } else {
+            return false;
+        }
+    }
+
+    while pattern_index < pattern.len() && pattern[pattern_index] == b'*' {
+        pattern_index += 1;
+    }
+
+    pattern_index == pattern.len()
 }
 
 #[cfg(unix)]
